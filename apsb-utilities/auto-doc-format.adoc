@@ -1,0 +1,8 @@
+Auto-Doc for: /marian/p1/develop/apsb-utilities/auto-doc-format.lisp (12-Aug-1993, 19:26:42)
+
+ -*- Mode:Common-Lisp; Package:(apsb-utilities); Base:10 -*-
+
+	initialize auto-doc utility
+
+
+End of Auto-Doc for: /marian/p1/develop/apsb-utilities/auto-doc-format.lisp

@@ -1,0 +1,174 @@
+Auto-Doc for: /marian/p1/develop/apsb-utilities/file-system.lisp (12-Aug-1993, 19:26:50)
+
+-*-Mode:LISP; Syntax: Common-Lisp;Package:(apsb-utilities);-*-
+
+	file system utilities
+
+
+'(CLEAR-FN COPY-STREAM-TO-FILE DOC-STRING FILE FILE-SIZE FIRE FIRE-CLEAR
+           FIRE-COPY FIRE-LOAD FIRE-QUERY FIRE-UPDATE INIT-FN LOAD-FN
+           LOAD-PARAMETERS MAKE-FIRE NULL-FILE RELOAD-PARAMETERS SYNCH-TIME
+           UPDATE-FN UPDATE-PARAMETERS) [exported symbols (eval-when (COMPILE-TOPLEVEL
+                                                                      LOAD-TOPLEVEL
+                                                                      EXECUTE))]
+
+
+	FIRE (file repository) utility
+	      ~~   ~~
+
+	Synopsis:
+
+	  [having always hated block comments, i've always wanted to
+	  substitute the lyrics to the theme from Gilligan's Island.
+	  alas, not today.  -- fwy]
+
+	  the FIRE utility enables one to associate arbitrary internal
+	  representations, e.g. hash tables and alists, with external
+	  repositories, e.g. files and streams.  these associations
+	  are represented by instances of the FIRE class.
+
+	  an instance of FIRE is essentially a read-only data structure,
+	  i.e. once it is created, it is usually modified only by the
+	  FIRE utility.  the instance therefore associates the specified
+	  internal representation with a particular file or stream.
+	  we provide the following operators: fire-copy, fire-load,
+	  fire-query, fire-update, and make-fire.
+
+	  fire-copy (method) creates and returns a copy of an instance
+	  of FIRE.  the returned instance may associate a different
+	  file/stream with the internal representation.
+
+	  fire-load (method) loads the FIRE's file/stream using the
+	  FIRE's load-fn and the appropriate (re)load-parameters.
+
+	  fire-query (macro) insures that the internal representation
+	  is at least as new as its associated file/stream before
+	  invoking the specified query.
+
+	  fire-update (method) overwrites the FIRE's file/stream with
+	  the contents of the internal representation.
+
+	  make-fire (function) creates and returns an instance of FIRE.
+
+
+	Default Behavior:
+
+	  fire-update signals an error unless an update-fn has been
+	  specified.  in other words, file/stream repositories are
+	  read-only by default.
+
+	  init-fn and clear-fn both default to nil.  in other words, the
+	  internal representation is assumed to be self-(re)initializing,
+	  i.e. the act of "loading" the forms in the file repository
+	  should create/clear the internal representation by default.
+
+
+	Creating New Repositories:
+
+	  since FIRE instances are basically read-only objects, associating
+	  a new file/stream with an internal representation is not a trivial
+	  process.  one cannot simply (setf (file ...) ...).
+
+	  there are two scenarios to consider: (1) the internally represented
+	  data are deemed superior to the repository's data, but the user
+	  does not wish to destroy the current repository, i.e. invoke the
+	  update-fn, and (2) a new repository is deemed superior to the
+	  current one and we wish to replace the internally represented data
+	  with the new repository's data.
+
+	  in both cases, the correct approach is to create a second FIRE
+	  instance, perhaps via the fire-copy method.  the internal
+	  representation can then be written out (via the second instance's
+	  update-fn) or refreshed (the first time fire-query is invoked on
+	  the second instance).  the application is responsible for any
+	  bookkeeping that may be necessary.
+
+
+FIRE [class]
+  parent classes: (STANDARD-CLASS)
+  
+	associates an external repository (a file or
+	a stream) with its internal representation
+  slots:
+   FILE   reader: FILE
+     specifies the external file repository
+   DOCUMENTATION   reader: DOC-STRING
+     description of the data contained in FILE
+   INIT-FN   accessor: INIT-FN
+     initializes the internal representation
+   LOAD-FN   accessor: LOAD-FN
+     (funcall LOAD-FN FILE) reads FILE into memory
+   LOAD-PARAMETERS   accessor: LOAD-PARAMETERS
+     a keyword-value plist for LOAD-FN's 1st call
+   RELOAD-PARAMETERS   accessor: RELOAD-PARAMETERS
+     like LOAD-PARAMETERS but for subsequent calls
+   SYNCH-TIME   accessor: SYNCH-TIME
+     last time FILE was known to be up-to-date
+   CLEAR-FN   accessor: CLEAR-FN
+     clears the internal representation
+   UPDATE-FN   accessor: UPDATE-FN
+     (funcall UPDATE-FN FILE) updates FILE
+   UPDATE-PARAMETERS   accessor: UPDATE-PARAMETERS
+     a keyword-value plist for UPDATE-FN calls
+
+PRINT-OBJECT [method]
+   ((FIRE FIRE) (STREAM STREAM))
+
+SHARED-INITIALIZE [BEFORE method]
+   ((FIRE FIRE) SLOT-NAMES &REST INITARGS)
+  discourages reinitialization of (file fire)
+  (DECLARE (IGNORE SLOT-NAMES))
+  (AVER (LIST INITARGS))
+
+FIRE-CLEAR [method]
+   ((FIRE FIRE))
+  invoke (clear-fn fire)
+
+FIRE-COPY [method]
+   ((FIRE FIRE) &KEY (FILE (FILE FIRE)))
+  return a copy of fire with (file fire) initialized to file
+  (AVER (STREAM-SPEC FILE))
+
+FIRE-LOAD [method]
+   ((FIRE FIRE) &KEY (FORCE NIL))
+  
+	load or reload (file fire) if necessary or if :force is non-nil.
+	return (file fire)'s file-write-date if it was loaded or reloaded,
+	and nil if no load was performed.  :force defaults to nil.
+  (AVER (BOOLEAN FORCE))
+
+FIRE-UPDATE [method]
+   ((FIRE FIRE))
+  
+	invoke (update-fn fire) and return the new file-write-date
+	of (file fire); if (update-fn fire) does not exist, an error
+	is signaled.
+
+FIRE-QUERY [macro]
+   (FIRE QUERY)
+  load or reload (file fire), if necessary, before invoking query
+
+COPY-STREAM-TO-FILE [function]
+   (STREAM FILE)
+
+FILE-SIZE [function]
+   (FILE-SPEC &KEY (ELEMENT-TYPE :DEFAULT))
+  
+	return size of file-spec;
+	return nil if file-spec does not name a file that can be opened
+  (AVER (FILE-SPEC FILE-SPEC))
+
+NULL-FILE [function]
+   (FILE-SPEC)
+  return nil unless file-spec names an empty file
+  (AVER (FILE-SPEC FILE-SPEC))
+
+MAKE-FIRE [function]
+   (STREAM-SPEC &REST ARGS &KEY DOCUMENTATION INIT-FN LOAD-FN LOAD-PARAMETERS
+    RELOAD-PARAMETERS CLEAR-FN UPDATE-FN)
+  create and return an instance of FIRE
+  (DECLARE (IGNORE DOCUMENTATION INIT-FN LOAD-FN LOAD-PARAMETERS
+            RELOAD-PARAMETERS CLEAR-FN UPDATE-FN))
+  (AVER (STREAM-SPEC STREAM-SPEC) (LIST ARGS))
+
+End of Auto-Doc for: /marian/p1/develop/apsb-utilities/file-system.lisp

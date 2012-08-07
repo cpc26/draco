@@ -1,0 +1,160 @@
+Auto-Doc for: /marian/p1/develop/apsb-utilities/Allegro/file-system.cl (12-Aug-1993, 19:26:55)
+
+-*-Mode:LISP; Syntax: Common-Lisp;Package:(apsb-utilities);-*-
+
+	file-system definitions
+ Modified: dja - 30 July 1993
+
+'(CWD MKDIR RMDIR TEMPNAM TEMPNAM-OUTPUT WITH-OPEN-TEMP-FILE UMASK
+      WITH-LOCKED-FILE GET-FILE-LOCK RELEASE-FILE-LOCK WITH-FILE-RESOURCE
+      MP-FIRE MAKE-MP-FIRE) [exported symbols (eval-when (COMPILE-TOPLEVEL
+                                                          LOAD-TOPLEVEL
+                                                          EXECUTE))]
+
+ ----------------------------------------------------------------
+               *** Foreign Function Declarations ***
+ ---------------------------------------------------------
+
+ (get-file-lock <file-name> <create-flag> <non-blocking flag>)
+ Returns -1 if fails or > 0 if succeeds.  If fails, check errno.
+ Keep successful return value in order to call release-file-lock
+ Flag map
+      Create Non-Blocking   Result
+      ----------------------------
+        0        0          if file exists, block until get lock
+        0        1          if file exists, see if can get lock
+                              but don't block if can't get it
+        1        0          if file does not exist, create it.
+                              block while wait for lock
+        1        1          if file does not exist, create it.
+                              but don't block if can't get lock
+
+ ----------------------------------------------------------------
+             *** Variables and Constants ***
+ ----------------------------------------------------------------
+
+*FILE-MODE* [variable]
+  *File-Mode* holds the value of the mode flags that new files will be created with.
+
+*LOCKF-ERROR-FORMAT-CONTROL* [constant] value: "Lockf failed for ~a.  errno=~d: ~a"
+
+
+ From /usr/include/sys/fcntlcom.h
+
+
+*O_RDONLY* [constant] value: 0
+
+*O_WRONLY* [constant] value: 1
+
+*O_RDWR* [constant] value: 2
+
+*O_TRUNC* [constant] value: 1024
+
+*O_APPEND* [constant] value: 8
+
+*O_CREAT* [constant] value: 512
+
+CWD [function]
+   (&OPTIONAL (DIRECTORY (EXCL:CURRENT-DIRECTORY)))
+  
+	the current working directory is returned as a string.
+	if a directory is specified, it becomes the current working
+	directory.
+  (AVER (FILE-SPEC DIRECTORY))
+
+TEMPNAM [function]
+   (&KEY (DIRECTORY "") (PREFIX "") (TAG NIL))
+  
+	Lisp interface to the C library routine "tempnam".
+	Returns a string.
+  (AVER (STRING DIRECTORY PREFIX) (SYMBOL TAG))
+
+TEMPNAM-OUTPUT [function]
+   (&KEY (TAG NIL))
+  return list of temporary file pathnames
+  (AVER (SYMBOL TAG))
+
+(SETF TEMPNAM-OUTPUT) [method]
+   (SETF TEMPNAM-OUTPUT)
+  (AVER (SYMBOL TAG))
+
+WITH-OPEN-TEMP-FILE [macro]
+   ((VAR) . BODY)
+  Bind VAR to a stream open to a temporary file, run body,
+then delete the temporary file.
+  (AVER (SYMBOL VAR))
+
+MKDIR [function]
+   (DIRECTORY)
+
+RMDIR [function]
+   (DIRECTORY)
+
+ ----------------------------------------------------------------
+
+UMASK [function]
+   (&OPTIONAL (MASK NIL))
+  Make a call to unix's umask function.  This is necessary to set up
+the file creation mode correctly.  DO NOT REMOVE.  In order to set the
+file creation mode correctly, do (umask).  If you want to set a new
+umask, do (umask <new mask>).  This call returns the previous umask
+value.
+  (AVER ((OPTIONAL INTEGER) MASK))
+
+CALCULATE-FILE-MODE [function]
+   ()
+
+ ----------------------------------------------------------------
+
+WITH-LOCKED-FILE [macro]
+   ((STREAM FILE &REST ACCESS-INFO) &REST BODY)
+  Like with-open-file, except file is locked when openned.  This is 
+a cooperative locking.  Processes not using these locking function will
+have access to the file without hamper.  Locking requires one to have
+write access to the file that is to be locked.
+
+   File locking is a blocking call in UNIX.  Ergo, if the file is locked 
+when you request it, your process will block until the lock is released.
+If you do not wish to block, include a :blocking :no in the arguments to
+with locked file.  Blocking will be the default.  Examples are below.
+
+  Blocking by default:  (with-locked-file (In File :direction :input) ...)
+  Blocking: (with-locked-file (In File :direction :output :blocking :yes) ...)
+  No blocking: (with-locked-file (In File :direction :input :blocking :no) ...)
+
+ ----------------------------------------------------------------
+
+WITH-FILE-RESOURCE [macro]
+   ((FILE BLOCKING?) &REST BODY)
+  Uses file locking in order to control a resource.
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ FIRE - specialization for multiple lisp sibling processes
+
+MP-FIRE [class]
+  parent classes: (FIRE)
+  slots:
+   LOCK   reader: LOCK
+     synchronizes multi-process access to file.
+
+MAKE-MP-FIRE [function]
+   (STREAM-SPEC &REST ARGS &KEY DOCUMENTATION INIT-FN LOAD-FN LOAD-PARAMETERS
+    RELOAD-PARAMETERS CLEAR-FN UPDATE-FN LOCK)
+  create and return an instance of FIRE
+  (DECLARE (IGNORE DOCUMENTATION INIT-FN LOAD-FN LOAD-PARAMETERS
+            RELOAD-PARAMETERS CLEAR-FN UPDATE-FN LOCK))
+  (AVER (STREAM-SPEC STREAM-SPEC) (LIST ARGS))
+
+FIRE-LOAD [AROUND method]
+   ((MP-FIRE MP-FIRE) &KEY (FORCE NIL))
+  (DECLARE (IGNORE FORCE))
+
+FIRE-UPDATE [AROUND method]
+   ((MP-FIRE MP-FIRE))
+
+FIRE-COPY [method]
+   ((FIRE MP-FIRE) &KEY (FILE (FILE FIRE)))
+  return a copy of fire with (file fire) initialized to file
+  (AVER (STREAM-SPEC FILE))
+
+End of Auto-Doc for: /marian/p1/develop/apsb-utilities/Allegro/file-system.cl

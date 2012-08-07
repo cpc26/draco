@@ -1,0 +1,38 @@
+<PLAINTEXT>
+
+                     GAS SHELL AROUND NOVA CYGNI 1992
+
+A NASA Hubble Space Telescope (HST) image of a rapidly ballooning
+bubble of gas blasted off a star.  The shell surrounds Nova Cygni 1992,
+which erupted on February 19, 1992.  The shell is so young it still
+contains a record of the initial conditions of the explosion.
+
+The HST image was taken in ultraviolet light with the European Space
+Agency's Faint Object Camera (FOC) on May 31, 1993, 467 days after the
+explosion.  The FOC reveals a remarkably circular yet slightly lumpy
+ring-like structure.  The ring is the edge of the bubble's shell of hot
+gas.  The shell is only 37 billion miles across, or 400 times the
+diameter of the solar system. A beam of light could cross the shell in
+less than 2-1/2 days.
+
+A striking relic of the explosion is an unusual bar-like structure
+across the middle of the ring.  It might mark the edge-on plane of the
+orbits of the two members of the binary star system that triggered the
+nova.  An alternative possibility is that the bar is produced by twin
+jets of gas ejected from the star and spanning the distance between the
+shell and the star.
+
+A nova is a thermonuclear explosion that occurs on the surface of a
+white dwarf star in a double star system.
+
+By knowing the shell's diameter, as calculated from a comparison
+between its angular size and it expansion velocity (as measured from
+ground-based observations) astronomers can precisely measure the
+distance to Nova Cygni, which turns out to be 10,430 light- years.
+Nova Cygni is located in the summer constellation Cygnus.
+
+
+Credit: Francesco Paresce, ESA/STScI and NASA 
+
+PHOTO CAPTION  STScI-PR93-21
+.

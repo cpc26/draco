@@ -1,0 +1,27 @@
+Auto-Doc for: /marian/p1/develop/apsb-utilities/Allegro/crypt.cl (12-Aug-1993, 19:26:55)
+
+ -*- Mode: Lisp; Package: APSB-UTILITIES -*-
+ Lisp access to crypt(3).
+ Dec 10 1992 mrose
+
+'(CRYPT SALT) [exported symbols (eval-when (COMPILE-TOPLEVEL
+                                            LOAD-TOPLEVEL
+                                            EXECUTE))]
+
+CRYPT [function]
+   (KEY &OPTIONAL (SALT (IF KEY (RANDOM-SALT))))
+  Just like crypt(3).
+  (AVER ((OPTIONAL STRING) KEY SALT))
+
+SALT [function]
+   (PASSWORD)
+  Return the salt from an encrypted password.
+
+SALT-CHARACTERS [constant] value: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789./"
+  Make the salt out of these characters.
+
+RANDOM-SALT [function]
+   ()
+  Return a random 2 character string suitable for use as a crypt(3) salt.
+
+End of Auto-Doc for: /marian/p1/develop/apsb-utilities/Allegro/crypt.cl

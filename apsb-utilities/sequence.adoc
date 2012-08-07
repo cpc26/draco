@@ -1,0 +1,39 @@
+Auto-Doc for: /marian/p1/develop/apsb-utilities/sequence.lisp (12-Aug-1993, 19:26:58)
+
+-*-Mode:LISP; Syntax: Common-Lisp;Package:(apsb-utilities);-*-
+
+	sequence utilities
+
+
+'(FIND-EVERY HAS-DUPLICATES SET-EQUAL TYPED-VECTOR) [exported symbols (eval-when (COMPILE-TOPLEVEL
+                                                                                  LOAD-TOPLEVEL
+                                                                                  EXECUTE))]
+
+*TYPED-VECTOR-ERROR-FORMAT* [constant] value: "~&apsb-utilities:typed-vector: element type error"
+
+FIND-EVERY [function]
+   (PREDICATE SEQUENCE &KEY (START 0) (END NIL) (KEY #'IDENTITY))
+  returns every item in sequence that satisfies predicate
+  (AVER (FUNCTION-SPEC PREDICATE) (SEQUENCE SEQUENCE) (FIXNUM START)
+        ((OPTIONAL FIXNUM) END) (FUNCTION-SPEC KEY))
+
+HAS-DUPLICATES [function]
+   (SEQUENCE &KEY (KEY #'IDENTITY) (TEST #'EQL))
+  returns T if sequence has duplicates; returns nil otherwise
+  (AVER (SEQUENCE SEQUENCE) (FUNCTION KEY TEST))
+
+SET-EQUAL [function]
+   (S1 S2 &KEY (KEY #'IDENTITY) (TEST #'EQL))
+  returns T if sequence s1 equals sequence s2; returns nil otherwise
+  (AVER (SEQUENCE S1 S2) (FUNCTION KEY TEST))
+
+TYPED-VECTOR [function]
+   (ELEMENT-TYPE ELEMENTS &KEY (INHIBIT-CHECKING NIL))
+  
+	returns a simple-vector of the specified type.  if elements
+	is a list, it becomes the :initial-contents list; otherwise,
+	:initial-contents is (list elements)
+  (AVER ((OR CONS MONIKER STANDARD-CLASS) ELEMENT-TYPE) (T ELEMENTS)
+        (BOOLEAN INHIBIT-CHECKING))
+
+End of Auto-Doc for: /marian/p1/develop/apsb-utilities/sequence.lisp

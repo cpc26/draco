@@ -1,0 +1,177 @@
+Auto-Doc for: /marian/p1/develop/apsb-utilities/auto-doc.lisp (12-Aug-1993, 19:26:40)
+
+ -*- Mode:Common-Lisp; Package:(apsb-utilities); Base:10 -*-
+
+	generate documentation for lisp code
+
+	Remarks:
+	- based on Mark Johnston's quick-doc and Jeff Sponsler's def-tables
+
+	Known bugs & limitations:
+	- only supports cons forms (quick-doc also printed strings)
+	- it would be nice if it ignored RCS cruft
+
+	Author (Date):	fwy (may92)
+	Key Gadfly:	mrose
+
+
+'(*AUTO-DOC-DEFAULT-MAP* *AUTO-DOC-MYSTERY-TYPES* AUTO-DOC AUTO-DOC-DIR
+  AUTO-DOC-FORM AUTO-DOC-FORMAT-FN FORM-DECLARATIONS FORMAT-DECLARATIONS
+  FORMAT-DEFINE-FUNCTION FORMAT-DEFINE-VARIABLE FORMAT-DISTINGUISH
+  FORMAT-DOCUMENTATION FORMAT-FORM-TYPE FORMAT-LAMBDA-LIST FORMAT-NEW-ENTRY) [exported symbols (eval-when (COMPILE-TOPLEVEL
+                                                                                                           LOAD-TOPLEVEL
+                                                                                                           EXECUTE))]
+
+LAST-PRINTED [type]
+  
+	indicates what auto-doc printed most recently.
+	nil -> don't know; :comment -> comment; :form -> form
+
+*AUTO-DOC-DEFAULT-EXTENSION* [constant] value: "adoc"
+  default extension for an auto-doc file
+
+*AUTO-DOC-BEGIN-FORMAT* [constant] value: "Auto-Doc for: ~a (~a)"
+  arguments: file name, date
+
+*AUTO-DOC-END-FORMAT* [constant] value: "~%~%End of Auto-Doc for: ~a~%"
+  argument: file name
+
+*AUTO-DOC-KEY-ENTERED-FORMAT* [constant] value: "~&auto-doc: ~:[ignoring~;recognizing~] ~a (~a)~%"
+  arguments: function name, key, map name
+
+*FORMAT-DECLARATIONS-FORMAT* [constant] value: "~{~%  ~a~}"
+  argument: declarations
+
+*FORMAT-DOCUMENTATION-FORMAT* [constant] value: "~@[~%  ~a~]"
+  argument: doc-string
+
+*FORMAT-FORM-TYPE-FORMAT* [constant] value: "~@[ [~a~@[ (eval-when ~a)~]]~]"
+  arguments: form type, eval-when context
+
+*FORMAT-LAMBDA-LIST-FORMAT* [constant] value: "~%   ~:s"
+  argument: lambda list
+
+*FORMAT-NEW-ENTRY-FORMAT* [constant] value: "~%~%~a"
+  argument: entry name
+
+*AUTO-DOC-DEFAULT-MAP* [parameter]
+  
+	alist mapping cons forms to format functions.  a null function
+	entry indicates that the form should be ignored.  all format
+	functions accept only the following keyword arguments:
+		:form  :stream  :verbose  :eval-when  :map
+	use auto-doc-format to create table entries and their
+	corresponding format functions.
+
+*AUTO-DOC-MYSTERY-TYPES* [variable]
+  (first form) for each unrecognized cons, no duplicates
+
+AUTO-DOC [function]
+   (LISP-FILE &OPTIONAL (EXTENSION *AUTO-DOC-DEFAULT-EXTENSION*) &KEY
+    (VERBOSE NIL) (EVAL-WHEN NIL) (MAP *AUTO-DOC-DEFAULT-MAP*))
+  
+	Write top-level ;;; comments and documentation extracted from
+	a lisp source file and written to a like-named file in the same
+	directory with the specified extension.  (all other comments are
+	ignored.)  if verbose is specified, unrecognized forms are ignored;
+	otherwise, they are formatted by #'format-mystery-cons.  a list of
+	unrecognized forms is returned.
+
+	eval-when is used (internally) to track (nested) eval-when contexts.
+
+	for more information, see *auto-doc-mystery-types*.
+  (AVER (FILE-SPEC LISP-FILE) (STRING EXTENSION) (BOOLEAN VERBOSE)
+        (LIST EVAL-WHEN MAP))
+
+AUTO-DOC-DIR [function]
+   (&KEY (DIRECTORY ".") (EXTENSION *AUTO-DOC-DEFAULT-EXTENSION*)
+    (VERBOSE NIL))
+  
+	run auto-doc on all lisp source files in the specified directory;
+	output files have the same root name and the specified extension
+	and are created in the current working directory.  returns a list
+	of unrecognized forms.
+
+	for more information, see auto-doc, *auto-doc-mystery-types*.
+  (AVER (STRING DIRECTORY EXTENSION) (BOOLEAN VERBOSE))
+
+AUTO-DOC-FIND [function]
+   (KEYWORD-VALUES KEY &OPTIONAL (DEFAULT NIL))
+  
+	keyword-values is a list of cons'es.  the car of each cons is
+	interpreted as a keyword.  auto-doc-find returns the cdr of the
+	cons whose keyword matches the specified key.  the optional
+	default is returned if no matching keyword was found.
+  (AVER (LIST KEYWORD-VALUES) (SYMBOL KEY) (T DEFAULT))
+
+AUTO-DOC-FORM [function]
+   (FORM &OPTIONAL (STREAM *STANDARD-OUTPUT*) (VERBOSE NIL) (EVAL-WHEN NIL)
+    (MAP *AUTO-DOC-DEFAULT-MAP*))
+  
+	input is a form and a stream; if the form is one of the recognized
+	types, documentation about the form is written to the stream.
+	if the form is unrecognized, e.g. if it is not a cons, and verbose
+	is t, a brief description is written to the stream.  otherwise,
+	nothing is written.
+  (AVER (T FORM) (STREAM STREAM) (BOOLEAN VERBOSE) (LIST EVAL-WHEN MAP))
+
+AUTO-DOC-FORMAT-FN [function]
+   (KEY-SPEC CALL-SYNTAX FORMS MAP-NAME)
+  does (virtually) everything for auto-doc-format
+  (AVER ((OR CONS MONIKER) KEY-SPEC) (STRING CALL-SYNTAX) (LIST FORMS)
+        (SYMBOL MAP-NAME))
+
+FORM-DECLARATIONS [function]
+   (FORM)
+  return top-level declarations in form
+  (AVER (CONS FORM))
+
+FORMAT-DECLARATIONS [function]
+   (STREAM DECLS)
+  format optional declarations
+  (AVER (STREAM STREAM) (LIST DECLS))
+
+FORMAT-DEFINE-FUNCTION [function]
+   (&KEY NAME FORM-TYPE LAMBDA-LIST (DECLS NIL) (DOCUMENTATION NIL)
+    (STREAM *STANDARD-OUTPUT*) (EVAL-WHEN NIL))
+  format defun and related forms
+  (AVER ((OR CONS SYMBOL) NAME) (STRING FORM-TYPE) (LIST LAMBDA-LIST DECLS)
+        ((OPTIONAL STRING) DOCUMENTATION) (STREAM STREAM) (LIST EVAL-WHEN))
+
+FORMAT-DEFINE-VARIABLE [function]
+   (&KEY NAME FORM-TYPE VALUE DOCUMENTATION (STREAM *STANDARD-OUTPUT*)
+    (EVAL-WHEN NIL))
+  format defvar and related forms
+  (AVER (SYMBOL NAME) (STRING FORM-TYPE) (T VALUE)
+        ((OPTIONAL STRING) DOCUMENTATION) (STREAM STREAM) (LIST EVAL-WHEN))
+
+FORMAT-DISTINGUISH [function]
+   (&KEY NAME FORM-TYPE (DOCUMENTATION NIL) (STREAM *STANDARD-OUTPUT*)
+    (EVAL-WHEN NIL))
+  
+	format forms that distinguish one or more entities,
+	e.g. types, exported symbols, etc.
+  (AVER (T NAME) (STRING FORM-TYPE) ((OPTIONAL STRING) DOCUMENTATION)
+        (STREAM STREAM) (LIST EVAL-WHEN))
+
+FORMAT-DOCUMENTATION [function]
+   (STREAM DOCUMENTATION)
+  format optional documentation strings
+  (AVER (STREAM STREAM) ((OPTIONAL STRING) DOCUMENTATION))
+
+FORMAT-FORM-TYPE [function]
+   (STREAM FORM-TYPE EVAL-WHEN)
+  format form types and eval-when contexts
+  (AVER (STREAM STREAM) ((OR STRING SYMBOL) FORM-TYPE) (LIST EVAL-WHEN))
+
+FORMAT-LAMBDA-LIST [function]
+   (STREAM LAMBDA-LIST)
+  format lambda lists
+  (AVER (STREAM STREAM) (LIST LAMBDA-LIST))
+
+FORMAT-NEW-ENTRY [function]
+   (STREAM NAME)
+  start formatting a new entry
+  (AVER (STREAM STREAM) (T NAME))
+
+End of Auto-Doc for: /marian/p1/develop/apsb-utilities/auto-doc.lisp

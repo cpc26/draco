@@ -1,0 +1,20 @@
+Auto-Doc for: /marian/p1/develop/apsb-utilities/Series/bogus.lisp (12-Aug-1993, 19:26:58)
+
+-*-Mode:LISP; Syntax: Common-Lisp;Package:(apsb-utilities);-*-
+
+	temporary (and bogus) implementations
+
+
+'(COLLECT SCAN-FILE) [exported symbols (eval-when (COMPILE-TOPLEVEL
+                                                   LOAD-TOPLEVEL
+                                                   EXECUTE))]
+
+COLLECT [function]
+   (LIST)
+
+SCAN-FILE [function]
+   (FILE-SPEC &OPTIONAL (READER #'READ))
+  Dick Waters' scan-file, but this returns a list instead of a series.
+  (AVER (FILE-SPEC FILE-SPEC) (FUNCTION-SPEC READER))
+
+End of Auto-Doc for: /marian/p1/develop/apsb-utilities/Series/bogus.lisp

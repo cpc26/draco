@@ -1,0 +1,29 @@
+Auto-Doc for: /marian/p1/develop/apsb-utilities/auto-doc-oos.lisp (12-Aug-1993, 19:26:42)
+
+ -*- Mode:Common-Lisp; Package:(make); Base:10 -*-
+
+	CMU defsystem hook
+
+'(AUTO-DOC-SYSTEM) [exported symbols (eval-when (COMPILE-TOPLEVEL
+                                                 LOAD-TOPLEVEL
+                                                 EXECUTE))]
+
+AUTO-DOC-OPERATION [function]
+   (COMPONENT FORCE)
+  handles the :auto-doc operation for operate-on-system.
+  (DECLARE (TYPE COMPONENT COMPONENT) (IGNORE FORCE))
+
+AUTO-DOC-SYSTEM [function]
+   (NAME &KEY FORCE (VERSION *VERSION*) (TEST *OOS-TEST*)
+    (VERBOSE *OOS-VERBOSE*)
+    (LOAD-SOURCE-INSTEAD-OF-BINARY *LOAD-SOURCE-INSTEAD-OF-BINARY*)
+    (LOAD-SOURCE-IF-NO-BINARY *LOAD-SOURCE-IF-NO-BINARY*)
+    (BOTHER-USER-IF-NO-BINARY *BOTHER-USER-IF-NO-BINARY*)
+    (COMPILE-DURING-LOAD *COMPILE-DURING-LOAD*) DRIBBLE
+    (MINIMAL-LOAD *MINIMAL-LOAD*))
+  convenience function for (operate-on-system <foo> :auto-doc ...)
+
+AUTO-DOC [make:operate-on-system operation]
+  function: #'AUTO-DOC-OPERATION
+
+End of Auto-Doc for: /marian/p1/develop/apsb-utilities/auto-doc-oos.lisp

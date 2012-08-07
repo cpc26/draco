@@ -1,0 +1,16 @@
+<PLAINTEXT>
+NASA Hubble Space Telescope image of the core of the peculiar galaxy
+NGC 7252 reveals a striking "mini-spiral" disk of gas and stars, and
+about 40 exceptionally bright and young globular star clusters.
+The visible light image was taken with the Wide Field and Planetary
+Camera in PC mode on October 10, 1992.  The false-color has been
+subject to computer image reconstruction.  The strong spiral structure
+is 10,000 light-years across (7 arc seconds); the entire picture is
+46,000 light-years across.  The clusters are 60 light-years in diameter 
+(0.04 arc seconds) and are the same size as globular clusters that
+orbit our Milky Way galaxy.
+
+Credit:  B. Whitmore (STScI) and NASA
+Co-investigators:  F. Schweitzer (CIW), Claus Leitherer, Kirk Borne,
+and Carmelle Robert (STScI).
+.

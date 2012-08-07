@@ -1,0 +1,7 @@
+phead.e		OIF lexical analyzer; build via "fc phead.f" (IRAF CL).
+
+phead.f		source for phead.e; adapted from $iraf/sys/imfort/tasks/phead.f
+
+pkval.e		print one OIF keyword value; build via "fc pkval.f" (IRAF CL).
+
+pkval.f		source for pkval.e

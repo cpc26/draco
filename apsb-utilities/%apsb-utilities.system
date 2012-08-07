@@ -1,0 +1,134 @@
+;;; -*- mode:common-lisp -*-
+(make:defsystem %apsb-utilities
+    :source-pathname	#p"Draco:apsb-utilities"
+    :source-extension	"lisp"
+    :package		apsb-utilities
+    :initially-do	(defpackage apsb-utilities
+				(:nicknames "APSB" "UTILITIES")
+				(:use "COMMON-LISP"
+				      #+:Allegro "CLOS")
+			)
+    :components	(#+apsb-auto-doc
+		 (:module +auto-doc
+		    :source-pathname	""
+		    :components		((:file "auto-doc")
+					 (:file "auto-doc-format"
+					    :depends-on	("auto-doc")
+					    :load-only	t)
+					 (:file "auto-doc-oos"
+					    :depends-on	("auto-doc")))
+		    :depends-on		(+diagnostic +kernel))
+		 (:module +clos
+		    :source-pathname	""
+		    :components		((:file "clos"))
+		    :depends-on         (+kernel))
+		 (:module +cmu
+		    :source-pathname	"CMU"
+		    :components		((:module +source-compare
+					    :source-pathname	""
+					    :components
+						((:file "source-compare")))))
+		 (:module +date
+		    :source-pathname	""
+		    :components		((:file "date")
+					 (:file "date-init"))
+		    :depends-on		(+diagnostic +kernel
+					 #+:apsb-test +test))
+		 (:module +diagnostic
+		    :source-pathname	""
+		    :components		((:file "diagnostic"))
+		    :depends-on		(+kernel))
+		 (:module +file-system
+		    :source-pathname	""
+		    :components		((:file "file-system"))
+		    :depends-on		(+diagnostic +kernel))
+		 (:module +kernel
+		    :source-pathname	""
+		    :components		((:file	"macros")
+					 (:file "types"
+					    :depends-on	("macros"))))
+		 (:module +list
+		    :source-pathname	""
+		    :components		((:file "list"))
+		    :depends-on		(+diagnostic +kernel
+					 #+:apsb-test +test))
+		 (:module +regular-expression
+		    :source-pathname	""
+		    :components		((:file "nregex")))
+		 (:module +Norvig
+		    :source-pathname	"Norvig"
+		    :package		Norvig
+		    :initially-do	(defpackage Norvig
+					    (:shadow
+						"DBG" "DBG-INDENT"
+						"DBG-OFF" "DBG-ON"
+						"REDUCE")
+					    (:export
+						"DBG" "DBG-INDENT"
+						"DBG-OFF" "DBG-ON"
+						"REDUCE")
+					    (:use "COMMON-LISP")
+					)
+		    :components		((:file "auxfns"
+					    :depends-on	("auxmacs"))
+					 (:file "auxmacs")))
+		 (:module +c-platform
+		    :load-form
+			#+:Allegro
+			(let* ((src #p"Draco:apsb-utilities;Allegro;unix-ff.c")
+			       (obj (make-pathname
+					:defaults	src
+					:type		"o"))
+			       (no-obj (with-open-file
+					 (stream obj :if-does-not-exist nil)
+					 (not stream))))
+			      (when (or no-obj
+					(> (file-write-date src)
+					   (file-write-date obj)))
+				    (format *error-output*
+					"; --- Compiling file ~a ---~%" src)
+				    (excl:run-shell-command
+				      (concatenate 'string
+					"cc -c "
+					(namestring
+					  (translate-logical-pathname src))
+					" -o "
+					(namestring
+					  (translate-logical-pathname obj)))))
+			      (load obj))
+			#-:Allegro	(break "wake up"))
+		 (:module +platform
+		    :source-pathname	#+:Allegro "Allegro"
+					#-:Allegro (break "wake up")
+		    :source-extension	#+:Allegro "cl"
+					#-:Allegro (break "wake up")
+		    :components		((:file "crypt")
+					 
+					 (:file "file-system")
+;;; host-utils doesn't compile in acl 4.2.beta2.  Jul 28 1993 Mike Rose
+					 ;; (:file "host-utils")
+					 #+:Allegro (:file "reduce")
+					 (:file "shell")
+					 (:file "error" :depends-on ("shell")))
+		    :depends-on		(+kernel +series
+					 #+:Allegro +Norvig +c-platform))
+		 (:module +sequence
+		    :source-pathname	""
+		    :components		((:file	"sequence"))
+		    :depends-on		(+kernel
+					 #+:apsb-test +test))
+		 (:module +Series
+		    :source-pathname	"Series"
+		    :components		((:file	"bogus"))
+		    :depends-on		(+kernel))
+		 (:module +string
+		    :source-pathname	""
+		    :components		((:file	"string"))
+		    :depends-on		(+kernel))
+		 #+:apsb-test
+		 (:module +test
+		    :source-pathname	""
+		    :components		((:file "test"))
+		    :depends-on		(+diagnostic +kernel
+					 #+:apsb-auto-doc +auto-doc)))
+)

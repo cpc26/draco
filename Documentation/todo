@@ -1,0 +1,61 @@
+GEIS file subtypes
+
+	we currently assume that the PODPS file naming conventions were
+	used.  not good.  instead, we should do what we do for FITS and
+	OIF, i.e. look at keyword values.
+
+
+remembering past computations
+
+	we currently lose all implementation vector information whenever
+	we exit the program.  some of this information is fairly hard
+	to come by and should be preserved via something like Sponsler's
+	LOSS or Koitzsch's SAVE-OBJECT utilities.  there are two problems
+	here.  the first has to do with the quality of these utilities.
+	LOSS is not easy to learn and Sponsler admits that it may have
+	suffered "bit rot" whereas SAVE-OBJECT has its own problems (as
+	delivered, it doesn't even compile).  the second problem is how
+	to integrate the program-generated information with user-specified
+	information.  for example, implementation vectors are associated
+	with primitives via the impl-map slot, but primitives are for the
+	most part user-defined.  thus, the ideal printed representation of
+	impl-slot values would be compatible with define-primitive syntax.
+	solving these problems will require time *and* "smarts".
+
+
+"best" implementation vector
+
+	we currently choose an implementation vector at random.  instead,
+	we should give the user a way to specify implementation selection
+	criteria and a data-specific objective and then return the vector
+	that is most appropriate for his objective.  the solution is to
+	apply Lucks' multiple selection criteria algorithm.  this entails
+	re-encapsulating POMS code (potentially tedious and/or hard).
+
+
+data format conversion
+
+	define-converter will modify (create if necessary) an internal
+	graph structure modeling the user's ability to convert one data
+	format to another.  at script-generation time, this graph will
+	be searched in order to find the "best" implementation vector.
+
+	the ability to change data formats introduces the possibility
+	of there being an infinite number of implementation vectors
+	for a given (procedural) primitive.  so we need a new search
+	algorithm.  this will be a variant of Viterbi's algorithm for
+	finding the most probable path through a hidden-Markov model
+	and it will use Lucks' multiple selection criteria algorithm
+	to compute an implementation vector's desirability.
+
+
+control structure -- branching & iteration
+
+	one reasonable set of control constructs is:
+
+	    +	while A do B		loop (while A) (do B);
+	    +	if A then B [else C]	if (test A) (succeeds B) [(fails C)];
+
+	we need to create syntax for creating conditional and iterative
+	primitives, e.g. define-if-primitive and define-loop-primitive.
+	we also need to generate (intermediate) code for these constructs.

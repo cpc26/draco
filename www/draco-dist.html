@@ -1,0 +1,73 @@
+<TITLE>Draco Distribution</TITLE>
+<H1>Getting a copy of Draco</H1>
+
+<H2>Operating Systems</H2>
+Draco was developed on Sun Sparcstations running Sun OS 4.1.3 (which
+is the same as Solaris 1.1). Draco was designed with portability
+in mind, so porting to other Unix systems is straightforward.
+
+<H2>Data Analysis Systems</H2>
+Draco was tested with STSDAS <A HREF="http://ra.stsci.edu/STSDAS.html">
+STSDAS</A>
+and <A HREF="http://iraf.noao.edu/iraf-homepage.html">IRAF</A>. 
+Interfacing with other systems is straightforward: it is just a matter
+of defining the correct "implementations" 
+(refer to the <A HREF="draco-pubs.html#DesignDoc">Draco Design Document</A>).
+
+<H2>Resources Required</H2>
+If your workstation can run any of the standard data reduction systems,
+it can run Draco. You probably already have 16Mb or more of physical
+memory, 50Mb or more of virtual memory and several hundred Mb of 
+disk space. Draco will run fine in this configuration.
+The Draco source files and executable will require about 20Mb of disk space.
+
+<H2>Language</H2>
+Draco is written in Common Lisp, specifically Allegro Common Lisp 4.2 beta by
+Franz, Inc. The distribution includes an executable image, so you don't need
+a Lisp system at your site. <P>
+
+We chose Lisp since it offered
+a powerful, high-level development environment that is available on
+many different machines. Earlier dialects of Lisp could be justifiably
+criticised for being slow, but Common Lisp performs on a par
+with other languages (e.g. Fortran and C) and has several
+significant advantages. Draco makes extensive
+use of the Common Lisp Object System (CLOS), an object-oriented
+system similar to Smalltalk and C++. More information on 
+<A HREF="draco-explore.html#Lisp">Lisp</A>
+is available. 
+
+<H2>Draco is available as-is</H2>
+Draco is a tool for research into the problems of automating
+scientific data reduction. 
+<B>It is made available "as-is", without
+any warranty whatsoever. The entire risk as to the quality and performance
+of this program is with you. Should this program prove defective, you
+assume the cost of all necessary correction, recovery and repair.</B> <P>
+
+Draco is very much a <I>research</I> project. It is not off-the-shelf
+software. If you intend to use it, you'll have to do some
+development work in writing new Draco procedures, primitives and
+implementations. <P>
+
+Please report any problems to <I>miller@stsci.edu</I>. We're very much interested
+in comments, suggestions, etc. Even if you don't 
+download Draco, your opinions and experiences with automating scientific
+data reduction and analysis are of interest.
+
+<H2>I'm ready - Let me have it!</H2>
+
+<B>Sorry, but this file isn't ready yet...</B> <P>
+
+First, get
+<A HREF="/lor/data1/Draco/tar/draco.tar">the distribution file</A> and 
+save it locally (e.g. <TT>draco.tar</TT>).
+
+<P>
+Then, extract the files with 
+<PRE><TT>% tar xvf draco.tar</TT></PRE>
+<P>
+
+What will they have then? 
+a new directory structure?
+then they need to do the logical pathname stuff...

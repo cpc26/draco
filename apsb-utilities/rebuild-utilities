@@ -1,0 +1,65 @@
+#! /usr/bin/sh
+
+# Usage: rebuild-utilities release
+
+# Clear out the utilities directory, and copy in new source,
+# and rebuild all the binaries.  p1 is the directory to created, 
+# and  must be be test, pre, or operational. 
+#
+# The environment variable LISP names the lisp to run.
+#
+# This script has the directory names
+#    /marian/p1/*/apsb-utilities
+# hard-coded.
+
+if [ -z "$1" ]
+then
+	echo Usage: $0 release
+	exit 1
+elif [ $1 = "operational" ]
+then
+	dest=/marian/p1/operational/apsb-utilities
+	source=/marian/p1/pre/apsb-utilities
+elif [ $1 = "pre" ]
+then 
+	dest=/marian/p1/pre/apsb-utilities
+	source=/marian/p1/test/apsb-utilities
+elif [ $1 = "test" ]
+then 
+	dest=/marian/p1/test/apsb-utilities
+	source=/marian/p1/develop/apsb-utilities
+elif [ $1 = "develop" ]
+then
+	dest=/marian/p1/develop/apsb-utilities
+else
+	echo Error: Invalid release
+	exit 1
+fi
+
+if [ -z "$LISP"  ]
+then
+	echo "Error: the LISP environment variable is not set."
+	exit 1
+elif [ ! -f "$LISP" ]
+then
+	echo Error: the LISP environment variable names a non-existent file.
+	exit 1
+fi
+
+if [ $1 != "develop" ]
+then
+	cmd="rm -rf $dest"; echo "$cmd"; $cmd
+	cmd="mkdir $dest"; echo "$cmd"; $cmd
+	cmd="chmod 777 $dest"; echo $cmd; $cmd
+	cmd="cd $source"; echo $cmd; $cmd
+	echo "tar cf - . |(cd $dest; tar xfBp -)"
+	tar cf - . |(cd $dest; tar xfBp -)
+fi
+
+echo "find $dest -name '*.fasl*' -exec rm {} \;"
+find $dest -name '*.fasl*' -exec rm {} \;
+
+echo "find $dest -name '*~' -exec rm {} \;"
+find $dest -name '*~' -exec rm {} \;
+
+$LISP -qq -e "(load \"$dest/rebuild-utilities\")" -e '(exit)' -- -release $1

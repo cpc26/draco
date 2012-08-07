@@ -1,0 +1,19 @@
+Auto-Doc for: /marian/p1/develop/apsb-utilities/list.lisp (12-Aug-1993, 19:26:51)
+
+-*-Mode:LISP; Syntax: Common-Lisp;Package:(apsb-utilities);-*-
+
+	list utilities
+
+
+'(TRUE-LIST) [exported symbols (eval-when (COMPILE-TOPLEVEL
+                                           LOAD-TOPLEVEL
+                                           EXECUTE))]
+
+TRUE-LIST [function]
+   (LIST)
+  
+	if list is dotted, return a true list containing the same
+	"elements"; otherwise, #'true-list is just like #'identity.
+  (AVER (LIST LIST))
+
+End of Auto-Doc for: /marian/p1/develop/apsb-utilities/list.lisp

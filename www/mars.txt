@@ -1,0 +1,11 @@
+MARS - THREE COLOR COMPOSITE                      STSCI-PRC91-11
+Wide Field/Planetary Camera
+
+Exposures taken through separate red, green and blue filters are used
+to create a color image of Mars.  The red filter shows the best surface
+detail.  Mars' atmosphere scatters blue light, much like that of Earth,
+thus Martian surface detail is obscured in the blue filter exposure
+which permits clouds to be seen easily.  A polar hood of clouds over
+Mars' north pole is evident and a thin sheet of morning clouds can be
+seen on the western limb.
+.

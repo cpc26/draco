@@ -1,0 +1,81 @@
+Auto-Doc for: /marian/p1/develop/apsb-utilities/macros.lisp (12-Aug-1993, 19:26:39)
+
+ -*- Mode: Lisp; Package:(apsb-utilities)-*-
+
+	macros definitions
+
+#! [function (eval-when (COMPILE-TOPLEVEL LOAD-TOPLEVEL EXECUTE))]
+   (STREAM SUBCHAR ARG)
+  
+		Reader function for the dispatch macro #!.  #!(foo) is the same
+		as (eval-when (:compile-toplevel :load-toplevel :execute) foo)
+  (DECLARE (IGNORE SUBCHAR ARG))
+
+#! [dispatch macro character (eval-when (COMPILE-TOPLEVEL
+                                         LOAD-TOPLEVEL
+                                         EXECUTE))]
+  function: #'#!
+
+set *READTABLE* to *READTABLE*  (eval-when (COMPILE-TOPLEVEL LOAD-TOPLEVEL EXECUTE))
+
+'(*AVER* AUTO-DOC-FORMAT AVER ELSE THEN) [exported symbols (eval-when (COMPILE-TOPLEVEL
+                                                                       LOAD-TOPLEVEL
+                                                                       EXECUTE))]
+
+*AVER* [parameter] value: T
+  t -> aver translates to check-type statements; nil -> aver = nop
+
+AUTO-DOC-FORMAT [macro]
+   (KEY-SPEC CALL-SYNTAX &BODY BODY)
+  
+	syntax:	(auto-doc-format <key-spec> <call-syntax>
+		  [:map <map-name>]
+		  [form]*
+		)
+
+	key-spec may be a symbol or a list of symbols.  map-name defaults
+	to '*auto-doc-default-map*.  if forms are specified, this macro
+	creates a function from them and uses it to format forms beginning
+	with a key-spec symbol.  in this case, call-syntax becomes part
+	of the format function's documentation string.  if no forms are
+	specified, no function is created and forms beginning with a
+	key-spec symbol are ignored.
+
+	the following functions may be used to define format functions:
+
+		format-declarations	format-documentation
+		format-define-function	format-form-type
+		format-define-variable	format-lambda-list
+		format-distinguish	format-new-entry
+
+AVER [macro]
+   (&REST CLAUSES)
+  dynamically check type declarations when *aver* is t
+  (DECLARE (CONS CLAUSES))
+
+DEFINE-TEST-FUNCTION [macro]
+   (FUNCTION-NAME &BODY BODY)
+  
+	syntax:	(define-test-function <function-name>
+		  [:map <map-name>]
+		  [:key <key-name>]
+		  [:test <test-name>]
+		  [:let <bindings>]
+		  [documentation]
+		  [(<form> <values>)]*
+		)
+
+	map-name defaults to '*test-default-map* and test defaults to
+	#'equal.  each <form> should return the corresponding <values>
+
+ELSE [macro]
+   (&REST STMTS)
+  conditional syntactic sugar
+  (AVER (CONS STMTS))
+
+THEN [macro]
+   (&REST STMTS)
+  conditional syntactic sugar
+  (AVER (CONS STMTS))
+
+End of Auto-Doc for: /marian/p1/develop/apsb-utilities/macros.lisp

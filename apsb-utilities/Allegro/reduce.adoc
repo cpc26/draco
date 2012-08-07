@@ -1,0 +1,5 @@
+Auto-Doc for: /marian/p1/develop/apsb-utilities/Allegro/reduce.cl (12-Aug-1993, 19:26:57)
+
+-*-Mode:LISP; Syntax: Common-Lisp;Package:(common-lisp);-*-
+
+End of Auto-Doc for: /marian/p1/develop/apsb-utilities/Allegro/reduce.cl

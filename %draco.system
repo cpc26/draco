@@ -1,0 +1,53 @@
+(make:defsystem %draco
+    :source-pathname	#p"Draco:"
+    :source-extension	"lisp"
+    :package		draco
+    :initially-do	(defpackage draco
+				(:use "COMMON-LISP"
+				      #+:Allegro "CLOS"
+				      "APSB-UTILITIES")
+			)
+    :components		((:module +entities
+			    :source-pathname	"Entities"
+			    :components		((:file	"init-file"
+						    :depends-on
+							("define"
+							 "instance"
+							 "types"))
+						 (:file	"define")
+						 (:file	"file-datum"
+						    :depends-on	("types"))
+						 (:file	"file-type"
+						    :depends-on	("types"))
+						 (:file	"instance"
+						    :depends-on
+							("file-type"
+							 "types"))
+						 (:file "kv-reporter")
+						 (:file	"primitive"
+						    :depends-on ("types"))
+						 (:file	"print"
+						    :depends-on ("types"))
+						 (:file	"types")
+						 (:file	"user-data"
+						    :depends-on ("types"))
+						 (:file	"validate"
+						    :depends-on ("types")))
+			    :depends-on		(+system))
+			 (:module +system
+			    :source-pathname	""
+			    :components		((:file "diagnostic")
+						 (:file "installation")
+						 (:file "system")))
+			 (:module +documents
+			    :source-pathname	"Documents"
+			    :components		((:file "default-reporter")
+						 (:file "inventory"))
+			    :depends-on		(+entities))
+			 (:module +built-in
+			    :source-pathname	"Entities"
+			    :components		((:file	"sanity-test")
+						 (:file	"unix"))
+			    :depends-on		(+entities)))
+    :depends-on		(%apsb-utilities)
+)

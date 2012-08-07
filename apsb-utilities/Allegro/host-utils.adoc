@@ -1,0 +1,346 @@
+Auto-Doc for: /marian/p1/develop/apsb-utilities/Allegro/host-utils.cl (30-Apr-1993, 16:04:31)
+
+ -*- Mode: Lisp; Package:(apsb-utilities)-*-
+
+'(HOST-NAME HOST-ADDRESS HOST-ALIASES SERVER-NAME SERVER-ADDRESS
+            INTERNET-ADDRESS-P *HOSTNAME-DEFAULTS* HOSTCASE EHOSTCASE
+            CHOSTCASE) [exported symbols (eval-when (COMPILE-TOPLEVEL
+                                                     LOAD-TOPLEVEL
+                                                     EXECUTE))]
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+ This file contains functions for obtaining and manipulating
+ internet address and host names.
+
+ There are six exported functions.  Five accept a single optional argument
+ "host-id".  This is either a string, an internet address (see below), or
+ a symbol.  Other types can be defined with a new GET-HOST method.
+ These functions, with arglists, are
+   HOST-NAME	     (&optional host-id)
+   HOST-ADDRESS   (&optional host-id)
+   HOST-ALIASES   (&optional host-id)
+   SERVER-NAME    (&optional host-id)
+   SERVER-ADDRESS (&optional host-id)
+
+ Another function, that requires one argument of any type, is a predicate
+ testing if the argument is of type internet-address.
+   INTERNET-ADDRESS-P (object)
+
+ One variable is exported.
+   *HOSTNAME-DEFAULTS*
+
+ Three macros are exported.  With arglists, these are
+   HOSTCASE  (keyform &rest clauses)
+   EHOSTCASE (keyform &rest clauses)
+   CHOSTCASE (keyform &rest clauses)
+
+ A reader macro is provided for simple entry of addresses.
+ A form like
+   #[130.167.107.10]
+ creates and returns an object of type internet-address.
+ Internally internet addresses are represented as a 32-bit integer.
+ For example, #[130.167.107.10] is equivalent to #[2192009994] because
+ 130 = #x82, 167 = #xA7, 107 = #x6B, 10 = #x0A, and 2192009994 = #x82A76B0A 
+
+ Some typical calls are:
+    (host-address "prufrock")
+    (host-name #[130.167.104.14])
+    #[130.167.104.14]
+    (server-address (host-address "kali"))
+    (host-name (server-address #[130.167.104.14]))
+    (server-name)
+    (host-aliases "stsci.edu")
+    (hostcase "axolotl.stsci.edu"
+      ("axolotl.stsci.edu" "Thank you for flying Axolotl air")
+      (kali "The Goddess welcomes you.")
+      ((prufrock.stsci.edu marian) "You have chosen prufrock or marian")
+      (t "no preference, eh?"))
+    (ehostcase (server-name)
+      ("cerberus" "this is cerb")
+      ("marian" "this is marian"))
+
+ Sep 11 1992 mrose
+ Sep 16 1992 mrose, HOST-NAME, HOST-ADDRESS, SERVER-NAME, and SERVER-ADDRESS
+                    all accept a host name string, an internet address, a
+                    symbol, or nothing.  Other types may be defined by new
+		       GET-HOST methods.  A host of NIL returns nil, i.e. it
+		       does not default to the current system.  No argument to
+		       these functions defaults to (short-site-name).
+                    Don't export MAKE-INTERNET-ADDRESS.
+                    Create HOST-ALIASES.
+ 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+*AF_INET* [constant] value: 2
+  from /usr/include/sys/socket.h
+
+*NUMBER-ADDRESS-BYTES* [constant] value: 4
+  number of bytes in an internet-address
+
+HOST-NAME [function]
+   (&OPTIONAL (HOST-ID (SHORT-SITE-NAME)))
+  Return the name of a host, or nil if it isn't in /etc/hosts.
+The argument may be a string, a symbol, or an internet address;
+the default is (short-site-name).
+
+HOST-ADDRESS [function]
+   (&OPTIONAL (HOST-ID (SHORT-SITE-NAME)))
+  Return the internet address of a host, or nil if it isn't in /etc/hosts.
+The argument may be a string, a symbol, or an internet address;
+the default is (short-site-name).
+
+HOST-ALIASES [function]
+   (&OPTIONAL (HOST-ID (SHORT-SITE-NAME)))
+  Return the aliases for the host, as declared in /etc/hosts.
+The argument may be a string, a symbol, or an internet address;
+the default is (short-site-name).
+
+SERVER-NAME [function]
+   (&OPTIONAL (HOST-ID (SHORT-SITE-NAME)))
+  Return the name of the cluster-server of the specified system,
+or nil if it isn't in /etc/hosts.
+The argument may be a string, a symbol, or an internet address;
+the default is (short-site-name).
+
+SERVER-ADDRESS [function]
+   (&OPTIONAL (HOST-ID (SHORT-SITE-NAME)))
+  Return the internet address of the cluster-server of the specified
+system, or nil if it isn't in /etc/hosts.
+The argument may be a string, a symbol, or an internet address;
+the default is (short-site-name).
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+FOUR-BYTE-LISTP [function (eval-when (COMPILE-TOPLEVEL LOAD-TOPLEVEL EXECUTE))]
+   (ARG)
+
+FOUR-BYTE-LIST [type]
+
+ONE-LONGWORD-LISTP [function]
+   (ARG)
+
+ONE-LONGWORD-LIST [type]
+
+INTERNET-ADDRESS [class (eval-when (COMPILE-TOPLEVEL LOAD-TOPLEVEL EXECUTE))]
+  slots:
+   ADDR   accessor: ADDR
+
+PRINT-OBJECT [method]
+   ((INTERNET-ADDRESS INTERNET-ADDRESS) STREAM)
+
+MAKE-LOAD-FORM [method (eval-when (COMPILE-TOPLEVEL LOAD-TOPLEVEL EXECUTE))]
+   ((INTERNET-ADDRESS INTERNET-ADDRESS))
+
+INTERNET-ADDRESS-P [function]
+   (OBJECT)
+  Predicate returning non-nil iff OBJECT is an internet address.
+
+MAKE-INTERNET-ADDRESS [function (eval-when (COMPILE-TOPLEVEL
+                                            LOAD-TOPLEVEL
+                                            EXECUTE))]
+   (ADDRESS)
+  Reader-invoked internet-address constructor.  When address is a
+one-integer list, that integer becomes the 32-bit internet address.
+Otherwise, address must be a four-byte list, and the bytes are
+combined to make the internet address.
+
+SPLIT-INTERNET-ADDRESS [function]
+   (INTERNET-ADDRESS)
+  Return an internet address as a list of four bytes.
+
+SPLIT-ADDRESS [function]
+   (ADDRESS)
+
+JOIN-INTERNET-ADDRESS [function (eval-when (COMPILE-TOPLEVEL
+                                            LOAD-TOPLEVEL
+                                            EXECUTE))]
+   (FOUR-BYTE-LIST)
+  Inverse of SPLIT-INTERNET-ADDRESS.
+
+HOST [class]
+  Class describing internet hosts.
+  slots:
+   INTERNET-ADDRESS   reader: INTERNET-ADDRESS
+   NAME   reader: NAME
+   ALIASES   reader: ALIASES
+
+PRINT-OBJECT [method]
+   ((HOST HOST) STREAM)
+
+INTERNET-ADDRESS [method]
+   ((HOST (EQL NIL)))
+
+NAME [method]
+   ((HOST (EQL NIL)))
+
+ALIASES [method]
+   ((HOST (EQL NIL)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+GET-HOST [generic function]
+   (HOST)
+  Return a HOST class object describing the argument.
+Define a new method for handling other types of argument
+to HOST-NAME and HOST-ADDRESS.
+
+GET-HOST [method]
+   ((HOST STRING))
+
+GET-HOST [method]
+   ((HOST INTERNET-ADDRESS))
+
+GET-HOST [method]
+   ((HOST SYMBOL))
+
+GET-HOST [method]
+   ((HOST (EQL NIL)))
+
+MAKE-HOST [function]
+   (HOSTENT)
+  Creates and returns an object of class HOST, from the HOSTENT argument.
+The C functions GETHOSTBYNAME and GETHOSTBYADDR both return a HOSTENT.
+
+ALIAS-LIST [function]
+   (HOSTENT)
+
+GET-SERVER [function]
+   (HOST-ID)
+  Return the HOST object for host-id's server.
+
+BUILD-SERVER-ADDRESS [function]
+   (INTERNET-ADDRESS)
+  Return the internet address of the server for the system with
+the specified internet address.  This does not confirm that the
+server is in /etc/hosts.
+
+DESCRIBE-HOSTENT [function]
+   (HOSTENT)
+  e.g. (describe-hostent (gethostbyname "stsci.edu"))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+ Reader macros.
+
+#[-reader [function (eval-when (COMPILE-TOPLEVEL LOAD-TOPLEVEL EXECUTE))]
+   (STREAM SUBCHAR ARG)
+  Reader function for the dispatch macro #[.
+#[foo] is equivalent to (make-internet-address foo)).
+  (DECLARE (IGNORE SUBCHAR ARG))
+
+#[ [dispatch macro character (eval-when (COMPILE-TOPLEVEL
+                                         LOAD-TOPLEVEL
+                                         EXECUTE))]
+  function: #'#[-reader
+
+set *READTABLE* to *READTABLE*  (eval-when (COMPILE-TOPLEVEL LOAD-TOPLEVEL EXECUTE))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+*HOSTNAME-DEFAULTS* [parameter] value: ".stsci.edu"
+  A string used by the HOSTCASE macro to expand hostnames.  Each part of the
+string is treated separately, starting from the end, working inwards until a
+part of *HOSTNAME-DEFAULTS* matches the host string specified. Case is
+ignored.
+E.g., if *hostname-defaults* is "stsci.edu", the following are
+some expansions:
+   kali        -->  kali.stsci.edu
+   kali.stsci  -->  kali.stsci.edu
+   foo.edu     -->  foo.edu
+   foo         -->  foo.stsci.edu
+   foo.ed      -->  foo.ed.stsci.edu  
+
+HOSTCASE [macro]
+   (KEYFORM &REST CLAUSES)
+  Just like case, but works with hostnames.  KEYFORM must evaluate to a string
+or a symbol, that is expanded by EXPAND-HOSTNAME using the defaults in
+*HOSTNAME-DEFAULTS*.  Each element of CLAUSES is a list of
+   (key consequent-1 consequent-2 ...)
+KEY is a hostname; it is not evaluated but is expanded as described
+above; it must be a string, an unquoted symbol, or a list of the same.
+The symbols T and OTHERWISE are treated specially, as by CASE.
+
+Example:
+   ;;; *hostname-defaults* = ".stsci.edu"
+   (hostcase (short-site-name)
+     ("axolotl.stsci.edu" "Thank you for flying Axolotl air")
+     (kali "The Goddess welcomes you.")
+     ((prufrock.stsci.edu marian) "You have chosen prufrock or marian")
+     (t "no preference, eh?"))
+
+EHOSTCASE [macro]
+   (KEYFORM &REST CLAUSES)
+  Like HOSTCASE, but error if no case matches
+
+ this chostcase isn't very nice, but may be better than nothing.
+
+CHOSTCASE [macro]
+   (KEYFORM &REST CLAUSES)
+
+HOST-SYMBOL [function]
+   (HOSTNAME)
+  Return HOSTNAME as an uppercase symbol.  The name is expanded
+with the defaults from *HOSTNAME-DEFAULTS, as by EXPAND-HOSTNAME.
+
+EXPAND-HOSTNAME [function]
+   (STRING &OPTIONAL (HOSTNAME-DEFAULTS *HOSTNAME-DEFAULTS*))
+  Expand hostnames, as described in the *HOSTNAME-DEFAULTS* doc string.
+
+PROCESS-HOSTCASE-CLAUSE [function]
+   (CLAUSE)
+
+HOST-ADDRESS571 [(apsb:test HOST-ADDRESS) function]
+  KEY: ADDR
+  (HOST-ADDRESS "kali")  -->  #[130.167.104.14]
+  (HOST-ADDRESS "eyeof")  -->  #[130.167.1.24]
+  (HOST-ADDRESS #[130.167.104.14])  -->  #[130.167.104.14]
+  (HOST-ADDRESS)  -->  (HOST-ADDRESS (SHORT-SITE-NAME))
+
+HOST-NAME571 [(apsb:test HOST-NAME) function]
+  (HOST-NAME "kali")  -->  "kali.stsci.edu"
+  (HOST-NAME #[130.167.1.107])  -->  "marian.stsci.edu"
+  (HOST-NAME)  -->  (HOST-NAME (SHORT-SITE-NAME))
+
+HOST-UTILS-NULL571 [(apsb:test HOST-UTILS-NULL) function]
+  (HOST-ADDRESS NIL)  -->  NIL
+  (HOST-ADDRESS "foobar")  -->  NIL
+  (HOST-ADDRESS #[0.0.0.0])  -->  NIL
+  (HOST-ALIASES NIL)  -->  NIL
+  (HOST-ALIASES "foo")  -->  NIL
+  (HOST-ALIASES #[0.0.0.0])  -->  NIL
+  (HOST-NAME NIL)  -->  NIL
+  (HOST-NAME "foobar")  -->  NIL
+  (HOST-NAME #[0.0.0.0])  -->  NIL
+  (SERVER-ADDRESS NIL)  -->  NIL
+  (SERVER-ADDRESS "foo")  -->  NIL
+  (SERVER-ADDRESS #[0.0.0.0])  -->  NIL
+  (SERVER-NAME NIL)  -->  NIL
+  (SERVER-NAME "foo")  -->  NIL
+  (SERVER-NAME #[0.0.0.0])  -->  NIL
+
+SERVER-ADDRESS571 [(apsb:test SERVER-ADDRESS) function]
+  KEY: ADDR
+  (SERVER-ADDRESS "kali")  -->  (HOST-ADDRESS "cerberus")
+  (SERVER-ADDRESS "marian")  -->  (HOST-ADDRESS "marian")
+
+SERVER-NAME571 [(apsb:test SERVER-NAME) function]
+  (SERVER-NAME "kali")  -->  "cerberus.stsci.edu"
+  (SERVER-NAME "marian")  -->  "marian.stsci.edu"
+  (SERVER-NAME (HOST-ADDRESS "kali"))  -->  "cerberus.stsci.edu"
+  (SERVER-NAME)  -->  (SERVER-NAME (SHORT-SITE-NAME))
+
+HOSTCASE1571 [(apsb:test HOSTCASE1) function]
+  LOCAL BINDINGS: ((*HOSTNAME-DEFAULTS* ".stsci.edu"))
+  (HOSTCASE "kali" (FOO NIL) (MARIAN NIL) (KALI T))  -->  T
+  (HOSTCASE "kali" (FOO NIL) (T T))  -->  T
+  (HOSTCASE "kali.stsci" (KALI.EDU NIL) (KALI.STSCI T) (T NIL))  -->  T
+
+HOSTCASE2571 [(apsb:test HOSTCASE2) function]
+  LOCAL BINDINGS: ((*HOSTNAME-DEFAULTS* ".a.b.stsci.edu"))
+  (HOSTCASE "kali" (KALI.STSCI NIL) (KALI.A.B T))  -->  T
+  (HOSTCASE "kali.b" (KALI NIL) (KALI.B.STSCI.EDU T))  -->  T
+  (HOSTCASE "kali.stsci" (KALI.STSCI.EDU T))  -->  T
+
+End of Auto-Doc for: /marian/p1/develop/apsb-utilities/Allegro/host-utils.cl

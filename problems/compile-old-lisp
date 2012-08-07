@@ -1,0 +1,264 @@
+
+==============================================================
+Starting image `/cerb/data7/cl-42b2wmotif'
+  with arguments `(-- -release develop)'
+  in directory `/lor/data1/miller/Email/'
+  on machine `lor.stsci.edu'.
+
+Allegro CL 4.2.beta2.0 [SPARC; R1] (12/6/93 11:42)
+Copyright (C) 1985-1993, Franz Inc., Berkeley, CA, USA.  All Rights Reserved.
+;   Loading /usr/local/lib/apsb/allegro-init.lisp.
+;   Loading /cerb/p1/login/apsb-login.lisp.
+;; Optimization settings: safety 1, space 1, speed 1, debug 2
+;; For a complete description of all compiler switches given the current
+;; optimization settings evaluate (EXPLAIN-COMPILER-SETTINGS).
+
+;; Starting socket daemon and emacs-lisp interface...
+USER(1): (setf (logical-pathname-translations "Draco")
+  '( 
+    (";**;*.*"	"/lor/data1/Draco/")
+    ("**;*.*"	"/lor/data1/Draco/")
+    ))
+
+(load "/lor/data1/Draco/apsb-utilities/CMU/defsystem.lisp")
+
+(pushnew #p"Draco:" make:*central-registry*)
+
+(pushnew #p"Draco:apsb-utilities" make:*central-registry*)
+
+(make:load-system '%draco :compile-during-load t)
+
+((#l";**;*.*" #p"/lor/data1/Draco/") (#l"**;*.*" #p"/lor/data1/Draco/"))
+USER(2): USER(2): ; Loading /lor/data1/Draco/apsb-utilities/CMU/defsystem.lisp.
+T
+USER(3): USER(3): (#l"Draco:")
+USER(4): USER(4): (#l"Draco:apsb-utilities" #l"Draco:")
+USER(5): USER(5): ; Loading /lor/data1/Draco/%draco.system.
+; Loading /lor/data1/Draco/apsb-utilities/%apsb-utilities.system.
+; Fast loading /lor/data1/Draco/apsb-utilities/macros.fasl.
+Error: fasl version is incompatible with the current lisp: #p"/lor/data1/Draco/apsb-utilities/macros.fasl"
+  [condition type: FILE-ERROR]
+
+Restart actions (select using :continue):
+ 0: retry the load of /lor/data1/Draco/apsb-utilities/macros.fasl
+
+[changing package from "COMMON-LISP-USER" to "APSB-UTILITIES"]
+[1] APSB(6): :pop
+
+[changing package from "APSB-UTILITIES" to "COMMON-LISP-USER"]
+USER(6): (make:load-system '%draco :compile-during-load t)
+; --- Compiling file /lor/data1/Draco/apsb-utilities/macros.lisp ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/macros.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/apsb-utilities/macros.fasl.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/types.lisp ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/types.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/apsb-utilities/types.fasl.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/clos.lisp ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/clos.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/apsb-utilities/clos.fasl.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/CMU/source-compare.lisp ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/CMU/source-compare.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/apsb-utilities/CMU/source-compare.fasl.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/diagnostic.lisp ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/diagnostic.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/apsb-utilities/diagnostic.fasl.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/date.lisp ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/date.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/apsb-utilities/date.fasl.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/date-init.lisp ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/date-init.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/apsb-utilities/date-init.fasl.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/file-system.lisp ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/file-system.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/apsb-utilities/file-system.fasl.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/list.lisp ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/list.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/apsb-utilities/list.fasl.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/nregex.lisp ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/nregex.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/apsb-utilities/nregex.fasl.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/Norvig/auxmacs.lisp ---
+; Fast loading from bundle code/loop.fasl.
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/Norvig/auxmacs.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/apsb-utilities/Norvig/auxmacs.fasl.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/Norvig/auxfns.lisp ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/Norvig/auxfns.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/apsb-utilities/Norvig/auxfns.fasl.
+; Foreign loading /lor/data1/Draco/apsb-utilities/Allegro/unix-ff.o.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/Series/bogus.lisp ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/Series/bogus.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/apsb-utilities/Series/bogus.fasl.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/Allegro/crypt.cl ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/Allegro/crypt.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/apsb-utilities/Allegro/crypt.fasl.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/Allegro/file-system.cl ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/Allegro/file-system.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/apsb-utilities/Allegro/file-system.fasl.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/Allegro/reduce.cl ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/Allegro/reduce.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/apsb-utilities/Allegro/reduce.fasl.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/Allegro/shell.cl ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/Allegro/shell.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/apsb-utilities/Allegro/shell.fasl.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/Allegro/error.cl ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/Allegro/error.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/apsb-utilities/Allegro/error.fasl.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/sequence.lisp ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/sequence.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/apsb-utilities/sequence.fasl.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/string.lisp ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/string.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/apsb-utilities/string.fasl.
+; --- Compiling file /lor/data1/Draco/diagnostic.lisp ---
+; Writing fasl file "/lor/data1/Draco/diagnostic.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/diagnostic.fasl.
+; --- Compiling file /lor/data1/Draco/installation.lisp ---
+; Writing fasl file "/lor/data1/Draco/installation.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/installation.fasl.
+; --- Compiling file /lor/data1/Draco/system.lisp ---
+; Writing fasl file "/lor/data1/Draco/system.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/system.fasl.
+; --- Compiling file /lor/data1/Draco/Entities/define.lisp ---
+; Writing fasl file "/lor/data1/Draco/Entities/define.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/Entities/define.fasl.
+; --- Compiling file /lor/data1/Draco/Entities/types.lisp ---
+; Writing fasl file "/lor/data1/Draco/Entities/types.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/Entities/types.fasl.
+; --- Compiling file /lor/data1/Draco/Entities/file-type.lisp ---
+; Writing fasl file "/lor/data1/Draco/Entities/file-type.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/Entities/file-type.fasl.
+; --- Compiling file /lor/data1/Draco/Entities/instance.lisp ---
+; Writing fasl file "/lor/data1/Draco/Entities/instance.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/Entities/instance.fasl.
+; --- Compiling file /lor/data1/Draco/Entities/init-file.lisp ---
+; While compiling SET-DATA-DIRECTORY:
+Warning: cond clause (T (INTERN (TRUENAME STREAM))) is unreachable 
+Warning: cond clause (T (INTERN (MAKE-PATHNAME :NAME *INVENTORY-NAME* :TYPE *INVENTORY-TYPE*))) is
+         unreachable 
+; While compiling (:TOP-LEVEL-FORM "init-file.lisp" 9):
+Warning: cond clause (T (INTERN (TRUENAME STREAM))) is unreachable 
+; Writing fasl file "/lor/data1/Draco/Entities/init-file.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/Entities/init-file.fasl.
+; --- Compiling file /lor/data1/Draco/Entities/file-datum.lisp ---
+; Writing fasl file "/lor/data1/Draco/Entities/file-datum.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/Entities/file-datum.fasl.
+; --- Compiling file /lor/data1/Draco/Entities/kv-reporter.lisp ---
+; Writing fasl file "/lor/data1/Draco/Entities/kv-reporter.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/Entities/kv-reporter.fasl.
+; --- Compiling file /lor/data1/Draco/Entities/primitive.lisp ---
+; Writing fasl file "/lor/data1/Draco/Entities/primitive.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/Entities/primitive.fasl.
+; --- Compiling file /lor/data1/Draco/Entities/print.lisp ---
+; Writing fasl file "/lor/data1/Draco/Entities/print.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/Entities/print.fasl.
+; --- Compiling file /lor/data1/Draco/Entities/user-data.lisp ---
+; Writing fasl file "/lor/data1/Draco/Entities/user-data.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/Entities/user-data.fasl.
+; --- Compiling file /lor/data1/Draco/Entities/validate.lisp ---
+; Writing fasl file "/lor/data1/Draco/Entities/validate.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/Entities/validate.fasl.
+; --- Compiling file /lor/data1/Draco/Documents/default-reporter.lisp ---
+; Writing fasl file "/lor/data1/Draco/Documents/default-reporter.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/Documents/default-reporter.fasl.
+; --- Compiling file /lor/data1/Draco/Documents/inventory.lisp ---
+; Writing fasl file "/lor/data1/Draco/Documents/inventory.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/Documents/inventory.fasl.
+; --- Compiling file /lor/data1/Draco/Entities/sanity-test.lisp ---
+; Writing fasl file "/lor/data1/Draco/Entities/sanity-test.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/Entities/sanity-test.fasl.
+; --- Compiling file /lor/data1/Draco/Entities/unix.lisp ---
+; Writing fasl file "/lor/data1/Draco/Entities/unix.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/Entities/unix.fasl.
+(#<MODULE: +built-in> #<MODULE: +documents> #<MODULE: +entities> #<MODULE: +system>)
+USER(7): (draco:set-data-directory "/lor/data1/scratch")
+; Loading /lor/data1/scratch/Draco.inv.
+; Loading /lor/data1/scratch/Draco.inv.
+#p"/lor/data1/scratch/"
+USER(8): (sanity-test:start '(#p"."))
+Draco: generating script DracoGAAa03812.sh for SUMMARIZE-DATA . . .
+Draco: invoking script DracoGAAa03812.sh for SUMMARIZE-DATA . . .
+0 files of type UNIX.
+0 files of type SHELL-SCRIPT.
+0 files of type DIRECTORY.
+created files:
+     /lor/data1/scratch/DracoGAAa03812.sh
+     /lor/data1/scratch/DracoGAAa03812.log
+     /lor/data1/scratch/DracoGAAa03812.sh
+; Loading /lor/data1/scratch/Draco.inv.
+Draco: generating script DracoVAAa03812.sh for CLEAN-UP . . .
+Draco: invoking script DracoVAAa03812.sh for CLEAN-UP . . .
+
+Draco is designed to incrementally update its data inventories,
+but this feature is not implemented yet.  File deletions such
+as the ones performed by this script are ill-advised because
+they leave the directory's inventory in a bad state.  To insure
+proper operation, periodically delete your data inventories.
+
+created files:
+     /lor/data1/scratch/DracoVAAa03812.sh
+     /lor/data1/scratch/DracoVAAa03812.log
+USER(9): (draco:set-data-directory "/lor/data1/scratch")
+; Loading /lor/data1/scratch/Draco.inv.
+#p"/lor/data1/scratch/"
+USER(10): (sanity-test:start '(#p"."))
+Draco: generating script DracoCBAa03812.sh for SUMMARIZE-DATA . . .
+Draco: invoking script DracoCBAa03812.sh for SUMMARIZE-DATA . . .
+0 files of type UNIX.
+0 files of type SHELL-SCRIPT.
+0 files of type DIRECTORY.
+created files:
+     /lor/data1/scratch/DracoCBAa03812.sh
+     /lor/data1/scratch/DracoCBAa03812.log
+     /lor/data1/scratch/DracoCBAa03812.sh
+; Loading /lor/data1/scratch/Draco.inv.
+Draco: generating script DracoRBAa03812.sh for CLEAN-UP . . .
+Draco: invoking script DracoRBAa03812.sh for CLEAN-UP . . .
+
+Draco is designed to incrementally update its data inventories,
+but this feature is not implemented yet.  File deletions such
+as the ones performed by this script are ill-advised because
+they leave the directory's inventory in a bad state.  To insure
+proper operation, periodically delete your data inventories.
+
+created files:
+     /lor/data1/scratch/DracoRBAa03812.sh
+     /lor/data1/scratch/DracoRBAa03812.log
+USER(11): 

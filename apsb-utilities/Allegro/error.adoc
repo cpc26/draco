@@ -1,0 +1,22 @@
+Auto-Doc for: /marian/p1/develop/apsb-utilities/Allegro/error.cl (12-Aug-1993, 19:26:55)
+
+-*-Mode:LISP; Syntax: Common-Lisp;Package:(apsb-utilities);-*-
+
+	error definitions
+
+
+'(ERRNO PERROR) [exported symbols (eval-when (COMPILE-TOPLEVEL
+                                              LOAD-TOPLEVEL
+                                              EXECUTE))]
+
+SYS_ERRLIST [constant] value: (GET-SYS_ERRLIST)
+  vector of strings describing errno codes
+
+ERRNO [type]
+
+PERROR [function]
+   (&KEY (PREFIX NIL) (STREAM NIL))
+  see the Unix man page for perror
+  (AVER ((OPTIONAL STRING) PREFIX) ((OPTIONAL STREAM) STREAM))
+
+End of Auto-Doc for: /marian/p1/develop/apsb-utilities/Allegro/error.cl

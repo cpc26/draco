@@ -1,0 +1,47 @@
+Auto-Doc for: /marian/p1/develop/apsb-utilities/test.lisp (12-Aug-1993, 19:26:48)
+
+-*-Mode:LISP; Syntax: Common-Lisp;Package:(apsb-utilities);-*-
+
+	test function generator
+
+	known bugs/limitations:	does not support (setf ...) functions
+
+
+'(*TEST-DEFAULT-MAP* DEFINE-TEST-FUNCTION-FN TEST) [exported symbols (eval-when (COMPILE-TOPLEVEL
+                                                                                 LOAD-TOPLEVEL
+                                                                                 EXECUTE))]
+
+*RUN-TEST-FORMAT* [constant] value: "~&(test ~A)~%"
+  arguments: test name
+
+*TEST-ENABLED-FORMAT* [constant] value: "~&(test ~A) enabled (~a)~%"
+  arguments: test name, map name
+
+*TEST-NOT-ENABLED-FORMAT* [constant] value: "~&(test ~A) not yet enabled (~a)~%"
+  arguments: test name, map name
+
+*TESTING-123-FORMAT* [constant] value: "~&testing ~A, 123 ..."
+  arguments: test name
+
+*TEST-DEFAULT-MAP* [variable]
+  alist mapping functions to their test functions
+
+DEFINE-TEST-FUNCTION-FN [function]
+   (FUNCTION-NAME BODY)
+  does everything for define-test-function
+  (AVER (MONIKER FUNCTION-NAME) (LIST BODY))
+
+TEST-FN [function]
+   (BODY)
+  does everything for test
+  (AVER (LIST BODY))
+
+TEST [macro]
+   (&BODY BODY)
+  
+	syntax:	(test [:map <map name>] [test]*)
+
+	map-name defaults to '*test-default-map*.  if no tests are
+	specified, all tests in the specified map are invoked.
+
+End of Auto-Doc for: /marian/p1/develop/apsb-utilities/test.lisp

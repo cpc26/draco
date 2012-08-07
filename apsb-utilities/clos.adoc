@@ -1,0 +1,16 @@
+Auto-Doc for: /marian/p1/develop/apsb-utilities/clos.lisp (12-Aug-1993, 19:26:43)
+
+-*-Mode:LISP; Syntax: Common-Lisp;Package:(apsb-utilities);-*-
+
+	CLOS-related definitions
+
+
+'(CLASS-SUBCLASSES) [exported symbols (eval-when (COMPILE-TOPLEVEL
+                                                  LOAD-TOPLEVEL
+                                                  EXECUTE))]
+
+CLASS-SUBCLASSES [method]
+   ((CLASS CLASS))
+  returns class' subclasses (not just direct subclasses)
+
+End of Auto-Doc for: /marian/p1/develop/apsb-utilities/clos.lisp

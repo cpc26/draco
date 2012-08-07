@@ -1,0 +1,27 @@
+DRACO(10): (mapcar #'print (mk:files-in-system '%draco))
+
+#p"/lor/data1/Draco/diagnostic.lisp" 
+#p"/lor/data1/Draco/installation.lisp" 
+#p"/lor/data1/Draco/system.lisp" 
+#p"/lor/data1/Draco/Entities/define.lisp" 
+#p"/lor/data1/Draco/Entities/types.lisp" 
+#p"/lor/data1/Draco/Entities/file-type.lisp" 
+#p"/lor/data1/Draco/Entities/instance.lisp" 
+#p"/lor/data1/Draco/Entities/init-file.lisp" 
+#p"/lor/data1/Draco/Entities/file-datum.lisp" 
+#p"/lor/data1/Draco/Entities/kv-reporter.lisp" 
+#p"/lor/data1/Draco/Entities/primitive.lisp" 
+#p"/lor/data1/Draco/Entities/print.lisp" 
+#p"/lor/data1/Draco/Entities/user-data.lisp" 
+#p"/lor/data1/Draco/Entities/validate.lisp" 
+#p"/lor/data1/Draco/Documents/default-reporter.lisp" 
+#p"/lor/data1/Draco/Documents/inventory.lisp" 
+#p"/lor/data1/Draco/Entities/sanity-test.lisp" 
+#p"/lor/data1/Draco/Entities/unix.lisp" 
+
+DRACO(11): 
+DRACO(11): :exit
+; killing "Editor Server"
+; killing "TCP Listener Socket Daemon"
+; killing "Initial Lisp Listener"
+; Exiting Lisp

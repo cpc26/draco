@@ -1,0 +1,15 @@
+#!/bin/csh -f
+
+# this is how to tar Draco's directories
+# gm 12/22/93
+# see unix power tools p. 346
+
+
+# remove any existing file, ask for confirmation
+/bin/rm -i /lor/data1/Draco/draco.tar.z
+
+cd /lor/data1
+# tar the tree
+tar cf draco.tar Draco/*
+compress draco.tar
+mv draco.tar.Z /lor/data1/Draco/tar

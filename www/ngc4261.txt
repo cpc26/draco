@@ -1,0 +1,18 @@
+<PLAINTEXT>
+Elliptical Galaxy NGC 4261                      STSCI PR-92-27B
+Wide Field/Planetary Camera
+
+HST Image of NGC 4261:  A giant disk of cold gas and dust fuels a
+possible black hole at the core of the galaxy.  Estimated to be 300
+light-years across, the disk is tipped enough (about 60 degrees) to
+provide astronomers with a clear view of the bright hub, which
+presumably harbors the black hole.  The dark, dusty disk represents a
+cold outer region which extends inwards to an ultra-hot accretion disk
+with a few hundred million miles from the suspected black hole.  This
+disk feeds matter into the black hole, where gravity compresses and
+heats the material.  Hot gas rushes from the vicinity of the black
+hole's creating the radio jets.  The jets are aligned perpendicular to
+the disk, like an axel through a wheel.  This provides strong
+circumstantial evidence for the existence of black hole "central
+engine" in NGC 4261.
+.

@@ -1,0 +1,225 @@
+% DRACO paper for October 1993 ADASS Conference in Victoria, BC
+% Draco: An Expert Assistant for Data Reduction and Analysis
+% Glenn Miller and Felix Yen
+
+\documentstyle[11pt,paspconf]{article}
+
+\begin{document}
+
+\title{DRACO: An Expert Assistant for Data Reduction and Analysis}
+\author{Glenn Miller and Felix Yen}
+\affil{Space Telescope Science Institute, 3700 San Martin Dr., Baltimore MD 21218}
+
+\begin{abstract}
+
+The use of large format detectors, increased access to very large 
+astronomical databases, and other developments in observational astronomy 
+have led to the situation where many astronomers are overwhelmed by the 
+reduction and analysis process. This paper reports a novel approach to data 
+reduction and analysis which works in conjunction with existing analysis 
+systems such as {\sc stsdas/iraf}. This system, called {\sc draco}, takes 
+on much of the mechanics of the process, allowing the astronomer to spend 
+more time understanding the physical nature of the data. In developing {\sc 
+draco} we encountered a number of shortcomings of current data analysis 
+systems which hinder the ability to effectively automate routine tasks. We 
+maintain that these difficulties are fundamental (not specific to our 
+approach) and must be addressed by conventional and next-generation 
+analysis systems. 
+
+\end{abstract}
+
+\keywords{data reduction, data analysis, data management, user interface, 
+networking, interoperability, expert assistant}
+
+\section{Introduction}
+
+The task of data reduction presents severe obstacles to an astronomer: The 
+volume of data may require tedious work that is susceptible to errors 
+(e.g., the flat-fielding and bias correction of a few dozen digital images 
+can take several day's time and it is easy to accidentally apply the wrong 
+calibrations to some of the images). Management of the data reduction 
+process may require tracking tens or hundreds of files through many 
+different steps. The quality of each reduction step should be evaluated 
+(e.g., stability of internal calibrations, or abnormally large number of 
+bad pixels). Often the entire reduction process must be repeated several 
+times with improved calibration data or improved reduction algorithms.
+
+These are significant problems that inhibit progress by forcing the 
+scientist to expend time and effort on the mechanics of reduction rather 
+than understanding the physical nature of the data. We have developed {\sc 
+draco}, which is a tool for the management of data reduction and analysis. 
+{\sc draco} builds on the foundation of existing data analysis systems such 
+as {\sc stsdas/iraf, idl, midas,} etc. {\sc draco} gathers information 
+about the available data, develops a plan for data reduction based on a 
+template supplied by the astronomer, and translates the plan into explicit 
+reduction commands. An important feature of {\sc draco} is its generality 
+and extensibility - new types of data analysis tasks or additional data 
+analysis systems can easily be added without modifying existing software. 
+This work is an extension of a successful prototype system for the 
+calibration of CCD images developed by Johnston (1987). 
+
+\section{The Draco System}
+
+To use {\sc draco}, the astronomer first describes the reduction process by 
+defining three key entities:
+\begin{itemize}
+
+ \item {\it Procedure} - This is an abstract user program for the 
+reduction, e.g. bias correction, dark removal, field flattening, and 
+extraction of a spectrum
+	
+	\item  {\it Primitive} - These are the abstract data analysis operations 
+	used to build a procedure (e.g. bias correction or flat fielding).
+	
+	\item  {\it Implementation} - These implement primitives, usually by 
+	invoking an underlying analysis system, e.g. {\sc iraf, stsdas}, etc.
+			
+\end{itemize}
+
+Primitives are the basic building blocks which are used to construct the 
+reduction procedures and insulate the astronomer from many of the details 
+of the underlying analysis systems. Primitives form a library of routines 
+from which new reduction and analyses can be adapted from existing ones. 
+Adding a new analysis package to {\sc draco} consists of creating the 
+appropriate implementations for a set of primitives. Refer to Miller 
+(1992), Yen (1993) for more details on Draco.
+
+Once these entities are defined, the astronomer invokes {\sc draco}'s {\tt 
+start} function, specifying the directory containing the data. {\sc draco} 
+gathers information about the data at hand (usually by reading header 
+information in the files), expands the procedure into a reduction plan 
+based on the actual data, creates a command language script in the target 
+analysis system and finally executes the script. The time-consuming 
+reduction takes place without further attention from the astronomer. {\sc 
+draco} logs all steps for later review and calls attention to problems 
+such as missing data or calibration files.
+
+By producing a command script in the language of a data analysis system, 
+{\sc draco} builds on the foundation of these systems, rather than creating 
+yet another analysis system. It is common for astronomers to write 
+operating system command language scripts (e.g., Unix Shell or VMS DCL) to 
+reduce data. The advantages of the {\sc draco}-generated scripts are clear: 
+{\sc draco} provides a higher level of abstraction and handles many lower 
+level details for the user. It is usually very difficult to modify custom 
+command language scripts for different reduction tasks whereas {\sc draco} 
+facilitates reuse of its component data structures. 
+
+\subsection{Experience}
+
+{\sc draco} has been applied to two separate astronomical projects with 
+successful results. The first version of {\sc draco} was used to manage the 
+removal of cosmic ray artifacts from a sample of HST WF/PC data for the 
+Medium-Deep Survey Key Project (provided by Griffiths and Ratnatunga). A 
+revised version of {\sc draco} was used to extract spectroscopic data from 
+ground-based telescope data (provided by MacConnell and Roberts), including 
+bias and dark removal, flattening and extraction of the spectra. In this 
+latter case, {\sc draco} managed a significant amount of data: ~325Mb in 
+~650 separate files. 
+
+\subsection{Availability}
+
+{\sc draco} is an initial system which addresses the issues of automating 
+data reduction and analysis. In order to encourage development of similar 
+ideas and systems, {\sc draco} (including source code and documentation) is 
+available to the community from the Space Telescope Science Institute 
+server ({\tt stsci.edu}) via anonymous ftp, Gopher and World Wide Web. 
+
+\section{Discussion}
+
+In the course of this project we had extensive discussions with many 
+research groups. Contrary to the prevailing view that the lack of 
+visualization tools or graphical user interfaces is a major impediment to 
+research, we found that a more serious problem for all groups was the 
+difficulty of managing the data reduction process. {\sc draco} demonstrates 
+a simple and effective way to perform data reduction with less human 
+interaction and fewer errors. Other approaches are being explored such as 
+the Khoros system (Rasure 1991) and commercial systems such as Silicon 
+Graphics Explorer or BBN Cornerstone. We encourage developers of 
+astronomical data analysis systems to incorporate these ideas into 
+future work. From our experience, we can identify a number of general 
+capabilities which would greatly enable astronomical researchers. Users 
+need tools to: 
+
+\begin{itemize} 
+
+\item Describe the data at hand - Directory listings of files are usually 
+the only tool available to describe the data. Users need more powerful 
+tools (e.g. graphical) which understand and display the types of data (flat, bias, comparison 
+spectrum, etc.) and the relationships between the data (e.g. identifying 
+multiple images of the same target).
+
+\item Describe reduction process and algorithms at a high level - Users 
+generally have to work at quite a low level, dealing with the specifics 
+of the analysis system, operating system, file types, etc.
+
+\item Facilitate experimentation with reduction parameters and different 
+algorithms - Data reduction is an integral part of the scientific process 
+and it is therefore vital to experiment with relevant parameters of the 
+reduction (number of iterations in a restoration algorithm, cosmic ray 
+removal parameters, etc.). If reducing the data just once requires too 
+much time and effort then experimentation becomes impractical and an 
+important aspect of the scientific method is sacrificed.
+
+\item Make it possible to resume data reduction/analysis after 
+interruptions.
+
+\item Perform data quality checks.
+
+\item Provide traceability: Too often data analysis systems do not to adequately 
+document what operations were performed on the data. As a minimum, systems 
+must document in the headers what steps were performed, including input 
+data, algorithm, parameters and software version. 
+\end{itemize} 
+
+A change in the basic philosophy of scientific data analysis systems is 
+needed. Rather than being designed as monolithic systems which are the 
+complete environment for all data reduction and analysis, systems should 
+begin a migration towards ``interoperability'' where they can be invoked by 
+other systems and software. A client-server technology (communicating via 
+Unix sockets or some other protocall) seen in many other computer 
+applications seems a likely architecture to fullfil this goal. 
+
+\section{Summary}
+
+Management of the data reduction process is an important problem facing 
+astronomers who deal with observational data. The lack of effective data 
+management tools can often be overwhelming. 
+{\sc draco} demonstrates one approach to providing automated assistance 
+in order to free the astronomer to concentrate on scientific issues. {\sc 
+draco} works in concert with existing data analysis systems.
+We assert that current and future data analysis systems must provide 
+tools for effective automation of procedures and data management.
+
+
+\acknowledgments
+
+We thank Mark Johnston, Bob Hanisch, Ron Gilliland, Richard Griffiths, 
+Keith Horne, Jack MacConnell, Jim Roberts, Kavan Ratnatunga and Phil Martel 
+for discussions about data reduction and their thoughtful comments on the 
+design and development of {\sc draco}. This work is supported by NASA's 
+Astrophysics Information Systems Research Program through CESDIS by a 
+contract with the Space Telescope Science Institute which is operated by 
+AURA for NASA. 
+
+
+\begin{references}
+
+\reference Johnston, M. 1987, ``An Expert System Approach to Astronomical 
+Data Analysis'', Proceedings of the Goddard Conference on Space Applications 
+of Artificial Intelligence, NASA. 
+
+\reference Miller, G. 1992, ``The Data Reduction Expert Assistant'', 
+Astronomy from Large Databases II, Hagenau, France, ed. A. Heck and F. 
+Murtagh, ESO.
+
+\reference Rasure, J. and M. Williams 1991, ``An Integrated Visual Language 
+and Software Development Environment'', Journal of Visual Languages and 
+Computing, 2: 217-246.
+
+\reference Yen, F. 1993 ``Draco Design Document'', STScI APSB Technical 
+Report 1992-07, available from {\tt stsci.edu}.
+
+
+\end{references}
+
+\end{document}

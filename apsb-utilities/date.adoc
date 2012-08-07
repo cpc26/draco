@@ -1,0 +1,116 @@
+Auto-Doc for: /marian/p1/develop/apsb-utilities/date.lisp (12-Aug-1993, 19:26:49)
+
+-*-Mode:LISP; Syntax: Common-Lisp;Package:(apsb-utilities);-*-
+
+	date utility
+
+
+USER [package (eval-when (COMPILE-TOPLEVEL LOAD-TOPLEVEL EXECUTE))]
+
+'(DATE *DATE-DEFAULT-MAP* DAY-STRING DEFINE-DATE-DIRECTIVE MONTH-STRING) [exported symbols (eval-when (COMPILE-TOPLEVEL
+                                                                                                       LOAD-TOPLEVEL
+                                                                                                       EXECUTE))]
+
+FORMAT-ARGS [class]
+  parent classes: (STANDARD-CLASS)
+  bundles a format string with the arguments it needs
+  slots:
+   FORMAT-STRING   accessor: FORMAT-STRING
+     a format string
+   ARGS   accessor: ARGS
+     arguments needed by FORMAT-STRING
+
+PRINT-OBJECT [method]
+   ((FORMAT-ARGS FORMAT-ARGS) (STREAM STREAM))
+
+*DAY-STRINGS* [constant] value: (VECTOR "Mon" "Tue" "Wed" "Thu" "Fri" "Sat"
+                                        "Sun")
+  map [0-6] to appropriate strings
+
+*MONTH-STRINGS* [constant] value: (VECTOR "" "Jan" "Feb" "Mar" "Apr" "May"
+                                          "Jun" "Jul" "Aug" "Sep" "Oct" "Nov"
+                                          "Dec")
+  map [1-12] to appropriate strings
+
+*DATE-DEFAULT-MAP* [variable]
+  
+	alist mapping each apsb-utilities:date format directive to the
+	corresponding format directive and required argument(s); new date
+	directives are added using define-date-directive.
+
+DATE-PARSE-DIRECTIVE [method]
+   (DIRECTIVE (FORMAT-ARGS FORMAT-ARGS) MAP)
+  
+	translates (date format) directive into an ordinary
+	format directive modifying format-args accordingly.
+  (AVER (STRING DIRECTIVE) (LIST MAP))
+
+DATE [function]
+   (&KEY ((:TIME UNIVERSAL-TIME) (GET-UNIVERSAL-TIME))
+    ((:FORMAT DATE-FORMAT) "~d-~h-~y, ~T") (MAP *DATE-DEFAULT-MAP*))
+  
+	formats universal-time using the format string date-format;
+	apsb-utilities:date format strings may contain directives
+	that shadow the usual format directives, e.g. ~T.
+	built-in directives include:
+
+			~D	date as mm/dd/yy
+			~H	hour - 00 to 23
+			~M	minute - 00 to 59
+			~S	second - 00 to 59
+			~T	time as HH:MM:SS
+			~a	abbreviated weekday - Mon to Sun
+			~d	day of month - 01 to 31
+			~h	abbreviated month - Jan to Dec
+			~m	month of year - 01 to 12
+			~t	insert a standard, 8-space tab
+			~w	day of week - Monday = 0
+			~y	year - e.g. 1992
+
+	(this is modeled after /bin/date.)  the caller may specify
+	new directives by modifying *date-default-map* or by creating
+	his own map.
+
+	for more information, see (describe '*date-default-map*),
+	(describe 'define-date-directive), or (apsb-utilities:test date).
+  (AVER (INTEGER UNIVERSAL-TIME) (STRING DATE-FORMAT) (LIST MAP))
+
+DAY-STRING [function]
+   (DAY-OF-WEEK)
+  convert fixnum day-of-week to string
+  (AVER (FIXNUM DAY-OF-WEEK))
+
+MAKE-FORMAT-ARGS [function]
+   (&REST ARGS)
+  format-args constructor
+  (AVER (LIST ARGS))
+
+MONTH-STRING [function]
+   (MONTH)
+  convert fixnum month to string
+  (AVER (FIXNUM MONTH))
+
+DEFINE-DATE-DIRECTIVE [macro]
+   (&KEY
+    (DIRECTIVE
+     (ERROR *MISSING-KEYWORD-FORMAT* "define-date-directive" :DIRECTIVE))
+    (FORMAT (ERROR *MISSING-KEYWORD-FORMAT* "define-date-directive" :FORMAT))
+    (ARGS NIL) ((:MAP MAP-NAME) '*DATE-DEFAULT-MAP*))
+  
+	add date directive to map.  ~directive translates to the string
+	specified by format and requires the arguments specified by args.
+	the arguments may be built from the following built-in functions
+	and fixnum variables:
+
+	  functions: day-string month-string
+	  variables: second minute hour date month year day-of-week
+
+	additional functions may be defined, but the variable list is
+	fixed.  BEWARE of ambiguous directives, e.g. ~D, because date
+	directive translation is recursive.  if the ambiguous directive
+	is to be consumed by common-lisp:format, try to prefix it with
+	something, e.g. ~4D.
+  (AVER (STANDARD-CHAR DIRECTIVE) (STRING FORMAT) (LIST ARGS)
+        (SYMBOL MAP-NAME))
+
+End of Auto-Doc for: /marian/p1/develop/apsb-utilities/date.lisp

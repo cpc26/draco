@@ -1,0 +1,85 @@
+Auto-Doc for: /marian/p1/develop/apsb-utilities/Norvig/auxfns.lisp (12-Aug-1993, 19:26:53)
+
+ -*- Mode: Lisp; Syntax: Common-Lisp -*-
+
+ Code from Paradigms of AI Programming
+ Copyright (c) 1991 Peter Norvig
+ File auxfns.lisp: Auxiliary functions used by all other programs
+ Load these before running any other programs.
+ This is a stripped-down version of auxfns.lisp, containing only those
+ functions we want.
+ This file requires the macros in auxmacs.lisp
+ auxfns.adoc,v
+# Revision 1.1.1.1  1993/09/24  16:09:19  asson
+# APSB Utilities Imported Sources
+#
+ Revision 1.1  1992/05/10  19:54:04  mrose
+ Initial revision
+
+ History:
+ Apr 12 1992 mrose, created, changed package from USER to NORVIG, renamed
+                    DEBUG to DBG-ON, and UNDEBUG to DBG-OFF, changed
+                    implementation, but not interface of dbg and dbg-indent.
+; Reduce - Support :key keyword for the REDUCE function
+
+REDUCE* [function]
+   (FN SEQ FROM-END START END KEY INIT INIT-P)
+
+REDUCE [function]
+   (FUNCTION SEQUENCE
+             &KEY
+             FROM-END
+             START
+             END
+             KEY
+             (INITIAL-VALUE NIL INITIAL-VALUE-P))
+
+REDUCE-VECT [function]
+   (FN SEQ FROM-END START END KEY INIT INIT-P)
+
+REDUCE-LIST [function]
+   (FN SEQ FROM-END START END KEY INIT INIT-P)
+
+ The Debugging Output Facility:
+ debug functions based on "Paradigms of AI Programming" by Peter Norvig.
+
+ The function "dbg" prints output in the same way as "format", but will only
+ print when debugging output is desired.  Each call to dbg is accompanied by
+ an identifier that is used to specify a class of debugging messages.
+ The functions "dbg-on" and "dbg-off" are used to add or remove message
+ classes to the list of classes that should be printed. 
+
+ A call to dbg will result in output if the first argument, the
+ identifier, is one that was specified in a call to dbg-on.  The other
+ arguments are a format string followed by a list of arguments to
+ be printed according to the format string.  In other words,
+ functions will include calls to debug like:
+    (dbg :foo "The current goal is: ~a" goal)
+ If debugging has been enabled with (dbg-on :foo), then calls to
+ debug with the identifier :foo will print output.  The output is
+ turned off with (debug-off :foo).
+
+ Sometimes it is easier to view debugging output if it is indented according
+ to some pattern, such as the depth of nested calls to a function.  To 
+ generate indented output, the function debug-indent is used.
+
+*DBG-IDS* [variable]
+  Identifiers used by dbg.
+
+DBG [function]
+   (ID FORMAT-STRING &REST ARGS)
+  Print debugging info if (DBG-ON ID) has been specified.
+
+DBG-INDENT [function]
+   (ID INDENT FORMAT-STRING &REST ARGS)
+  Print indented debugging info if (DBG-ON ID) has been specified.
+
+DBG-ON [function]
+   (&REST IDS)
+  Start debug output on the given ids.
+
+DBG-OFF [function]
+   (&REST IDS)
+  Stop debug on the ids.  With no ids, stop debug altogether.
+
+End of Auto-Doc for: /marian/p1/develop/apsb-utilities/Norvig/auxfns.lisp

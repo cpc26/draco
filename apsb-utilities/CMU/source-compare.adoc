@@ -1,0 +1,728 @@
+Auto-Doc for: /marian/p1/develop/apsb-utilities/CMU/source-compare.lisp (12-Aug-1993, 19:26:44)
+
+ Tue Dec 25 19:59:50 1990 by Mark Kantrowitz <mkant@GLINDA.OZ.CS.CMU.EDU>
+ source-compare.lisp
+ ****************************************************************
+ Source Compare: A 'diff' Program for Lisp **********************
+ ****************************************************************
+ 
+ Source Compare is a common-lisp portable tool for comparing 
+ lisp source files, similar to the unix program 'diff'. Like diff
+ it can ignore case, whitespace, and blank lines. In addition,
+ it can also ignore certain classes of lisp comments. It runs in
+ average-case O(m+n) time.
+
+ Written by Mark Kantrowitz, December 1990.
+ Address:   School of Computer Science
+            Carnegie Mellon University
+            Pittsburgh, PA 15213
+
+ Copyright (c) 1990. All rights reserved.
+
+ See general license below.
+
+ ****************************************************************
+ General License Agreement and Lack of Warranty *****************
+ ****************************************************************
+
+ This software is distributed in the hope that it will be useful (both
+ in and of itself and as an example of lisp programming), but WITHOUT
+ ANY WARRANTY. The author(s) do not accept responsibility to anyone for
+ the consequences of using it or for whether it serves any particular
+ purpose or works at all. No warranty is made about the software or its
+ performance. 
+ 
+ Use and copying of this software and the preparation of derivative
+ works based on this software are permitted, so long as the following
+ conditions are met:
+ 	o  The copyright notice and this entire notice are included intact
+ 	   and prominently carried on all copies and supporting documentation.
+ 	o  No fees or compensation are charged for use, copies, or
+ 	   access to this software. You may charge a nominal
+ 	   distribution fee for the physical act of transferring a
+ 	   copy, but you may not charge for the program itself. 
+ 	o  If you modify this software, you must cause the modified
+ 	   file(s) to carry prominent notices (a Change Log)
+ 	   describing the changes, who made the changes, and the date
+ 	   of those changes.
+ 	o  Any work distributed or published that in whole or in part
+ 	   contains or is a derivative of this software or any part 
+ 	   thereof is subject to the terms of this agreement. The 
+ 	   aggregation of another unrelated program with this software
+ 	   or its derivative on a volume of storage or distribution
+ 	   medium does not bring the other program under the scope
+ 	   of these terms.
+ 	o  Permission is granted to manufacturers and distributors of
+ 	   lisp compilers and interpreters to include this software
+ 	   with their distribution. 
+ 
+ This software is made available AS IS, and is distributed without 
+ warranty of any kind, either expressed or implied.
+ 
+ In no event will the author(s) or their institutions be liable to you
+ for damages, including lost profits, lost monies, or other special,
+ incidental or consequential damages arising out of or in connection
+ with the use or inability to use (including but not limited to loss of
+ data or data being rendered inaccurate or losses sustained by third
+ parties or a failure of the program to operate as documented) the 
+ program, even if you have been advised of the possibility of such
+ damanges, or for any claim by any other party, whether in an action of
+ contract, negligence, or other tortious action.
+ 
+ The current version of this software and a variety of related
+ utilities may be obtained by anonymous ftp from a.gp.cs.cmu.edu
+ (128.2.242.7) or any other CS machine in the directory 
+       /afs/cs.cmu.edu/user/mkant/Public/Lisp-Utilities/
+ You must cd to this directory in one fell swoop, as the CMU
+ security mechanisms prevent access to other directories from an
+ anonymous ftp. For users accessing the directory via an anonymous
+ ftp mail server, the file README contains a current listing and
+ description of the files in the directory. The file UPDATES describes
+ recent updates to the released versions of the software in the directory.
+ The file COPYING contains the current copy of this license agreement.
+ Of course, if your site runs the Andrew File System and you have
+ afs access, you can just cd to the directory and copy the files directly.
+ 
+ Please send bug reports, comments, questions and suggestions to
+ mkant@cs.cmu.edu. We would also appreciate receiving any changes
+ or improvements you may make. 
+ 
+ If you wish to be added to the CL-Utilities@cs.cmu.edu mailing list, 
+ send email to CL-Utilities-Request@cs.cmu.edu with your name, email
+ address, and affiliation. This mailing list is primarily for
+ notification about major updates, bug fixes, and additions to the lisp
+ utilities collection. The mailing list is intended to have low traffic.
+
+ ********************************
+ Change Log *********************
+ ********************************
+
+  16-DEC-90  mk   File created.
+  25-DEC-90  mk   First released version.
+  24-JAN-91  mk   Added average-case running time analysis.
+ ********************************
+ To Do **************************
+ ********************************
+
+ Extend so it can ignore documentation strings?
+
+ Extend so it can ignore ALL whitespace (even within line)?
+
+ Cache start and end positions for each line? [Modify line-start and
+ line-end to first check the cache before redoing the computation.]
+    run the profiler on this code first, though.
+
+ The file cache could be flushed after each loop in so-co. Possibly
+ worth doing to save space and/or reduce consing.
+
+ Implement diff's O(p log n) algorithm using 2-3 trees and k-candidates.
+
+ Given that in diff's find-merge-split algorithm the merge is on two
+ sets, one with elements less than the others, can we find a way to
+ do the find-find-split-merge in constant time? At least keep a table
+ of whether r-1,r are in the same k-candidate set. 
+
+ Fancy indexing, div&conq, straight-line dist to TR corner metric.
+ Hierarchical LCS (i.e., abstract level first)?
+
+ Make it aware of which definition it is in to aid matching. (Problem,
+ then, of function and variable renaming.)
+
+ ********************************
+ Notes **************************
+ ********************************
+
+    SOURCE-COMPARE has been tested (successfully) in the following lisps:
+       CMU Common Lisp (M2.9 15-Aug-90, Compiler M1.8 15-Aug-90)
+       Macintosh Allegro Common Lisp (1.3.2)
+       ExCL (Franz Allegro CL 3.1.12 [DEC 3100] 3/30/90)
+       Lucid CL (Version 2.1 6-DEC-87)
+
+    SOURCE-COMPARE needs to be tested in the following lisps:
+       Symbolics Common Lisp (8.0)
+       Lucid Common Lisp (3.0, 4.0)
+       KCL (June 3, 1987 or later)
+       AKCL (1.86, June 30, 1987 or later)
+       TI (Release 4.1 or later)
+       Ibuki Common Lisp (01/01, October 15, 1987)
+       Golden Common Lisp (3.1 IBM-PC)
+       VAXLisp (2.0, 3.1)
+       HP Common Lisp (same as Lucid?)
+       Procyon Common Lisp
+ ****************************************************************
+ Documentation **************************************************
+ ****************************************************************
+
+ Source Compare is a common-lisp portable tool for comparing 
+ lisp source files, similar to the unix program 'diff'. 
+
+ It uses a greedy variation of the usual dynamic programming 
+ implementation of LCS (longest common substring) to do the 
+ comparison. It tries to maintain the two files being compared
+ in sync, and when a difference is encountered, uses the closest
+ next match, where distance is minimized against some metric.
+ Note that since this is a greedy algorithm, it is possible that it
+ will not find the optimum global match sequence. However, this case
+ hardly ever occurs in practice, and if it does ever occur, the
+ algorithm errs on the side of safety.
+
+ Metrics should be chosen so that minimizing distance is
+ equivalent to minimizing the edits necessary to bring the two
+ files into agreement. Two such metrics include
+     x + y    = *total* additions and deletions from both files
+     max(x,y) = length of largest addition or deletion from either file
+ where x is a line number from the first file and y is a line number
+ from the second file. Both of these metrics are appropriate to the
+ problem, since the former tries to minimize the total changes and
+ the latter gives a preference to small changes.
+ 
+ While neither metric actually builds the dynamic programming table,
+ they can be considered as exploring the table in successive
+ rectilinear and diagonal manners, respectively.
+                        #####          #
+                            #           #
+                            #            #
+                            #             #
+ Both metrics have been implemented.
+
+ Both of these metrics lead to a worst-case O(n^2) algorithm
+ (actually, O(nm), where n is the length of the first file and
+ m is the length of the second file). In practice, however, the
+ algorithm seems to have linear running time. This could be a function
+ of its use to compare source files, since comparing two completely
+ different files would lead to worst-case behavior. The diagonal
+ metric seems to be slightly faster and less of a space hog than
+ the rectilinear metric, so it has been made the default.
+ 
+ We show below that the average case running time is O(n+m).
+
+ ********************************
+ Average Case Analysis **********
+ ********************************
+
+ Thanks to Neil J Calkin (CMU Math Department) for the idea that led to
+ this proof.
+
+ Let a(i) and b(i) be the ith distances between matches in files A and B,
+ respectively. Let k, an integer between 1 and n (inclusive), be the
+ number of matches. Then
+	  Sum[i = 1 to k; a(i)] = m and Sum[i = 1 to k; b(i)] = n
+ where m is the length in lines of file A, and n is the corresponding
+ length for file B. The running time of the algorithm is proportional
+ to Sum[i = 1 to k; a(i)b(i)].
+
+ Since a(i) and b(i) are positive integers, it follows that
+	    Sum[i; a(i)b(i)] <= Sum[i; a(i)] Sum[i; b(i)] = m n
+ and hence the worst-case running time is O(mn). [Best case is, of course,
+ linear.]
+
+ But the worst-case running time is atypical of the average-case behavior.
+ As we shall show, the average-case running time is O(m+n).
+
+ Combining the Cauchy-Schwartz inequality
+	 Sum[i;a(i)b(i)] <= Sqrt{Sum[i;a(i)^2]} sqrt{Sum[i;b(i)^2]}
+ with the arithmetic-mean geometric-mean inequality
+			    Sqrt{xy} <= (x+y)/2
+ yields
+	    Sum[i;a(i)b(i)] <= (Sum[i;a(i)^2] + Sum[i;b(i)^2])/2
+
+ So it suffices to look at the average value of Sum[i = 1 to k; r(i)^2]
+ over all possible ordered sequences r(i) of positive integers for k = 1
+ to n such that Sum[i = 1 to k; r(i)] = n. Such a sequence r(k) is called a
+ composition of n into k distinct parts. (The word distinct here
+ signifies that permutations of a sequence r(k) are not considered
+ identical -- the cells are distinct.)
+
+ To compute this average we sum Sum[i = 1 to k; r(i)^2] over all possible
+ compositions of n, and divide by the total number of such
+ compositions.
+
+ Clearly r(i) is an integer between 1 and n (inclusive). For a given
+ integer i between 1 and n (inclusive), we count how often i occurs
+ in a composition of n into k distinct parts. Call this count
+ Comp[n,k,i]. Then the sum is equal to 
+	    Sum[k = 1 to n; Sum[i = 1 to n; Comp[n,k,i] i^2]]
+
+ Now the number of occurrences of i in the compositions of n into k
+ distinct parts is the same as multiplying together the number of
+ compositions of n-i into k-1 parts and the number of positions in
+ which i could be inserted to form a k-part composition of n. The 
+ latter quantity is clearly k. To see that the former is 
+ C(n-i-1,k-2), consider n-i ones separated by (n-i)-1 spaces, and
+ choose (k-1)-1 of them to form k-1 integers. Thus Comp[n,k,i] is
+ k C(n-i-1,k-2).
+ 
+ So our sum is equal to
+    Sum[k = 1 to n; Sum[i = 1 to n; k(i^2)C(n-i-1,k-2)]]
+	  = Sum[i = 1 to n; i^2 Sum[k = 1 to n; kC(n-i-1,k-2)]]
+	  = Sum[i = 1 to n; i^2 Sum[k = 1 to n; 
+                                 (k-2)C(n-i-1,k-2) + 2C(n-i-1,k-2)]]
+	  = Sum[i = 1 to n; i^2 Sum[k = 1 to n; 
+                                 (n-i-1)C(n-i-2,k-3) + 2C(n-i-1,k-2)]]
+	  = Sum[i = 1 to n-2; i^2 (n-i-1) 2^(n-i-2)]
+         + Sum[i = 1 to n; i^2 2^(n-i)]
+ Substituting j = n-i+1 yields
+       = Sum[j = 3 to n; (n+1-j)^2 (j-2) 2^(j-3)] 
+         + Sum[j = 1 to n; (n+1-j)^2 2^(j-1)]
+       = Sum[j = 1 to n-2; (n-1-j)^2 j 2^(j-1)] 
+         + Sum[j = 1 to n; (n+1-j)^2 2^(j-1)]
+       = (Sum[j = 1 to n-2; 2^j (j^3 - (2n-2) j^2 + (n-1)^2 j)]
+          + Sum[j = 1 to n; 2^j (j^2 - (2n+2)j + (n+1)^2)])/2
+ We substitute using the identities
+    Sum[j = 1 to n; 2^j]     = 2^(n+1) - 2
+    Sum[j = 1 to n; j 2^j]   = (n-1)2^(n+1) + 2
+    Sum[j = 1 to n; j^2 2^j] = (2n^2 - 4n + 6)2^n - 6
+    Sum[j = 1 to n; j^3 2^j] = (2n^3 - 6n^2 + 18n - 26)2^n + 26
+ to obtain
+    1/2[2^(n-1)((n-2)^3 - 3(n-2)^2 + 9(n-2) - 13 
+                - 2(n-1)((n-2)^2 - 2(n-2) + 3)
+                + (n-1)^2(n-3))
+        2^n(2n^2 - 4n + 6
+            - (2n+2)(2n-2)
+            + (n+1)^2(2))
+        + (26 + 6(2n-2) + 2(n-1)^2 - 6 - 2(2n+2) - 2(n+1)^2)]
+ Luckily the n^3 and n^2 terms cancel, simplifying the expression to
+    (3n-4) 2^(n-1) + 2
+ This closed form expression has been empirically verified for n = 1 to 15.
+
+ Since there are C(n-1,k-1) compositions of n into k distinct parts, the
+ total number of compositions is Sum[k = 1 to n; C(n-1,k-1)] = 2^(n-1)
+ by the binomial theorem.
+
+ Thus the average value of Sum[n,k; r(i)^2] is the total sum divided by
+ the total count, or
+	     [(3n-4) 2^(n-1) + 2]/[2^(n-1)] = 3n-4 + 1/2^(n-2)
+ So Sum[i; a(i)b(i)] <= (Sum[i;a(i)^2] + Sum[i;b(i)^2])/2
+                      = (3n-4 + 1/2^(n-2) + 3m-4 + 1/2^(m-2))/2
+                      = 3/2(n+m) - 4 + 1/2^(n-1) + 1/2^(m-1)
+ on average, and hence the average case running time is O(m+n).
+
+ ********************************
+ User Guide *********************
+ ********************************
+
+ SOURCE-COMPARE (filename-1 filename-2 &key                    [FUNCTION]
+                 (output-stream *standard-output*)
+                 (ignore-case *ignore-case*)
+                 (ignore-whitespace *ignore-whitespace*)
+                 (ignore-comments *ignore-comments*)
+                 (ignore-blank-lines *ignore-blank-lines*)
+                 (print-context *print-context*)
+                 (print-fancy-header *print-fancy-header*))
+    Compares the contents of the two files, outputting a report of what
+    lines must be changed to bring the files into agreement. The report
+    is similar to that generated by 'diff': Lines of the forms
+    n1 a n3,n4
+    n1,n2 d n3
+    n1,n2 c n3,n4
+    (where a is ADD, d is DELETE, and c is CHANGE) are followed by the
+    lines affected in the first (left) file flagged by '<' then all
+    the lines affected in the second (right) file flagged by '>'. If
+    PRINT-CONTEXT is T, will print out some additional contextual
+    information, such as additional lines before and after the affected
+    text and the definition most likely to be affected by the changes. If
+    PRINT-FANCY-HEADER is T, prints the file-author and file-write-date
+    in the header. The report is output to OUTPUT-STREAM. Returns T if
+    the files were "identical", NIL otherwise.
+    If IGNORE-CASE is T, uses a case insensitive comparison.
+    If IGNORE-WHITESPACE is T, ignores spaces and tabs that occur at
+    the beginning of the line. If IGNORE-COMMENTS is T, tries to ignore
+    comments at the end of the line. If *dont-ignore-major-comments*
+    is T, will also ignore major comments (comments with a semicolon at
+    char 0 of the line). If IGNORE-BLANK-LINES is T, will ignore blank
+    lines in both files, including lines that are effectively blank
+    because of ignored comments.
+
+ *GREEDY-METRIC* (quote find-next-diagonal-match)              [VARIABLE]
+    Variable containing the name of the greedy matching function used
+    to minimize distance to the next match:
+    find-next-rectilinear-match  minimizes  max(x,y)
+    find-next-diagonal-match     minimizes  x+y
+    where x is a line number from the first file and y is a line
+    number from the second file.
+
+ FIND-NEXT-DIAGONAL-MATCH (file-1 start-1 file-2 start-2)      [FUNCTION]
+    Difference detected, look ahead for a match [x+y version].
+
+ FIND-NEXT-RECTILINEAR-MATCH (file-1 start-1 file-2 start-2)   [FUNCTION]
+    Difference detected, look ahead for a match [max(x,y) version].
+
+
+ *** Display Parameters ***
+
+ *PRINT-CONTEXT* t                                             [VARIABLE]
+    If T, we print the context marking lines that occur before the
+    difference.
+
+ *PRINT-FANCY-HEADER* ()                                       [VARIABLE]
+    If T, prints a fancy header instead of the simple one.
+
+ *CONTEXT-LINES-BEFORE-DIFFERENCE* 0                                     [VARIABLE]
+    Number of lines to print before a difference.
+
+ *CONTEXT-LINES-AFTER-DIFFERENCE* 1                                      [VARIABLE]
+    Number of lines to print after a difference.
+
+
+ *** Program Default Parameters ***
+
+ *MINIMUM-MATCH-LENGTH* 2                                     [VARIABLE]
+    The minimum number of lines that must match for it to be considered
+    a match. This has the effect of collecting lots of adjacent small
+    differences together into one larger difference.
+
+ *IGNORE-WHITESPACE* t                                         [VARIABLE]
+    If T, will ignore spaces and tabs that occur at the beginning of the
+    line before other text appears and at the end of the line after
+    the last text has appeared.
+
+ *IGNORE-CASE* t                                               [VARIABLE]
+    If T, uses a case insensitive comparison. Otherwise uses a case
+    sensitive comparison.
+
+ *IGNORE-COMMENTS* t                                           [VARIABLE]
+    If T, will try to ignore comments of the semicolon variety when
+    comparing lines. Tries to be rather intelligent about the context
+    to avoid ignoring something that really isn't a comment. For
+    example, semicolons appearing within strings, even multi-line
+    strings, are not considered comment characters. Uses the following
+    heuristics to decide if a semicolon is a comment character or not:
+    o  Slashification (\) works inside strings ("foo\"bar")
+       and symbol names (|foo\|bar|), but not balanced comments
+       (#|foobar\|#).
+    o  Balanced comments do not work inside strings ("#|") or
+       symbol names.
+    o  Strings do not work inside balanced comments (#|"|#)
+    o  Regular semicolon comments do not work inside strings,
+       symbol names, or balanced comments (#|foo;bar|#).
+    All this is necessary for it to correctly identify when a
+    semicolon indicates the beginning of a comment. Conceivably we should
+    consider a semicolon as a comment when it is inside a balanced
+    comment which isn't terminated from the semicolon to the end of the
+    line. However, besides being complicated and time-consuming to
+    implement, the lisp interpreter doesn't treat it this way, and we
+    like to err on the side of caution. Anyway, changes in the comments
+    within commented out regions of code is worth knowing about.
+
+ *DONT-IGNORE-MAJOR-COMMENTS* ()                               [VARIABLE]
+    If T, ignoring comments does not ignore comments with a semicolon
+    at position 0 of the line.
+
+ *IGNORE-BLANK-LINES* t                                        [VARIABLE]
+    If T, will ignore blank lines when doing the comparison.
+
+ ****************************************************************
+ Source Compare *************************************************
+ ****************************************************************
+
+SOURCE-COMPARE [package]
+  nicknames: (SRCCOM SC)
+
+'(SOURCE-COMPARE *GREEDY-METRIC* *MINIMUM-MATCH-LENGTH* *PRINT-CONTEXT*
+  *PRINT-FANCY-HEADER* *CONTEXT-LINES-BEFORE-DIFFERENCE*
+  *CONTEXT-LINES-AFTER-DIFFERENCE* *IGNORE-COMMENTS*
+  *DONT-IGNORE-MAJOR-COMMENTS* *IGNORE-CASE* *IGNORE-WHITESPACE*
+  *IGNORE-BLANK-LINES*) [exported symbols (eval-when (COMPILE-TOPLEVEL
+                                                      LOAD-TOPLEVEL
+                                                      EXECUTE))]
+
+ ********************************
+ Global Vars ********************
+ ********************************
+
+*PRINT-CONTEXT* [variable] value: T
+  If T, we print the context marking lines that occur before the difference.
+
+*PRINT-FANCY-HEADER* [variable]
+  If T, prints a fancy header instead of the simple one.
+
+*CONTEXT-LINES-BEFORE-DIFFERENCE* [variable] value: 0
+  Number of lines to print before a difference.
+
+*CONTEXT-LINES-AFTER-DIFFERENCE* [variable] value: 1
+  Number of lines to print after a difference.
+
+*GREEDY-METRIC* [variable] value: 'FIND-NEXT-DIAGONAL-MATCH
+  Variable containing the name of the greedy matching function used
+   to minimize distance to the next match:
+      find-next-rectilinear-match  minimizes  max(x,y)
+      find-next-diagonal-match     minimizes  x+y
+   where x is a line number from the first file and y is a line number
+   from the second file.
+
+*MINIMUM-MATCH-LENGTH* [variable] value: 2
+  The minimum number of lines that must match for it to be considered
+   a match. This has the effect of collecting lots of adjacent small
+   differences together into one larger difference.
+
+*IGNORE-WHITESPACE* [variable] value: T
+  If T, will ignore spaces and tabs that occur at the beginning of the
+   line before other text appears and at the end of the line after
+   the last text has appeared.
+
+*IGNORE-CASE* [variable] value: T
+  If T, uses a case insensitive comparison. Otherwise uses a case
+   sensitive comparison.
+
+*IGNORE-COMMENTS* [variable] value: T
+  If T, will try to ignore comments of the semicolon variety when
+   comparing lines. Tries to be rather intelligent about the context
+   to avoid ignoring something that really isn't a comment. For example, 
+   semicolons appearing within strings, even multi-line strings, are not
+   considered comment characters. Uses the following heuristics to decide
+   if a semicolon is a comment character or not:
+       o  Slashification (\) works inside strings ("foo\"bar")
+          and symbol names (|foo\|bar|), but not balanced comments
+          (#|foobar\|#).
+       o  Balanced comments do not work inside strings ("#|") or
+          symbol names.
+       o  Strings do not work inside balanced comments (#|"|#)
+       o  Regular semicolon comments do not work inside strings, symbol
+          names, or balanced comments (#|foo;bar|#).
+   All this is necessary for it to correctly identify when a semicolon
+   indicates the beginning of a comment. Conceivably we should consider
+   a semicolon as a comment when it is inside a balanced comment which
+   isn't terminated from the semicolon to the end of the line. However,
+   besides being complicated and time-consuming to implement, the lisp
+   interpreter doesn't treat it this way, and we like to err on the side
+   of caution. Anyway, changes in the comments within commented out
+   regions of code is worth knowing about.
+
+*DONT-IGNORE-MAJOR-COMMENTS* [variable]
+  If T, ignoring comments does not ignore comments with a semicolon
+   at position 0 of the line.
+
+*IGNORE-BLANK-LINES* [variable] value: T
+  If T, will ignore blank lines when doing the comparison.
+
+ ********************************
+ File Cache *********************
+ ********************************
+ File-cache is a defstruct used to cache the lines of the file as
+ they are read.
+
+FILE-CACHE [structure]
+
+FILE-CACHE-LENGTH [function]
+   (FILE)
+  The number of lines cached is simply the length of the line table.
+   Note that since this table has a fill-pointer, it's length is the 
+   size indicated by the fill-pointer, not the array dimensions.
+
+CACHED-LINE [function]
+   (FILE LINE-NO)
+  Returns a cached line from the line cache, if it exists.
+
+CACHED-COMMENT-POSITION-INFO [function]
+   (FILE LINE-NO)
+  Returns the cached comment position (inside-string and 
+   balanced-comment-count) information for the line, if it exists.
+
+SET-CACHED-COMMENT-POSITION-INFO [function]
+   (FILE LINE-NO INSIDE-STRING BALANCED-COMMENT-COUNT)
+  Sets the cached comment position information (inside-string and
+   balanced-comment-count) for the line.
+
+GET-AND-CACHE-NEXT-LINE [function]
+   (FILE)
+  Gets the next line from the file, installing it in the cache.
+
+GET-LINE [function]
+   (FILE LINE-NO)
+  Get the line from the file cache. If not present, get it from the stream.
+
+WITH-OPEN-FILE-CACHED [macro]
+   ((VAR FILENAME &REST OPEN-ARGS) &BODY FORMS)
+
+ ********************************
+ Line Comparison ****************
+ ********************************
+
+FIRST-NON-WHITESPACE-CHAR [function]
+   (LINE &KEY FROM-END (START 0) END)
+  Finds the position of the first character of LINE which is neither
+   a space or a tab. Returns NIL if no character found.
+
+LINE-START [function]
+   (LINE &OPTIONAL (START 0))
+  Returns the position of where in LINE to start the comparison.
+
+*SLASH-CHAR* [variable] value: #\\
+  The character used to slashify other characters.
+
+*COMMENT-CHAR* [variable] value: #\;
+  The character used to begin comments.
+
+*STRING-QUOTES-CHAR* [variable] value: #\"
+  The character used to begin and end strings.
+
+*STRING-BAR-CHAR* [variable] value: #\|
+  The character used to begin and end symbols.
+
+*SPLAT-CHAR* [variable] value: #\#
+  One of the characters used to begin balanced comments.
+
+*BAR-CHAR* [variable] value: #\|
+  One of the characters used to begin balanced comments.
+
+FIND-COMMENT-POSITION [function]
+   (LINE &OPTIONAL (START 0) END &KEY INSIDE-STRING (SPLAT-BAR-COUNT 0))
+  Tries to find the position of the beginning of the comment at the
+   end of LINE, if there is one. START and END delimit the search. END
+   defaults to the end of the line. If INSIDE-STRING is non-nil, it is
+   assumed that we're inside a string before we began (if so, INSIDE-STRING
+   is set to the character which will terminate the string (#\" or #\|).
+   SPLAT-BAR-COUNT is the number of unbalanced begin balanced comments
+   (#|'s) that have been seen so far.
+
+ To see GNU-Emacs (and some lesser imitations) die miserably, put the
+ cursor before the # on the next line, and try doing C-M-f or C-M-e. Ha!
+
+GET-COMMENT-POSITION [function]
+   (LINE FILE LINE-NO &OPTIONAL (START 0) END)
+  Returns the position of the beginning of the semicolon variety comment
+   on this line.
+
+LINE-END [function]
+   (LINE FILE LINE-NO &OPTIONAL (START 0) END)
+  Returns the position of where in LINE to end the comparison.
+   If the comparison should end at the end of the line, returns NIL.
+   START, if supplied, is where to start looking for the end.
+
+NULL-STRING [function]
+   (STRING &OPTIONAL (START 0) END)
+  Returns T if STRING is the null string "" between START and END.
+
+COMPARE-LINES [function]
+   (FILE-1 LINE-NO-1 FILE-2 LINE-NO-2)
+  Intelligently compare two lines. If *ignore-case* is T, uses
+   case-insensitive comparison. If *ignore-whitespace* is T, ignores
+   spaces and tabs at the beginning of the line. If *ignore-comments* 
+   is T, tries to ignore comments at the end of the line.
+
+ ********************************
+ Main Routine *******************
+ ********************************
+
+SOURCE-COMPARE [function]
+   (FILENAME-1 FILENAME-2 &KEY (OUTPUT-STREAM *STANDARD-OUTPUT*)
+    (IGNORE-CASE *IGNORE-CASE*) (IGNORE-WHITESPACE *IGNORE-WHITESPACE*)
+    (IGNORE-COMMENTS *IGNORE-COMMENTS*)
+    (IGNORE-BLANK-LINES *IGNORE-BLANK-LINES*) (PRINT-CONTEXT *PRINT-CONTEXT*)
+    (PRINT-FANCY-HEADER *PRINT-FANCY-HEADER*))
+  Compares the contents of the two files, outputting a report of what lines
+   must be changed to bring the files into agreement. The report is similar
+   to that generated by 'diff': Lines of the forms
+      n1 a n3,n4
+      n1,n2 d n3
+      n1,n2 c n3,n4
+   (where a is ADD, d is DELETE, and c is CHANGE) are followed by the
+   lines affected in the first (left) file flagged by '<' then all the
+   lines affected in the second (right) file flagged by '>'. If PRINT-CONTEXT
+   is T, will print out some additional contextual information, such as 
+   additional lines before and after the affected text and the definition
+   most likely to be affected by the changes. If PRINT-FANCY-HEADER is T,
+   prints the file-author and file-write-date in the header. The report is
+   output to OUTPUT-STREAM. Returns T if the files were "identical",
+   NIL otherwise.
+   If IGNORE-CASE is T, uses a case insensitive comparison. 
+   If IGNORE-WHITESPACE is T, ignores spaces and tabs that occur at the
+   beginning of the line. If IGNORE-COMMENTS is T, tries to ignore
+   comments at the end of the line. If *dont-ignore-major-comments* is T, will
+   also ignore major comments (comments with a semicolon at char 0 of the
+   line). If IGNORE-BLANK-LINES is T, will ignore blank lines in both
+   files, including lines that are effectively blank because of ignored 
+   comments.
+
+SOURCE-COMPARE-INTERNAL [function]
+   (FILE-1 FILE-2 &KEY (STREAM *STANDARD-OUTPUT*) IGNORE-CASE
+    IGNORE-WHITESPACE IGNORE-COMMENTS IGNORE-BLANK-LINES PRINT-CONTEXT)
+  A greedy implementation of LCS (longest common substring) suitably
+   modified for source comparison. It is similar to the standard
+   O(n^2) dynamic programming algorithm, but we don't actually keep
+   distances or an explicit table. We assume that what has matched so
+   far is a correct match. When we encounter a difference, we find the
+   closest next match, where "close" is defined in terms of some
+   metric. Two common metrics are max(x,y) and x+y, where x is a line number
+   from file-2 and y is a line number from file-1. The former leads to 
+   expanding (exploring) the table by increasing rectangles, and the
+   latter by increasing triangles:
+                     #####          #
+                         #           #
+                         #            #
+                         #             #
+   The average case running time of this algorithm is O(m+n), where m and n
+   are the lengths of the two files. This seems to hold in practice. Worst
+   case, of course, is still O(n^2), but this hardly ever occurs for source
+   comparison. The metric is implemented by *greedy-metric*,
+   which is either FIND-NEXT-RECTILINEAR-MATCH or FIND-NEXT-DIAGONAL-MATCH.
+
+ ********************************
+ The Metrics ********************
+ ********************************
+
+FIND-NEXT-DIAGONAL-MATCH [function]
+   (FILE-1 START-1 FILE-2 START-2)
+  First difference detected, look ahead for a match [x+y version].
+
+FIND-DIAGONAL-MATCH [function]
+   (SUM FILE-1 START-1 EOF-1 FILE-2 START-2 EOF-2)
+  Explores the diagonal with left-corner start-1 start-2 and index (x+y)
+   equal to sum, searching for a match. Returns the match if found.
+
+FIND-NEXT-RECTILINEAR-MATCH [function]
+   (FILE-1 START-1 FILE-2 START-2)
+  First difference detected, look ahead for a match [max(x,y) version].
+
+FIND-LINEAR-MATCH [function]
+   (FILE LINE-START LINE-END COMP-FILE COMP-LINE-NO)
+  Proceeds linearly in file from line-start to line-end until it 
+   finds a match against comp-line-no of comp-file.
+
+FOUND-MATCH [function]
+   (FILE-1 LINE-1 FILE-2 LINE-2)
+  Check if we've found a match by verifying that the next few lines
+   are identical. If *minimum-match-length* is more than 1, has the
+   effect of grouping together differences separated only by one 
+   matching line.
+
+ ********************************
+ Line Contexts ******************
+ ********************************
+
+START-CONTEXT [function]
+   (FILE LINE-NO)
+  Walks backwards from LINE-NO until it finds the beginning of a 
+   definition (a line with a left-parenthesis on char 0).
+
+ ********************************
+ Report Generator ***************
+ ********************************
+
+DRAW-HEADER [function]
+   (FILENAME-1 FILENAME-2 &KEY (STREAM *STANDARD-OUTPUT*) PRINT-FANCY-HEADER)
+  Draw the header for the source compare report.
+
+TIME-STRING [function]
+   (UNIVERSAL-TIME)
+
+DRAW-BAR [function]
+   (&OPTIONAL (STREAM *STANDARD-OUTPUT*))
+  Draws a dash across the line.
+
+PRINT-RANGE [function]
+   (START END &OPTIONAL (STREAM *STANDARD-OUTPUT*))
+  Prints a representation of the range from START to END.
+
+PRINT-DIFFERENCES [function]
+   (FILE-1 START-1 END-1 FILE-2 START-2 END-2 &OPTIONAL
+    (STREAM *STANDARD-OUTPUT*))
+  Print the differences in the two files in a format similar to diff.
+
+PRINT-FILE-SEGMENT [function]
+   (FILE START END &OPTIONAL (STREAM *STANDARD-OUTPUT*) (LEFT-MARGIN ""))
+  Prints the region of FILE from START to END.
+
+ *EOF*
+
+End of Auto-Doc for: /marian/p1/develop/apsb-utilities/CMU/source-compare.lisp

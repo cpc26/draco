@@ -1,0 +1,17 @@
+Auto-Doc for: /marian/p1/develop/apsb-utilities/string.lisp (12-Aug-1993, 19:26:59)
+
+-*-Mode:LISP; Syntax: Common-Lisp;Package:(apsb-utilities);-*-
+
+	string utilities
+
+
+'(ISWHITE) [exported symbols (eval-when (COMPILE-TOPLEVEL
+                                         LOAD-TOPLEVEL
+                                         EXECUTE))]
+
+ISWHITE [function]
+   (CHARACTER)
+  returns T if character is whitespace; returns nil otherwise
+  (AVER (CHARACTER CHARACTER))
+
+End of Auto-Doc for: /marian/p1/develop/apsb-utilities/string.lisp

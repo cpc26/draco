@@ -1,0 +1,96 @@
+Auto-Doc for: /marian/p1/develop/apsb-utilities/nregex.lisp (12-Aug-1993, 19:26:52)
+
+ -*- Mode:Common-Lisp; Package:USER; Base:10 -*-
+
+ This code was written by:
+
+    Lawrence E. Freil <lef@nscf.org>
+    National Science Center Foundation
+    Augusta, Georgia 30909
+
+ If you modify this code, please comment your modifications
+ clearly and inform the author of any improvements so they
+ can be incorporated in future releases.
+
+ nregex.lisp - My 4/8/92 attempt at a Lisp based regular expression
+               parser. 
+
+               This regular expression parser operates by taking a
+               regular expression and breaking it down into a list
+               consisting of lisp expressions and flags.  The list
+               of lisp expressions is then taken in turned into a
+               lambda expression that can be later applied to a
+               string argument for parsing.
+ May  5 1993 mrose - added eval-when at defvar *regex-debug*
+      Moved defvars of *regex-groups* and *regex-groupings* to
+      before the function regex, to eliminate compiler warnings.
+      Export symbols.
+
+ First we create a copy of macros to help debug the beast
+
+'(REGEX REGEX-COMPILE) [exported symbols (eval-when (COMPILE-TOPLEVEL
+                                                     LOAD-TOPLEVEL
+                                                     EXECUTE))]
+
+*REGEX-DEBUG* [variable (eval-when (COMPILE-TOPLEVEL LOAD-TOPLEVEL EXECUTE))]
+
+ Declare the global variables for storing the paren index list.
+
+
+*REGEX-GROUPS* [variable] value: (MAKE-ARRAY 10)
+
+*REGEX-GROUPINGS* [variable] value: 0
+
+INFO [macro]
+   (MESSAGE &REST ARGS)
+
+
+ Declare a simple interface for testing.  You probably wouldn't want
+ to use this interface unless you were just calling this once.
+
+
+REGEX [function]
+   (EXPRESSION STRING)
+  Usage: (regex <expression> <string)
+   This function will call regex-compile on the expression and then apply
+   the string to the returned lambda list.
+
+
+ Declare some simple macros to make the code more readable.
+
+
+*REGEX-SPECIAL-CHARS* [variable] value: "?*+.()[]\\${}"
+
+ADD-EXP [macro]
+   (LIST)
+  Add an item to the end of expression
+
+
+ Now for the main regex compiler routine.
+
+
+REGEX-COMPILE [function]
+   (SOURCE &KEY (ANCHORED NIL))
+  Usage: (regex-compile <expression> [ :anchored (t/nil) ])
+       This function take a regular expression (supplied as source) and
+       compiles this into a lambda list that a string argument can then
+       be applied to.  It is also possible to compile this lambda list
+       for better performance or to save it as a named function for later
+       use
+
+
+ Define a function that will take a quoted character and return
+ what the real character should be plus how much of the source
+ string was used.  If the result is a set of characters, return an
+ array of bits indicating which characters should be set.  If the
+ expression is one of the sub-group matches return a
+ list-expression that will provide the match.  
+
+
+REGEX-QUOTED [function]
+   (CHAR-STRING &OPTIONAL (INVERT NIL))
+  Usage: (regex-quoted <char-string> &optional invert)
+       Returns either the quoted character or a simple bit vector of bits set for
+       the matching values
+
+End of Auto-Doc for: /marian/p1/develop/apsb-utilities/nregex.lisp

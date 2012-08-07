@@ -1,0 +1,3261 @@
+%!
+%%BoundingBox: (atend)
+%%Pages: (atend)
+%%DocumentFonts: (atend)
+%%EndComments
+%
+% FrameMaker PostScript Prolog 3.0, for use with FrameMaker 3.0
+% Copyright (c) 1986,87,89,90,91 by Frame Technology Corporation.
+% All rights reserved.
+%
+% Known Problems:
+%	Due to bugs in Transcript, the 'PS-Adobe-' is omitted from line 1
+/FMversion (3.0) def 
+% Set up Color vs. Black-and-White
+	/FMPrintInColor systemdict /colorimage known
+		systemdict /currentcolortransfer known or def
+% Uncomment this line to force b&w on color printer
+%   /FMPrintInColor false def
+/FrameDict 195 dict def 
+systemdict /errordict known not {/errordict 10 dict def
+		errordict /rangecheck {stop} put} if
+% The readline in 23.0 doesn't recognize cr's as nl's on AppleTalk
+FrameDict /tmprangecheck errordict /rangecheck get put 
+errordict /rangecheck {FrameDict /bug true put} put 
+FrameDict /bug false put 
+mark 
+% Some PS machines read past the CR, so keep the following 3 lines together!
+currentfile 5 string readline
+00
+0000000000
+cleartomark 
+errordict /rangecheck FrameDict /tmprangecheck get put 
+FrameDict /bug get { 
+	/readline {
+		/gstring exch def
+		/gfile exch def
+		/gindex 0 def
+		{
+			gfile read pop 
+			dup 10 eq {exit} if 
+			dup 13 eq {exit} if 
+			gstring exch gindex exch put 
+			/gindex gindex 1 add def 
+		} loop
+		pop 
+		gstring 0 gindex getinterval true 
+		} def
+	} if
+/FMVERSION {
+	FMversion ne {
+		/Times-Roman findfont 18 scalefont setfont
+		100 100 moveto
+		(FrameMaker version does not match postscript_prolog!)
+		dup =
+		show showpage
+		} if
+	} def 
+/FMLOCAL {
+	FrameDict begin
+	0 def 
+	end 
+	} def 
+	/gstring FMLOCAL
+	/gfile FMLOCAL
+	/gindex FMLOCAL
+	/orgxfer FMLOCAL
+	/orgproc FMLOCAL
+	/organgle FMLOCAL
+	/orgfreq FMLOCAL
+	/yscale FMLOCAL
+	/xscale FMLOCAL
+	/manualfeed FMLOCAL
+	/paperheight FMLOCAL
+	/paperwidth FMLOCAL
+/FMDOCUMENT { 
+	array /FMfonts exch def 
+	/#copies exch def
+	FrameDict begin
+	0 ne dup {setmanualfeed} if
+	/manualfeed exch def
+	/paperheight exch def
+	/paperwidth exch def
+	/yscale exch def
+	/xscale exch def
+	currenttransfer cvlit /orgxfer exch def
+	currentscreen cvlit /orgproc exch def
+	/organgle exch def /orgfreq exch def
+	setpapername 
+	manualfeed {true} {papersize} ifelse 
+	{manualpapersize} {false} ifelse 
+	{desperatepapersize} if
+	end 
+	} def 
+	/pagesave FMLOCAL
+	/orgmatrix FMLOCAL
+	/landscape FMLOCAL
+/FMBEGINPAGE { 
+	FrameDict begin 
+	/pagesave save def
+	3.86 setmiterlimit
+	/landscape exch 0 ne def
+	landscape { 
+		90 rotate 0 exch neg translate pop 
+		}
+		{pop pop}
+		ifelse
+	xscale yscale scale
+	/orgmatrix matrix def
+	gsave 
+	} def 
+/FMENDPAGE {
+	grestore 
+	pagesave restore
+	end 
+	showpage
+	} def 
+/FMFONTDEFINE { 
+	FrameDict begin
+	findfont 
+	ReEncode 
+	1 index exch 
+	definefont 
+	FMfonts 3 1 roll 
+	put
+	end 
+	} def 
+/FMFILLS {
+	FrameDict begin
+	array /fillvals exch def
+	end 
+	} def 
+/FMFILL {
+	FrameDict begin
+	 fillvals 3 1 roll put
+	end 
+	} def 
+/FMNORMALIZEGRAPHICS { 
+	newpath
+	0.0 0.0 moveto
+	1 setlinewidth
+	0 setlinecap
+	0 0 0 sethsbcolor
+	0 setgray 
+	} bind def
+	/fx FMLOCAL
+	/fy FMLOCAL
+	/fh FMLOCAL
+	/fw FMLOCAL
+	/llx FMLOCAL
+	/lly FMLOCAL
+	/urx FMLOCAL
+	/ury FMLOCAL
+/FMBEGINEPSF { 
+	end 
+	/FMEPSF save def 
+	/showpage {} def 
+	FMNORMALIZEGRAPHICS 
+	[/fy /fx /fh /fw /ury /urx /lly /llx] {exch def} forall 
+	fx fy translate 
+	rotate
+	fw urx llx sub div fh ury lly sub div scale 
+	llx neg lly neg translate 
+	} bind def
+/FMENDEPSF {
+	FMEPSF restore
+	FrameDict begin 
+	} bind def
+FrameDict begin 
+/setmanualfeed {
+%%BeginFeature *ManualFeed True
+	 statusdict /manualfeed true put
+%%EndFeature
+	} def
+/max {2 copy lt {exch} if pop} bind def
+/min {2 copy gt {exch} if pop} bind def
+/inch {72 mul} def
+/pagedimen { 
+	paperheight sub abs 16 lt exch 
+	paperwidth sub abs 16 lt and
+	{/papername exch def} {pop} ifelse
+	} def
+	/papersizedict FMLOCAL
+/setpapername { 
+	/papersizedict 14 dict def 
+	papersizedict begin
+	/papername /unknown def 
+		/Letter 8.5 inch 11.0 inch pagedimen
+		/LetterSmall 7.68 inch 10.16 inch pagedimen
+		/Tabloid 11.0 inch 17.0 inch pagedimen
+		/Ledger 17.0 inch 11.0 inch pagedimen
+		/Legal 8.5 inch 14.0 inch pagedimen
+		/Statement 5.5 inch 8.5 inch pagedimen
+		/Executive 7.5 inch 10.0 inch pagedimen
+		/A3 11.69 inch 16.5 inch pagedimen
+		/A4 8.26 inch 11.69 inch pagedimen
+		/A4Small 7.47 inch 10.85 inch pagedimen
+		/B4 10.125 inch 14.33 inch pagedimen
+		/B5 7.16 inch 10.125 inch pagedimen
+	end
+	} def
+/papersize {
+	papersizedict begin
+		/Letter {lettertray letter} def
+		/LetterSmall {lettertray lettersmall} def
+		/Tabloid {11x17tray 11x17} def
+		/Ledger {ledgertray ledger} def
+		/Legal {legaltray legal} def
+		/Statement {statementtray statement} def
+		/Executive {executivetray executive} def
+		/A3 {a3tray a3} def
+		/A4 {a4tray a4} def
+		/A4Small {a4tray a4small} def
+		/B4 {b4tray b4} def
+		/B5 {b5tray b5} def
+		/unknown {unknown} def
+	papersizedict dup papername known {papername} {/unknown} ifelse get
+	end
+	/FMdicttop countdictstack 1 add def 
+	statusdict begin stopped end 
+	countdictstack -1 FMdicttop {pop end} for 
+	} def
+/manualpapersize {
+	papersizedict begin
+		/Letter {letter} def
+		/LetterSmall {lettersmall} def
+		/Tabloid {11x17} def
+		/Ledger {ledger} def
+		/Legal {legal} def
+		/Statement {statement} def
+		/Executive {executive} def
+		/A3 {a3} def
+		/A4 {a4} def
+		/A4Small {a4small} def
+		/B4 {b4} def
+		/B5 {b5} def
+		/unknown {unknown} def
+	papersizedict dup papername known {papername} {/unknown} ifelse get
+	end
+	stopped 
+	} def
+/desperatepapersize {
+	statusdict /setpageparams known
+		{
+		paperwidth paperheight 0 1 
+		statusdict begin
+		{setpageparams} stopped pop 
+		end
+		} if
+	} def
+/savematrix {
+	orgmatrix currentmatrix pop
+	} bind def
+/restorematrix {
+	orgmatrix setmatrix
+	} bind def
+/dmatrix matrix def
+/dpi    72 0 dmatrix defaultmatrix dtransform
+    dup mul exch   dup mul add   sqrt def
+/freq dpi 18.75 div 8 div round dup 0 eq {pop 1} if 8 mul dpi exch div def
+/sangle 1 0 dmatrix defaultmatrix dtransform exch atan def
+/DiacriticEncoding [
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /space /exclam /quotedbl
+/numbersign /dollar /percent /ampersand /quotesingle /parenleft
+/parenright /asterisk /plus /comma /hyphen /period /slash /zero /one
+/two /three /four /five /six /seven /eight /nine /colon /semicolon
+/less /equal /greater /question /at /A /B /C /D /E /F /G /H /I /J /K
+/L /M /N /O /P /Q /R /S /T /U /V /W /X /Y /Z /bracketleft /backslash
+/bracketright /asciicircum /underscore /grave /a /b /c /d /e /f /g /h
+/i /j /k /l /m /n /o /p /q /r /s /t /u /v /w /x /y /z /braceleft /bar
+/braceright /asciitilde /.notdef /Adieresis /Aring /Ccedilla /Eacute
+/Ntilde /Odieresis /Udieresis /aacute /agrave /acircumflex /adieresis
+/atilde /aring /ccedilla /eacute /egrave /ecircumflex /edieresis
+/iacute /igrave /icircumflex /idieresis /ntilde /oacute /ograve
+/ocircumflex /odieresis /otilde /uacute /ugrave /ucircumflex
+/udieresis /dagger /.notdef /cent /sterling /section /bullet
+/paragraph /germandbls /registered /copyright /trademark /acute
+/dieresis /.notdef /AE /Oslash /.notdef /.notdef /.notdef /.notdef
+/yen /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/ordfeminine /ordmasculine /.notdef /ae /oslash /questiondown
+/exclamdown /logicalnot /.notdef /florin /.notdef /.notdef
+/guillemotleft /guillemotright /ellipsis /.notdef /Agrave /Atilde
+/Otilde /OE /oe /endash /emdash /quotedblleft /quotedblright
+/quoteleft /quoteright /.notdef /.notdef /ydieresis /Ydieresis
+/fraction /currency /guilsinglleft /guilsinglright /fi /fl /daggerdbl
+/periodcentered /quotesinglbase /quotedblbase /perthousand
+/Acircumflex /Ecircumflex /Aacute /Edieresis /Egrave /Iacute
+/Icircumflex /Idieresis /Igrave /Oacute /Ocircumflex /.notdef /Ograve
+/Uacute /Ucircumflex /Ugrave /dotlessi /circumflex /tilde /macron
+/breve /dotaccent /ring /cedilla /hungarumlaut /ogonek /caron
+] def
+/ReEncode { 
+	dup 
+	length 
+	dict begin 
+	{
+	1 index /FID ne 
+		{def} 
+		{pop pop} ifelse 
+	} forall 
+	0 eq {/Encoding DiacriticEncoding def} if 
+	currentdict 
+	end 
+	} bind def
+/graymode true def
+	/bwidth FMLOCAL
+	/bpside FMLOCAL
+	/bstring FMLOCAL
+	/onbits FMLOCAL
+	/offbits FMLOCAL
+	/xindex FMLOCAL
+	/yindex FMLOCAL
+	/x FMLOCAL
+	/y FMLOCAL
+/setpattern {
+	 /bwidth  exch def
+	 /bpside  exch def
+	 /bstring exch def
+	 /onbits 0 def  /offbits 0 def
+	 freq sangle landscape {90 add} if 
+		{/y exch def
+		 /x exch def
+		 /xindex x 1 add 2 div bpside mul cvi def
+		 /yindex y 1 add 2 div bpside mul cvi def
+		 bstring yindex bwidth mul xindex 8 idiv add get
+		 1 7 xindex 8 mod sub bitshift and 0 ne
+		 {/onbits  onbits  1 add def 1}
+		 {/offbits offbits 1 add def 0}
+		 ifelse
+		}
+		setscreen
+	 {} settransfer
+	 offbits offbits onbits add div FMsetgray
+	/graymode false def
+	} bind def
+/grayness {
+	FMsetgray
+	graymode not {
+		/graymode true def
+		orgxfer cvx settransfer
+		orgfreq organgle orgproc cvx setscreen
+		} if
+	} bind def
+	/HUE FMLOCAL
+	/SAT FMLOCAL
+	/BRIGHT FMLOCAL
+	/Colors FMLOCAL
+FMPrintInColor 
+	
+	{
+	/HUE 0 def
+	/SAT 0 def
+	/BRIGHT 0 def
+	% array of arrays Hue and Sat values for the separations [HUE BRIGHT]
+	/Colors   
+	[[0    0  ]    % black
+	 [0    0  ]    % white
+	 [0.00 1.0]    % red
+	 [0.37 1.0]    % green
+	 [0.60 1.0]    % blue
+	 [0.50 1.0]    % cyan
+	 [0.83 1.0]    % magenta
+	 [0.16 1.0]    % comment / yellow
+	 ] def
+      
+	/BEGINBITMAPCOLOR { 
+		BITMAPCOLOR} def
+	/BEGINBITMAPCOLORc { 
+		BITMAPCOLORc} def
+	/BEGINBITMAPTRUECOLOR { 
+		BITMAPTRUECOLOR } def
+	/BEGINBITMAPCOLORc { 
+		BITMAPTRUECOLORc } def
+	/K { 
+		Colors exch get dup
+		0 get /HUE exch store 
+		1 get /BRIGHT exch store
+		  HUE 0 eq BRIGHT 0 eq and
+			{1.0 SAT sub setgray}
+			{HUE SAT BRIGHT sethsbcolor} 
+		  ifelse
+		} def
+	/FMsetgray { 
+		/SAT exch 1.0 exch sub store 
+		  HUE 0 eq BRIGHT 0 eq and
+			{1.0 SAT sub setgray}
+			{HUE SAT BRIGHT sethsbcolor} 
+		  ifelse
+		} bind def
+	}
+	
+	{
+	/BEGINBITMAPCOLOR { 
+		BITMAPGRAY} def
+	/BEGINBITMAPCOLORc { 
+		BITMAPGRAYc} def
+	/BEGINBITMAPTRUECOLOR { 
+		BITMAPTRUEGRAY } def
+	/BEGINBITMAPTRUECOLORc { 
+		BITMAPTRUEGRAYc } def
+	/FMsetgray {setgray} bind def
+	/K { 
+		pop
+		} def
+	}
+ifelse
+/normalize {
+	transform round exch round exch itransform
+	} bind def
+/dnormalize {
+	dtransform round exch round exch idtransform
+	} bind def
+/lnormalize { 
+	0 dtransform exch cvi 2 idiv 2 mul 1 add exch idtransform pop
+	} bind def
+/H { 
+	lnormalize setlinewidth
+	} bind def
+/Z {
+	setlinecap
+	} bind def
+	/fillvals FMLOCAL
+/X { 
+	fillvals exch get
+	dup type /stringtype eq
+	{8 1 setpattern} 
+	{grayness}
+	ifelse
+	} bind def
+/V { 
+	gsave eofill grestore
+	} bind def
+/N { 
+	stroke
+	} bind def
+/M {newpath moveto} bind def
+/E {lineto} bind def
+/D {curveto} bind def
+/O {closepath} bind def
+	/n FMLOCAL
+/L { 
+ 	/n exch def
+	newpath
+	normalize
+	moveto 
+	2 1 n {pop normalize lineto} for
+	} bind def
+/Y { 
+	L 
+	closepath
+	} bind def
+	/x1 FMLOCAL
+	/x2 FMLOCAL
+	/y1 FMLOCAL
+	/y2 FMLOCAL
+	/rad FMLOCAL
+/R { 
+	/y2 exch def
+	/x2 exch def
+	/y1 exch def
+	/x1 exch def
+	x1 y1
+	x2 y1
+	x2 y2
+	x1 y2
+	4 Y 
+	} bind def
+/RR { 
+	/rad exch def
+	normalize
+	/y2 exch def
+	/x2 exch def
+	normalize
+	/y1 exch def
+	/x1 exch def
+	newpath
+	x1 y1 rad add moveto
+	x1 y2 x2 y2 rad arcto
+	x2 y2 x2 y1 rad arcto
+	x2 y1 x1 y1 rad arcto
+	x1 y1 x1 y2 rad arcto
+	closepath
+	16 {pop} repeat
+	} bind def
+/C { 
+	grestore
+	gsave
+	R 
+	clip
+	} bind def
+	/FMpointsize FMLOCAL
+/F { 
+	FMfonts exch get
+	FMpointsize scalefont
+	setfont
+	} bind def
+/Q { 
+	/FMpointsize exch def
+	F 
+	} bind def
+/T { 
+	moveto show
+	} bind def
+/RF { 
+	rotate
+	0 ne {-1 1 scale} if
+	} bind def
+/TF { 
+	gsave
+	moveto 
+	RF
+	show
+	grestore
+	} bind def
+/P { 
+	moveto
+	0 32 3 2 roll widthshow
+	} bind def
+/PF { 
+	gsave
+	moveto 
+	RF
+	0 32 3 2 roll widthshow
+	grestore
+	} bind def
+/S { 
+	moveto
+	0 exch ashow
+	} bind def
+/SF { 
+	gsave
+	moveto
+	RF
+	0 exch ashow
+	grestore
+	} bind def
+/B { 
+	moveto
+	0 32 4 2 roll 0 exch awidthshow
+	} bind def
+/BF { 
+	gsave
+	moveto
+	RF
+	0 32 4 2 roll 0 exch awidthshow
+	grestore
+	} bind def
+/G { 
+	gsave
+	newpath
+	normalize translate 0.0 0.0 moveto 
+	dnormalize scale 
+	0.0 0.0 1.0 5 3 roll arc 
+	closepath fill
+	grestore
+	} bind def
+/A { 
+	gsave
+	savematrix
+	newpath
+	2 index 2 div add exch 3 index 2 div sub exch 
+	normalize 2 index 2 div sub exch 3 index 2 div add exch 
+	translate 
+	scale 
+	0.0 0.0 1.0 5 3 roll arc 
+	restorematrix
+	stroke
+	grestore
+	} bind def
+	/x FMLOCAL
+	/y FMLOCAL
+	/w FMLOCAL
+	/h FMLOCAL
+	/xx FMLOCAL
+	/yy FMLOCAL
+	/ww FMLOCAL
+	/hh FMLOCAL
+	/FMsaveobject FMLOCAL
+	/FMoptop FMLOCAL
+	/FMdicttop FMLOCAL
+/BEGINPRINTCODE { 
+	/FMdicttop countdictstack 1 add def 
+	/FMoptop count 4 sub def 
+	/FMsaveobject save def
+	userdict begin 
+	/showpage {} def 
+	FMNORMALIZEGRAPHICS 
+	3 index neg 3 index neg translate
+	} bind def
+/ENDPRINTCODE {
+	count -1 FMoptop {pop pop} for 
+	countdictstack -1 FMdicttop {pop end} for 
+	FMsaveobject restore 
+	} bind def
+/gn { 
+	0 
+	{	46 mul 
+		cf read pop 
+		32 sub 
+		dup 46 lt {exit} if 
+		46 sub add 
+		} loop
+	add 
+	} bind def
+	/str FMLOCAL
+/cfs { 
+	/str sl string def 
+	0 1 sl 1 sub {str exch val put} for 
+	str def 
+	} bind def
+/ic [ 
+	0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0223
+	0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0223
+	0
+	{0 hx} {1 hx} {2 hx} {3 hx} {4 hx} {5 hx} {6 hx} {7 hx} {8 hx} {9 hx}
+	{10 hx} {11 hx} {12 hx} {13 hx} {14 hx} {15 hx} {16 hx} {17 hx} {18 hx}
+	{19 hx} {gn hx} {0} {1} {2} {3} {4} {5} {6} {7} {8} {9} {10} {11} {12}
+	{13} {14} {15} {16} {17} {18} {19} {gn} {0 wh} {1 wh} {2 wh} {3 wh}
+	{4 wh} {5 wh} {6 wh} {7 wh} {8 wh} {9 wh} {10 wh} {11 wh} {12 wh}
+	{13 wh} {14 wh} {gn wh} {0 bl} {1 bl} {2 bl} {3 bl} {4 bl} {5 bl} {6 bl}
+	{7 bl} {8 bl} {9 bl} {10 bl} {11 bl} {12 bl} {13 bl} {14 bl} {gn bl}
+	{0 fl} {1 fl} {2 fl} {3 fl} {4 fl} {5 fl} {6 fl} {7 fl} {8 fl} {9 fl}
+	{10 fl} {11 fl} {12 fl} {13 fl} {14 fl} {gn fl}
+	] def
+	/sl FMLOCAL
+	/val FMLOCAL
+	/ws FMLOCAL
+	/im FMLOCAL
+	/bs FMLOCAL
+	/cs FMLOCAL
+	/len FMLOCAL
+	/pos FMLOCAL
+/ms { 
+	/sl exch def 
+	/val 255 def 
+	/ws cfs 
+	/im cfs 
+	/val 0 def 
+	/bs cfs 
+	/cs cfs 
+	} bind def
+400 ms 
+/ip { 
+	is 
+	0 
+	cf cs readline pop 
+	{	ic exch get exec 
+		add 
+		} forall 
+	pop 
+	
+	} bind def
+/wh { 
+	/len exch def 
+	/pos exch def 
+	ws 0 len getinterval im pos len getinterval copy pop
+	pos len 
+	} bind def
+/bl { 
+	/len exch def 
+	/pos exch def 
+	bs 0 len getinterval im pos len getinterval copy pop
+	pos len 
+	} bind def
+/s1 1 string def
+/fl { 
+	/len exch def 
+	/pos exch def 
+	/val cf s1 readhexstring pop 0 get def
+	pos 1 pos len add 1 sub {im exch val put} for
+	pos len 
+	} bind def
+/hx { 
+	3 copy getinterval 
+	cf exch readhexstring pop pop 
+	} bind def
+	/h FMLOCAL
+	/w FMLOCAL
+	/d FMLOCAL
+	/lb FMLOCAL
+	/bitmapsave FMLOCAL
+	/is FMLOCAL
+	/cf FMLOCAL
+/wbytes { 
+	dup 
+	8 eq {pop} {1 eq {7 add 8 idiv} {3 add 4 idiv} ifelse} ifelse
+	} bind def
+/BEGINBITMAPBWc { 
+	1 {} COMMONBITMAPc
+	} bind def
+/BEGINBITMAPGRAYc { 
+	8 {} COMMONBITMAPc
+	} bind def
+/BEGINBITMAP2BITc { 
+	2 {} COMMONBITMAPc
+	} bind def
+/COMMONBITMAPc { 
+	/r exch def
+	/d exch def
+	gsave
+	translate rotate scale /h exch def /w exch def
+	/lb w d wbytes def 
+	sl lb lt {lb ms} if 
+	/bitmapsave save def 
+	r                    
+	/is im 0 lb getinterval def 
+	ws 0 lb getinterval is copy pop 
+	/cf currentfile def 
+	w h d [w 0 0 h neg 0 h] 
+	{ip} image 
+	bitmapsave restore 
+	grestore
+	} bind def
+/BEGINBITMAPBW { 
+	1 {} COMMONBITMAP
+	} bind def
+/BEGINBITMAPGRAY { 
+	8 {} COMMONBITMAP
+	} bind def
+/BEGINBITMAP2BIT { 
+	2 {} COMMONBITMAP
+	} bind def
+/COMMONBITMAP { 
+	/r exch def
+	/d exch def
+	gsave
+	translate rotate scale /h exch def /w exch def
+	/bitmapsave save def 
+	r                    
+	/is w d wbytes string def
+	/cf currentfile def 
+	w h d [w 0 0 h neg 0 h] 
+	{cf is readhexstring pop} image
+	bitmapsave restore 
+	grestore
+	} bind def
+	/proc1 FMLOCAL
+	/proc2 FMLOCAL
+	/newproc FMLOCAL
+/Fmcc {
+    /proc2 exch cvlit def
+    /proc1 exch cvlit def
+    /newproc proc1 length proc2 length add array def
+    newproc 0 proc1 putinterval
+    newproc proc1 length proc2 putinterval
+    newproc cvx
+} bind def
+/ngrayt 256 array def
+/nredt 256 array def
+/nbluet 256 array def
+/ngreent 256 array def
+	/gryt FMLOCAL
+	/blut FMLOCAL
+	/grnt FMLOCAL
+	/redt FMLOCAL
+	/indx FMLOCAL
+	/cynu FMLOCAL
+	/magu FMLOCAL
+	/yelu FMLOCAL
+	/k FMLOCAL
+	/u FMLOCAL
+/colorsetup {
+	currentcolortransfer
+	/gryt exch def
+	/blut exch def
+	/grnt exch def
+	/redt exch def
+	0 1 255 {
+		/indx exch def
+		/cynu 1 red indx get 255 div sub def
+		/magu 1 green indx get 255 div sub def
+		/yelu 1 blue indx get 255 div sub def
+		/k cynu magu min yelu min def
+		/u k currentundercolorremoval exec def
+		nredt indx 1 0 cynu u sub max sub redt exec put
+		ngreent indx 1 0 magu u sub max sub grnt exec put
+		nbluet indx 1 0 yelu u sub max sub blut exec put
+		ngrayt indx 1 k currentblackgeneration exec sub gryt exec put
+	} for
+	{255 mul cvi nredt exch get}
+	{255 mul cvi ngreent exch get}
+	{255 mul cvi nbluet exch get}
+	{255 mul cvi ngrayt exch get}
+	setcolortransfer
+	{pop 0} setundercolorremoval
+	{} setblackgeneration
+	} bind def
+	/tran FMLOCAL
+/fakecolorsetup {
+	/tran 256 string def
+	0 1 255 {/indx exch def 
+		tran indx
+		red indx get 77 mul
+		green indx get 151 mul
+		blue indx get 28 mul
+		add add 256 idiv put} for
+	currenttransfer
+	{255 mul cvi tran exch get 255.0 div}
+	exch Fmcc settransfer
+} bind def
+/BITMAPCOLOR { 
+	/d 8 def
+	gsave
+	translate rotate scale /h exch def /w exch def
+	/bitmapsave save def 
+	colorsetup
+	/is w d wbytes string def
+	/cf currentfile def 
+	w h d [w 0 0 h neg 0 h] 
+	{cf is readhexstring pop} {is} {is} true 3 colorimage 
+	bitmapsave restore 
+	grestore
+	} bind def
+/BITMAPCOLORc { 
+	/d 8 def
+	gsave
+	translate rotate scale /h exch def /w exch def
+	/lb w d wbytes def 
+	sl lb lt {lb ms} if 
+	/bitmapsave save def 
+	colorsetup
+	/is im 0 lb getinterval def 
+	ws 0 lb getinterval is copy pop 
+	/cf currentfile def 
+	w h d [w 0 0 h neg 0 h] 
+	{ip} {is} {is} true 3 colorimage
+	bitmapsave restore 
+	grestore
+	} bind def
+/BITMAPTRUECOLORc { 
+        gsave
+        translate rotate scale /h exch def /w exch def
+        /bitmapsave save def 
+        
+        /is w string def
+        
+        ws 0 w getinterval is copy pop 
+        /cf currentfile def 
+        w h 8 [w 0 0 h neg 0 h] 
+        {ip} {gip} {bip} true 3 colorimage
+        bitmapsave restore 
+        grestore
+        } bind def
+/BITMAPTRUECOLOR { 
+        gsave
+        translate rotate scale /h exch def /w exch def
+        /bitmapsave save def 
+        /is w string def
+        /gis w string def
+        /bis w string def
+        /cf currentfile def 
+        w h 8 [w 0 0 h neg 0 h] 
+        { cf is readhexstring pop } 
+        { cf gis readhexstring pop } 
+        { cf bis readhexstring pop } 
+        true 3 colorimage 
+        bitmapsave restore 
+        grestore
+        } bind def
+/BITMAPTRUEGRAYc { 
+        gsave
+        translate rotate scale /h exch def /w exch def
+        /bitmapsave save def 
+        
+        /is w string def
+        
+        ws 0 w getinterval is copy pop 
+        /cf currentfile def 
+        w h 8 [w 0 0 h neg 0 h] 
+        {ip gip bip w gray} image
+        bitmapsave restore 
+        grestore
+        } bind def
+/ww FMLOCAL
+/r FMLOCAL
+/g FMLOCAL
+/b FMLOCAL
+/i FMLOCAL
+/gray { 
+        /ww exch def
+        /b exch def
+        /g exch def
+        /r exch def
+        0 1 ww 1 sub { /i exch def r i get .299 mul g i get .587 mul
+			b i get .114 mul add add r i 3 -1 roll floor cvi put } for
+        r
+        } bind def
+/BITMAPTRUEGRAY { 
+        gsave
+        translate rotate scale /h exch def /w exch def
+        /bitmapsave save def 
+        /is w string def
+        /gis w string def
+        /bis w string def
+        /cf currentfile def 
+        w h 8 [w 0 0 h neg 0 h] 
+        { cf is readhexstring pop 
+          cf gis readhexstring pop 
+          cf bis readhexstring pop w gray}  image
+        bitmapsave restore 
+        grestore
+        } bind def
+/BITMAPGRAY { 
+	8 {fakecolorsetup} COMMONBITMAP
+	} bind def
+/BITMAPGRAYc { 
+	8 {fakecolorsetup} COMMONBITMAPc
+	} bind def
+/ENDBITMAP {
+	} bind def
+end 
+	/ALDsave FMLOCAL
+	/ALDmatrix matrix def ALDmatrix currentmatrix pop
+/StartALD {
+	/ALDsave save def
+	 savematrix
+	 ALDmatrix setmatrix
+	} bind def
+/InALD {
+	 restorematrix
+	} bind def
+/DoneALD {
+	 ALDsave restore
+	} bind def
+%%EndProlog
+%%BeginSetup
+(3.0) FMVERSION
+1 1 612 792 0 1 17 FMDOCUMENT
+0 0 /Helvetica FMFONTDEFINE
+1 0 /Times-Roman FMFONTDEFINE
+2 0 /Times-Italic FMFONTDEFINE
+3 0 /Helvetica-Bold FMFONTDEFINE
+32 FMFILLS
+0 0 FMFILL
+1 .1 FMFILL
+2 .3 FMFILL
+3 .5 FMFILL
+4 .7 FMFILL
+5 .9 FMFILL
+6 .97 FMFILL
+7 1 FMFILL
+8 <0f1e3c78f0e1c387> FMFILL
+9 <0f87c3e1f0783c1e> FMFILL
+10 <cccccccccccccccc> FMFILL
+11 <ffff0000ffff0000> FMFILL
+12 <8142241818244281> FMFILL
+13 <03060c183060c081> FMFILL
+14 <8040201008040201> FMFILL
+16 1 FMFILL
+17 .9 FMFILL
+18 .7 FMFILL
+19 .5 FMFILL
+20 .3 FMFILL
+21 .1 FMFILL
+22 0.03 FMFILL
+23 0 FMFILL
+24 <f0e1c3870f1e3c78> FMFILL
+25 <f0783c1e0f87c3e1> FMFILL
+26 <3333333333333333> FMFILL
+27 <0000ffff0000ffff> FMFILL
+28 <7ebddbe7e7dbbd7e> FMFILL
+29 <fcf9f3e7cf9f3f7e> FMFILL
+30 <7fbfdfeff7fbfdfe> FMFILL
+%%EndSetup
+%%Page: "0" 1
+%%BeginPaperSize: Letter
+%%EndPaperSize
+612 792 0 FMBEGINPAGE
+117 747 540 747 2 L
+2 H
+0 Z
+0 X
+0 K
+N
+72 504 540 504 2 L
+2 Z
+N
+72 72 540 72 2 L
+N
+0 10 Q
+(29 November 1993) 446.01 60.29 T
+1 H
+90 450 16.45 16.45 90.84 757.55 A
+90 450 7.59 7.59 90.84 757.55 A
+90.84 721.27 98.44 757.55 2 L
+N
+90.84 721.27 83.25 757.55 2 L
+N
+15 165 9.28 8.44 90.84 741.52 A
+99.81 743.7 98.44 757.55 2 L
+N
+83.25 757.55 81.88 743.7 2 L
+N
+195 345 9.28 8.44 91.16 740.67 A
+100.12 738.49 106.41 752.21 2 L
+N
+82.19 738.49 75.92 750.63 2 L
+N
+107.42 757.41 109.12 757.41 109.12 718.59 72 718.59 72 757.59 74.12 757.59 6 L
+N
+17 164 16.12 15.19 90.84 714.38 A
+1 12 Q
+-0.96 (SP) 117 756.82 S
+-0.96 (ACE  TELESCOPE  SCIENCE  INSTITUTE) 127.31 756.82 S
+126 675 414 702 R
+7 X
+V
+0 24 Q
+0 X
+(APSB T) 126 686 T
+(echnical Report) 208.66 686 T
+441 576 513 594 R
+7 X
+V
+1 18 Q
+0 X
+(Revision) 449.03 582 T
+108 90 162 99 R
+7 X
+V
+1 12 Q
+0 X
+(Keywords:) 108 91 T
+(This report contains a description of the motives driving the Draco project, a high-) 108 478 T
+(level description of the system, and a detailed speci\336cation of its I/O behavior) 108 464 T
+(.) 481.42 464 T
+(The intended audience includes potential Draco users and software engineers.) 108 450 T
+-0.19 (W) 108 424 P
+-0.19 (e have two goals. The \336rst is to create a) 118.36 424 P
+2 F
+-0.19 (useful) 309.27 424 P
+1 F
+-0.19 ( system that will help astronomers) 337.93 424 P
+(concentrate on their research by reducing the number of mundane data reduction) 108 410 T
+(tasks that have to be performed manually and by reducing the amount of arcane) 108 396 T
+(knowledge about astronomical data analysis packages needed to reduce and) 108 382 T
+(analyze data.) 108 368 T
+(Our system attempts to serve as an interface to any) 108 342 T
+2 F
+(existing) 355.15 342 T
+1 F
+( data analysis system.) 392.46 342 T
+(Because these systems invariably have command line interfaces, this means) 108 328 T
+(generating suitable commands and subsequently invoking them. It would clearly) 108 314 T
+-0.24 (be easier to use a machine interface to transmit commands to analysis systems, but) 108 300 P
+(current systems generally do not have machine interfaces.) 108 286 T
+(This brings us to our second goal. If our system is successful, it will ef) 108 260 T
+(fectively) 446.24 260 T
+-0.43 (demonstrate that adding machine interfaces to existing analysis systems should not) 108 246 P
+(be a high-priority task. In other words, we are interested in seeing just how) 108 232 T
+(valuable an analysis system machine interface would be.) 108 218 T
+0 24 Q
+(1992-07) 442.99 686 T
+1 36 Q
+-0.25 (Draco Design Document) 178.35 624 S
+1 18 Q
+(Felix Y) 461.34 529 T
+(en) 514.02 529 T
+(D) 518.01 581.91 T
+1 12 Q
+(data analysis, data reduction) 166 91 T
+FMENDPAGE
+%%EndPage: "0" 2
+%%Page: "1" 2
+612 792 0 FMBEGINPAGE
+0 9 Q
+0 X
+0 K
+(Wherefore Art Thou Draco?) 72 759 T
+(29 November 1993) 463.57 759 T
+(Draco Design Document) 72 41.3 T
+0 10 Q
+(1) 510.84 41.3 T
+0 9 Q
+( of) 516.39 41.3 T
+0 10 Q
+(17) 528.89 41.3 T
+72 699 540 708 C
+72 699 540 708 R
+7 X
+0 K
+V
+72 708 540 708 2 L
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+3 12 Q
+0 X
+0 K
+(1.0) 72 712 T
+(Wherefore Art Thou Draco?) 108 712 T
+1 10 Q
+(Data reduction and analysis are time-consuming tasks that often require substantial knowledge of mundane things) 72 678.33 T
+(like tape drives, data formats, and data analysis systems. From a computational perspective, there is little dif) 72 666.33 T
+(ference) 504.86 666.33 T
+-0.25 (between reduction and analysis so we will let) 72 654.33 P
+2 F
+-0.25 (analysis) 253.76 654.33 P
+1 F
+-0.25 ( abbreviate \322analysis and/or reduction.\323) 286.53 654.33 P
+1 8 Q
+-0.2 (1) 444.01 658.33 P
+1 10 Q
+-0.25 ( From our perspective,) 448.01 654.33 P
+(it would also appear that there is little dif) 72 642.33 T
+(ference between analyzing data and using numerical methods to solve) 236.16 642.33 T
+(mathematical problems. T) 72 630.33 T
+(o illustrate this second point, let us \322re-use\323 the introduction to [Reid90]:) 175.95 630.33 T
+-0.03 (For many years, developers of scienti\336c software worked independently on \336nding algorithms and) 108 612.33 P
+-0.35 (solutions, many of which were highly machine dependent. This practice had) 108 600.33 P
+1 14 Q
+-0.5 (\320) 411.39 600.33 P
+1 10 Q
+-0.35 ( and all too often still) 418.39 600.33 P
+(has) 108 588.33 T
+1 14 Q
+(\320) 123.82 588.33 T
+1 10 Q
+( many drawbacks, the most obvious being time wastage and duplication of ef) 130.82 588.33 T
+(fort. In the late) 439.04 588.33 T
+(sixties and early seventies this fragmented approach began to give way to re-usable software) 108 576.33 T
+(components, usually in the form of routine libraries. These libraries encapsulated algorithmic) 108 564.33 T
+-0.39 (design in a portable, reliable and re-usable form, becoming increasingly diverse and comprehensive) 108 552.33 P
+-0.19 (as they grew) 108 540.33 P
+-0.19 (. As a result of this comprehensiveness, the selection of appropriate algorithms and the) 157.48 540.33 P
+(parameters for driving these algorithms became more complex.) 108 528.33 T
+(Although these software components were welcomed, a growing body of scientists and engineers) 108 504.33 T
+(became increasingly frustrated with using programming languages rather than abstract scienti\336c) 108 492.33 T
+(concepts. The result was a growing gulf between the needs of the user and the manner in which) 108 480.33 T
+(solutions were presented.) 108 468.33 T
+(Early attempts to bridge this gulf centred around software packages aimed at particular) 108 444.33 T
+(communities. This approach is still in use today) 108 432.33 T
+(, but while it frees the user from computer) 298.36 432.33 T
+-0.39 (languages, most package [sic] have inherent limitations. The most notable limitations are: having to) 108 420.33 P
+(learn a new command language; restriction on the algorithmic solutions available; inter) 108 408.33 T
+(-package) 456.73 408.33 T
+(incompatibility; and limited on-line assistance. Early enhancements include graphical output, and) 108 396.33 T
+(for the more sophisticated packages, graphical interaction. However) 108 384.33 T
+(, whilst the package has raised) 379.88 384.33 T
+(the level of abstraction at which the user can apply algorithms, it has, in general, failed to achieve) 108 372.33 T
+(the objective of providing easy-to-use problem solvers for engineers and scientists.) 108 360.33 T
+(Reid might as well have been describing the state of data analysis in 1993. In [Reid90] he proposes to attack the) 72 336.33 T
+(problem with knowledge-based systems, an approach that has had some success. For example, [Lucks92] describes) 72 324.33 T
+(an expert system for selecting the appropriate numerical method from the NAG \050Numerical Algorithms Group\051) 72 312.33 T
+(Library) 72 300.33 T
+(, and [Johnston87] describes a prototype expert system for reducing CCD \050Char) 101.32 300.33 T
+(ge-Coupled Device\051 data.) 420.36 300.33 T
+(However) 72 276.33 T
+(, there are very real dif) 108.23 276.33 T
+(ferences between Reid\325) 199.07 276.33 T
+(s problem domain and ours. Given a mathematical problem,) 292.32 276.33 T
+(there are formal metrics for determining its attributes, and given a set of problem attributes, numerical analysis) 72 264.33 T
+(experts tend to agree on which algorithms are most appropriate. Contrast this state of af) 72 252.33 T
+(fairs with astronomical data) 421.85 252.33 T
+(analysis where formal metrics are rare and the experts often disagree. For example, there are at least \336ve dif) 72 240.33 T
+(ferent) 503.12 240.33 T
+-0.09 (algorithms for removing cosmic ray hits and at least \336ve image restoration algorithms that attempt to compensate for) 72 228.33 P
+(the Hubble Space T) 72 216.33 T
+(elescope spherical aberration. An astronomer needs to experiment with dif) 150.41 216.33 T
+(ferent analysis) 447.77 216.33 T
+(techniques, and we presume that other disciplines require this sort of experimentation as well. W) 72 204.33 T
+(e are forced to) 458.15 204.33 T
+(conclude that Johnston\325) 72 192.33 T
+(s success was lar) 166.39 192.33 T
+(gely due to his system\325) 233.65 192.33 T
+(s limited scope.) 325.27 192.33 T
+(Ignoring algorithmic issues, current work on astronomical data analysis focuses on interactive data analysis, e.g.) 72 168.33 T
+([Graham92, Mandel93]. Data analysis is clearly an important task and is often complex enough to warrant an) 72 156.33 T
+(interactive approach, but analysis has many facets. W) 72 144.33 T
+(e contend that the potentially high volumes of data force us to) 285.75 144.33 T
+(look for systems that can perform their duties while the user is performing more gratifying tasks. W) 72 132.33 T
+(e would be) 470.09 132.33 T
+-0.08 (making a serious mistake if we continue to focus exclusively on interactive data analysis. A more balanced approach) 72 120.33 P
+72 95 540 111 C
+81 102 531 102 2 L
+0.25 H
+2 Z
+0 X
+0 K
+N
+0 0 612 792 C
+1 7 Q
+0 X
+0 K
+(1) 90 92.6 T
+1 9 Q
+(\322At some stage the \322reduction\323 steps get replaced by \322analysis\323 steps, but the dividing line is not well de\336ned.\323) 98.74 89 T
+(\050[Gilliland92]\051.) 100.8 79 T
+FMENDPAGE
+%%EndPage: "1" 3
+%%Page: "2" 3
+612 792 0 FMBEGINPAGE
+0 9 Q
+0 X
+0 K
+(Wherefore Art Thou Draco?) 72 759 T
+(29 November 1993) 463.57 759 T
+(Draco Design Document) 72 41.3 T
+0 10 Q
+(2) 510.84 41.3 T
+0 9 Q
+( of) 516.39 41.3 T
+0 10 Q
+(17) 528.89 41.3 T
+1 F
+(is needed and the only alternative is batch processing. This might seem hopelessly out-of-date at \336rst, but when one) 72 713.33 T
+(considers the alternative, namely interactively) 72 701.33 T
+(, i.e.) 255.38 701.33 T
+2 F
+(manually) 275.09 701.33 T
+1 F
+(, reducing lar) 311.64 701.33 T
+(ge amounts of data, it should seem quite) 364.47 701.33 T
+(reasonable if not desirable.) 72 689.33 T
+(W) 72 665.33 T
+(e also contend that the world does not need another data analysis system. A number of analysis systems have) 80.64 665.33 T
+(already earned the respect of the scienti\336c community so there is no reason to develop another one. For example,) 72 653.33 T
+(IRAF \050Image Reduction and Analysis Facility\051 has become a \336xture in the astronomy community and it is safe to) 72 641.33 T
+(assume that other analysis systems have also acquired of) 72 629.33 T
+(\336cial or quasi-of) 298.33 629.33 T
+(\336cial status in other research communities.) 364.21 629.33 T
+(Unfortunately) 72 617.33 T
+(, new users of these systems often suf) 127.42 617.33 T
+(fer considerably before producing the results they desire. Even) 277.69 617.33 T
+(seasoned users have bad days now and then, or are forced to learn a new system because it provides a missing piece) 72 605.33 T
+(of functionality) 72 593.33 T
+(.) 133.26 593.33 T
+-0.1 (In a perfect world there might only be one analysis system or) 72 569.33 P
+-0.1 (, more precisely) 315.05 569.33 P
+-0.1 (, a single analysis system user interface.) 378.32 569.33 P
+(As it happens, we already have proven technology capable of realizing this vision. The key to creating a universal) 72 557.33 T
+-0.34 (user interface is \336rst ensuring that each analysis system provides a machine interface, e.g. via Unix) 72 545.33 P
+-0.34 (\252) 462.72 545.33 P
+-0.34 ( sockets or some) 472.52 545.33 P
+(other communications protocol. The very popular client-server architecture would not only enable users with) 72 533.33 T
+(relatively inexpensive terminals or workstations to connect to more powerful analysis servers, it would also enable) 72 521.33 T
+(people to write novel clients like the universal interface envisioned here.) 72 509.33 T
+(Let us digress brie\337y by describing a second, unrelated \322novel\323 client. Synphot is a package in STSDAS \050Space) 72 485.33 T
+(T) 72 473.33 T
+(elescope Science Data Analysis System\051 that enables astronomers to simulate HST \050Hubble Space T) 77.41 473.33 T
+(elescope\051) 478.37 473.33 T
+(photometry) 72 461.33 T
+(. This would clearly be a useful tool to an astronomer planning a set of observations. An observer) 117.43 461.33 T
+(currently uses a proposal editor to create \050modify\051 a speci\336cation of the observation plan. Suppose STSDAS, or its) 72 449.33 T
+(parent system IRAF) 72 437.33 T
+(, provided a machine interface. Then the proposal editor could provide Synphot functionality) 151.71 437.33 T
+(simply by connecting to an STSDAS/IRAF server) 72 425.33 T
+(. The server would not require modi\336cation because the editor) 271.89 425.33 T
+-0.01 (would just be another client. So here we have a second potential application in search of an analysis system machine) 72 413.33 P
+(interface.) 72 401.33 T
+(Let us digress again by pretending for a moment that all analysis systems are equipped with machine interfaces.) 72 377.33 T
+(These interfaces could presumably be categorized according to the standard communications protocols used to) 72 365.33 T
+(implement them. Given this state of af) 72 353.33 T
+(fairs, how would our universal interface work? W) 225.34 353.33 T
+(e would begin by) 423.82 353.33 T
+(representing each system with a structure describing its machine interface, its native data format, and the) 72 341.33 T
+(functionality it of) 72 329.33 T
+(fers. The user would specify an analysis task at a high level and the interface would select an) 141.78 329.33 T
+(analysis server based on the functionality desired. The data would be converted to another format if necessary and a) 72 317.33 T
+(request would be submitted to the selected server) 72 305.33 T
+(. The user would then wait for a result to be returned \050this might be) 268.25 305.33 T
+(an error report\051 or work on something else. If the analysis is particularly time-consuming, noti\336cation of the result) 72 293.33 T
+(might be transmitted via electronic mail or even voice mail.) 72 281.33 T
+(Unfortunately) 72 257.33 T
+(, the assumption we made during our last digression is blatantly false. Analysis system machine) 127.42 257.33 T
+(interfaces, if they exist at all, are extremely rare commodities, and for good reason. Until recently analysis system) 72 245.33 T
+(developers had virtually no incentive to develop machine interfaces. W) 72 233.33 T
+(ithout a second system to communicate with,) 356.38 233.33 T
+(it made perfect sense to expend all resources on the \050interactive\051 user interface and on algorithms. At this point, we) 72 221.33 T
+(must emphasize that this resource allocation strategy is no longer sensible. Machine interfaces are not just a good) 72 209.33 T
+(idea, they are a good idea) 72 197.33 T
+2 F
+(today) 176.63 197.33 T
+1 F
+(.) 198.19 197.33 T
+(Having returned to present-day reality) 72 173.33 T
+(, we must ask if machine interfaces are truly necessary) 224.01 173.33 T
+(. Analysis systems) 441.51 173.33 T
+-0.32 (already have user interfaces, and many use a command line approach, i.e. have similarities. Perhaps we can create our) 72 161.33 P
+(universal interface after all. This is where Draco comes in.) 72 149.33 T
+FMENDPAGE
+%%EndPage: "2" 4
+%%Page: "3" 4
+612 792 0 FMBEGINPAGE
+0 9 Q
+0 X
+0 K
+(What Is Draco?) 72 759 T
+(29 November 1993) 463.57 759 T
+(Draco Design Document) 72 41.3 T
+0 10 Q
+(3) 510.84 41.3 T
+0 9 Q
+( of) 516.39 41.3 T
+0 10 Q
+(17) 528.89 41.3 T
+72 699 540 708 C
+72 699 540 708 R
+7 X
+0 K
+V
+72 708 540 708 2 L
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+3 12 Q
+0 X
+0 K
+(2.0) 72 712 T
+(What Is Draco?) 108 712 T
+1 10 Q
+(Draco is a software system and an experiment. The system is designed to act as an intermediary between analysis) 72 678.33 T
+(system users and their analysis systems by issuing the appropriate user interface commands. The experiment is to) 72 666.33 T
+(use this system to see how well or how poorly such an approach can work. In the previous section, we ar) 72 654.33 T
+(gued for) 490.4 654.33 T
+(the desirability of analysis system machine interfaces. Now we want to see just how desirable they would be.) 72 642.33 T
+(In the scenario we have in mind, the scientist gives Draco a speci\336cation of his data, e.g. a set of \336les, and a high-) 72 618.33 T
+(level description of the analysis steps desired. This high-level description must not refer to speci\336c data formats) 72 606.33 T
+-0.1 (and/or analysis systems. W) 72 594.33 P
+-0.1 (e want to enable scientists to focus on science not on software. Somehow) 179.72 594.33 P
+-0.1 (, Draco must use) 470.73 594.33 P
+(its knowledge of the user) 72 582.33 T
+(\325) 172.85 582.33 T
+(s analysis software to translate this high-level description into a sequence of instructions) 175.63 582.33 T
+(that will bring about the desired transformation\050s\051. W) 72 570.33 T
+(e will assume that the knowledge needed to perform this) 284.94 570.33 T
+(translation can be encoded by experts and then shared by Draco users everywhere.) 72 558.33 T
+(Our design depends on the following observation: purely syntactic manipulations are often quite useful. Draco) 72 534.33 T
+(can be likened to an algebra. The analysis expert de\336nes primitives and may combine them to form procedures.) 72 522.33 T
+(The translation of high-level descriptions to actual analysis system instructions is done on a per) 72 510.33 T
+(-primitive basis.) 453.22 510.33 T
+(Draco does not know anything about the semantics of the primitives, but it does know which combinations of) 72 498.33 T
+(primitives are syntactically valid. The people who de\336ne the procedures are responsible for ensuring that they are) 72 486.33 T
+(actually useful, and if they are syntactically valid, their successful translation is assured. This reliance on syntax) 72 474.33 T
+(enables even nonexpert users to create procedures from existing primitives.) 72 462.33 T
+(A second task for Draco is monitoring the execution of the generated instructions, but let us not get ahead of) 72 438.33 T
+(ourselves. The key question remains: How feasible is this scenario today? W) 72 426.33 T
+(e shall see.) 378.2 426.33 T
+72 377 540 386 C
+72 377 540 386 R
+7 X
+0 K
+V
+72 386 540 386 2 L
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+3 12 Q
+0 X
+0 K
+(3.0) 72 390 T
+(What Draco Is Not) 108 390 T
+1 10 Q
+-0.3 (Draco is not a friendly system. Paradoxically) 72 356.33 P
+-0.3 (, although it is a prototype of a universal interface its user interface is not) 249.7 356.33 P
+(easy to use. This unfriendliness is lar) 72 344.33 T
+(gely due to Draco\325) 219.78 344.33 T
+(s being a Common Lisp system.) 293.89 344.33 T
+1 8 Q
+(2) 422.16 348.33 T
+1 10 Q
+( Unfortunately) 426.15 344.33 T
+(, although) 484.07 344.33 T
+-0.34 (Common Lisp is a very good language for creating prototypes, its graphic user interface tools tend to be quite dif) 72 332.33 P
+-0.34 (\336cult) 517.29 332.33 P
+(to learn and use.) 72 320.33 T
+(The Draco prototype is also unfriendly to the experts who must encode the knowledge needed to translate the user) 72 296.33 T
+(\325) 528.7 296.33 T
+(s) 531.48 296.33 T
+-0.16 (high-level descriptions of analysis steps. W) 72 284.33 P
+-0.16 (e have not provided the expert with a knowledge representation language.) 244.19 284.33 P
+(This knowledge must be encoded as Common Lisp. There is a silver lining in this cloud: if one cannot encode) 72 272.33 T
+(knowledge in Common Lisp, it is unlikely that one will be able to encode it in) 72 260.33 T
+2 F
+(any) 386.55 260.33 T
+1 F
+( knowledge representation) 400.98 260.33 T
+(language. W) 72 248.33 T
+(e have thus given ourselves the best chance to succeed.) 121.71 248.33 T
+72 199 540 208 C
+72 199 540 208 R
+7 X
+0 K
+V
+72 208 540 208 2 L
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+3 12 Q
+0 X
+0 K
+(4.0) 72 212 T
+(Draco Entities) 108 212 T
+1 10 Q
+(Draco has nine public entity types: converter) 72 178.33 T
+(, data type, \336le type, implementation, initialization \336le, KV) 250.91 178.33 T
+(-reporter) 486.8 178.33 T
+(,) 521.36 178.33 T
+(package, primitive, and procedure. W) 72 166.33 T
+(e brie\337y introduce them here.) 221.91 166.33 T
+-0.35 (A) 72 142.33 P
+2 F
+-0.35 (pr) 81.36 142.33 P
+-0.35 (ocedur) 89.88 142.33 P
+-0.35 (e) 117.26 142.33 P
+1 F
+-0.35 ( or procedural primitive encapsulates one or more primitives. It may be viewed as a program schema, e.g.) 121.7 142.33 P
+(\322remove bias and dark counts, then \337atten and extract spectra.\323 Draco translates a procedure\325) 72 130.33 T
+(s primitives into data-) 444.18 130.33 T
+(speci\336c executable scripts and invokes these scripts. W) 72 118.33 T
+(e provide one built-in procedure:) 292.15 118.33 T
+0 9 Q
+(sanity-test) 426.21 118.33 T
+1 10 Q
+(.) 467.17 118.33 T
+72 85 540 101 C
+81 92 531 92 2 L
+0.25 H
+2 Z
+0 X
+0 K
+N
+0 0 612 792 C
+1 7 Q
+0 X
+0 K
+(2) 90 82.6 T
+1 9 Q
+(Small parts of the system are implemented via Unix\252 utilities and/or C.) 98.74 79 T
+FMENDPAGE
+%%EndPage: "3" 5
+%%Page: "4" 5
+612 792 0 FMBEGINPAGE
+0 9 Q
+0 X
+0 K
+(Installing, Invoking, and T) 72 759 T
+(esting Draco) 172.91 759 T
+(29 November 1993) 463.57 759 T
+(Draco Design Document) 72 41.3 T
+0 10 Q
+(4) 510.84 41.3 T
+0 9 Q
+( of) 516.39 41.3 T
+0 10 Q
+(17) 528.89 41.3 T
+1 F
+(A) 72 713.33 T
+2 F
+(primitive) 81.71 713.33 T
+1 F
+( represents tasks like \322remove bias counts\323 or \322extract spectra.\323 Primitives are de\336ned in terms of the) 117.81 713.33 T
+(abstract data types they manipulate, but independently of the user) 72 701.33 T
+(\325) 334.41 701.33 T
+(s analysis systems and data formats. A primitive) 337.18 701.33 T
+(may be associated with several implementations, e.g. one for each of the user) 72 689.33 T
+(\325) 381.3 689.33 T
+(s analysis systems.) 384.08 689.33 T
+(An) 72 665.33 T
+2 F
+(implementation) 86.71 665.33 T
+1 F
+( represents a Common Lisp function responsible for generating data-speci\336c code for an) 148.9 665.33 T
+(executable script. Implementations are de\336ned in terms of the \336le types they manipulate and must be associated) 72 653.33 T
+(with a single primitive.) 72 641.33 T
+(A) 72 617.33 T
+2 F
+(data type) 81.71 617.33 T
+1 F
+( might be something like \322calibrated image.\323 One may think of it as an abstract \336le type, but data types) 118.63 617.33 T
+-0.11 (may eventually represent other types of data as well, e.g. status codes. Each data type may be associated with several) 72 605.33 P
+(\336le types, e.g. if the user is using several data formats. W) 72 593.33 T
+(e provide two built-in data types:) 300.2 593.33 T
+0 9 Q
+(data-set) 435.12 593.33 T
+1 10 Q
+( and) 467.59 593.33 T
+0 9 Q
+(script) 487.02 593.33 T
+1 10 Q
+(.) 508.49 593.33 T
+-0.11 (A) 72 569.33 P
+2 F
+-0.11 (\336le type) 81.61 569.33 P
+1 F
+-0.11 ( is de\336ned by its recognizer) 112.86 569.33 P
+-0.11 (, a Common Lisp function or a Unix\252 executable. File types are hierarchically) 222.12 569.33 P
+(or) 72 557.33 T
+(ganized, usually into a single tree whose root is the built-in Unix\252 \336le type. A \336le type, especially one that has) 80.15 557.33 T
+(subtypes, may denote a data format. For example, the IRAF \050Image Reduction and Analysis Facility\051 analysis) 72 545.33 T
+(system\325) 72 533.33 T
+(s NOAO \050National Optical Astronomy Observatories\051 package manipulates data \336les in OIF \050Old IRAF) 102.54 533.33 T
+-0.22 (Format\051 format. These \336les include raw data, calibration data, and the calibrated images. The user may need to de\336ne) 72 521.33 P
+(separate \336le types for the various kinds of OIF \336les delivered, but may still \336nd a generic OIF \336le type useful. W) 72 509.33 T
+(e) 522.84 509.33 T
+(provide three built-in \336le types:) 72 497.33 T
+0 9 Q
+(directory) 201.09 497.33 T
+1 10 Q
+(,) 234.9 497.33 T
+0 9 Q
+(shell-script) 239.89 497.33 T
+1 10 Q
+(, and) 282.84 497.33 T
+0 9 Q
+(Unix) 304.76 497.33 T
+1 10 Q
+(.) 322.74 497.33 T
+(A) 72 473.33 T
+2 F
+(converter) 81.71 473.33 T
+1 F
+( represents a data format conversion program, i.e. a program that can read \336les of one type and write) 120.01 473.33 T
+(equivalent \336les of a second type. Data-format conversion functionality is not implemented at this time, however) 72 461.33 T
+(.) 519.2 461.33 T
+(Keyword-value \050KV\051 \336les are an interesting special case. Draco enables one to de\336ne) 72 437.33 T
+2 F
+(KV) 416.71 437.33 T
+(-r) 428.93 437.33 T
+(eporter) 435.78 437.33 T
+1 F
+( entities. These) 465.2 437.33 T
+(de\336nitions are compiled into Common Lisp functions that extract the desired KV pairs from \336les of the appropriate) 72 425.33 T
+(type.) 72 413.33 T
+(Analysis systems are represented by) 72 389.33 T
+2 F
+(package) 219.39 389.33 T
+1 F
+( entities. A package may have a native data format.) 252.69 389.33 T
+(Draco is initialized by specifying a set of) 72 365.33 T
+2 F
+(initialization \336le) 238.55 365.33 T
+1 F
+( entities. These identify \336les in the user) 304.36 365.33 T
+(\325) 461.86 365.33 T
+(s \336le system. T) 464.63 365.33 T
+(wo) 524.46 365.33 T
+(initialization \336les are automatically loaded if they exist, one in the user) 72 353.33 T
+(\325) 356.07 353.33 T
+(s home directory and one in the user) 358.85 353.33 T
+(\325) 504.39 353.33 T
+(s data) 507.17 353.33 T
+(directory) 72 341.33 T
+(. The default name for these initialization \336les is) 107.43 341.33 T
+0 9 Q
+(.Draco.lisp) 303.41 341.33 T
+1 10 Q
+(. Any con\337icting de\336nitions are resolved in the) 345.86 341.33 T
+(home directory\325) 72 329.33 T
+(s favor) 135.57 329.33 T
+(.) 162.49 329.33 T
+-0.04 (There are also a number of internal entity types. One worth mentioning is the) 72 305.33 P
+2 F
+-0.04 (\336le-datum) 382.57 305.33 P
+1 F
+-0.04 ( which is sometimes used by) 423.1 305.33 P
+(experts when coding implementations. A \336le-datum instance allows Draco to keep track of a \336le\325) 72 293.33 T
+(s attributes, e.g. its) 460.34 293.33 T
+(\336le-type.) 72 281.33 T
+72 232 540 241 C
+72 232 540 241 R
+7 X
+0 K
+V
+72 241 540 241 2 L
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+3 12 Q
+0 X
+0 K
+(5.0) 72 245 T
+(Installing, Invoking, and T) 108 245 T
+(esting Draco) 254.4 245 T
+1 10 Q
+(In this document, \336le pathnames are given using Common Lisp\325) 72 211.33 T
+(s logical pathname syntax \050[Steele90]\051. W) 328.52 211.33 T
+(e assume) 495.93 211.33 T
+(that you are running a version of Allegro Common Lisp that supports logical pathnames and that the logical host) 72 199.33 T
+0 9 Q
+(Draco) 72 187.33 T
+1 10 Q
+( is de\336ned so that it translates to the Draco source directory) 95.97 187.33 T
+(. \050Consult your Allegro Common Lisp system) 332.65 187.33 T
+(administrator or the Allegro Common Lisp manual.\051) 72 175.33 T
+(Any user) 72 151.33 T
+(-supplied programs should be installed in) 108.16 151.33 T
+0 9 Q
+(Draco:T) 275.84 151.33 T
+(ools) 306.8 151.33 T
+1 10 Q
+(. Once you have installed your tools, enter your) 323.28 151.33 T
+(Allegro Common Lisp environment, load Mark Kantrowitz\325) 72 139.33 T
+(s) 312.13 139.33 T
+0 9 Q
+(defsystem) 318.52 139.33 T
+1 10 Q
+( utility \050if necessary\051, and execute the) 359.47 139.33 T
+(following forms:) 72 127.33 T
+0 9 Q
+(\050pushnew) 162 110 T
+(#p\322Draco:\323) 205.96 110 T
+(make:*central-registry*\051) 253.4 110 T
+(\050pushnew) 162 99 T
+(#p\322Draco:apsb-utilities\323) 205.96 99 T
+(make:*central-registry*\051) 303.35 99 T
+FMENDPAGE
+%%EndPage: "4" 6
+%%Page: "5" 6
+612 792 0 FMBEGINPAGE
+0 9 Q
+0 X
+0 K
+(An Extended Example) 72 759 T
+(29 November 1993) 463.57 759 T
+(Draco Design Document) 72 41.3 T
+0 10 Q
+(5) 510.84 41.3 T
+0 9 Q
+( of) 516.39 41.3 T
+0 10 Q
+(17) 528.89 41.3 T
+1 F
+-0.1 (These may be placed in your Allegro Common Lisp initialization \336le. Y) 72 713.33 P
+-0.1 (ou may now use the) 358.62 713.33 P
+0 9 Q
+-0.1 (defsystem) 440.57 713.33 P
+1 10 Q
+-0.1 ( utility to load) 481.53 713.33 P
+(Draco, e.g.:) 72 701.33 T
+0 9 Q
+(\050make:load-system) 162 684 T
+(\325%Draco) 242.9 684 T
+(:compile-during-load) 281.86 684 T
+(t\051) 368.26 684 T
+1 10 Q
+(Y) 72 660.33 T
+(our Lisp environment will now accept Draco commands. Draco assumes that the current directory is your data) 78.22 660.33 T
+(directory) 72 648.33 T
+(. If you wish to change data directories, you must use the Draco function) 107.43 648.33 T
+0 9 Q
+(set-data-directory) 400.55 648.33 T
+1 10 Q
+(, e.g.:) 469.82 648.33 T
+0 9 Q
+(\050set-data-directory) 162 631 T
+(\322/big/disk/my/data\323\051) 239.91 631 T
+1 10 Q
+(Y) 72 607.33 T
+(ou may now invoke the built-in sanity test. This test generates a brief summary of the contents of one or more) 78.22 607.33 T
+(directories.) 72 595.33 T
+0 9 Q
+(sanity-test) 119.18 595.33 T
+1 10 Q
+( needs to create \336les in its input directories, so make sure you have suf) 160.14 595.33 T
+(\336cient \336le access) 441.7 595.33 T
+(privileges. This is how one invokes the sanity test on the current directory:) 72 583.33 T
+0 9 Q
+(\050sanity-test:start) 162 566 T
+(\325\050#p\322.\323\051\051) 230.93 566 T
+72 517 540 526 C
+72 517 540 526 R
+7 X
+0 K
+V
+72 526 540 526 2 L
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+3 12 Q
+0 X
+0 K
+(6.0) 72 530 T
+(An Extended Example) 108 530 T
+3 10 Q
+(6.1) 108 490.33 T
+(De\336ning Draco Entities) 144 490.33 T
+1 F
+-0.29 (Draco provides a set of functions) 108 466.33 P
+1 8 Q
+-0.23 (3) 238.94 470.33 P
+1 10 Q
+-0.29 ( for de\336ning or specifying Draco entities. Each function is named) 242.94 466.33 P
+0 9 Q
+(de\336ne) 108 454.33 T
+1 10 Q
+(-) 132.48 454.33 T
+2 F
+(<entity type>) 135.81 454.33 T
+1 F
+(, e.g.) 190.66 454.33 T
+0 9 Q
+(de\336ne-) 212.59 454.33 T
+(\336le-) 240.06 454.33 T
+(type) 254.54 454.33 T
+1 10 Q
+(. All instances of a given entity type must be uniquely) 271.53 454.33 T
+(named. Names are Common Lisp symbols and are assigned via the) 108 442.33 T
+0 9 Q
+(:name) 378.37 442.33 T
+1 10 Q
+( keyword. An optional) 403.35 442.33 T
+0 9 Q
+(:documentation) 108 430.33 T
+1 10 Q
+( string may also be speci\336ed. All code for this example may be found in the) 169.45 430.33 T
+0 9 Q
+(Draco:Samples) 108 418.33 T
+1 10 Q
+( directory) 169.43 418.33 T
+(.) 207.36 418.33 T
+3 F
+(6.1.1) 144 394.33 T
+(Initialization Files) 180 394.33 T
+1 F
+(The Draco de\336nitions for this example are distributed among a number of) 144 369.33 T
+(initialization \336les that reside in) 144 357.33 T
+0 9 Q
+(Draco:Samples) 270.32 357.33 T
+1 10 Q
+(. Initialization \336le directives are) 331.75 357.33 T
+(actually Common Lisp \322forms,\323 i.e. initialization \336les are just Common Lisp) 144 345.33 T
+(source \336les.) 144 333.33 T
+(The user) 144 309.33 T
+(\325) 179.06 309.33 T
+(s initialization \336les are usually loaded by declaring them in either the) 181.84 309.33 T
+(user) 144 297.33 T
+(\325) 161.02 297.33 T
+(s home directory initialization \336le or in the data directory initialization \336le.) 163.8 297.33 T
+-0.22 (For example, our sample data directory\325) 144 285.33 P
+-0.22 (s initialization \336le contains the following) 302.76 285.33 P
+(directive:) 144 273.33 T
+0 9 Q
+(\050de\336ne-initialization-\336le) 162 256 T
+(:\336le) 171 245 T
+(\322Draco:Samples;\336le-types.lisp\323) 252 245 T
+(:documentation) 171 234 T
+(\322\336le type speci\336cations\323) 252 234 T
+(:load-immediately) 171 223 T
+(t) 252 223 T
+(\051) 162 212 T
+1 10 Q
+(Initialization \336les are loaded on an as-needed basis by default. There are two) 144 188.33 T
+(exceptions. The \336rst is illustrated by the above example. If) 144 176.33 T
+0 9 Q
+(:load-immediately) 381.06 176.33 T
+1 10 Q
+( is) 451.48 176.33 T
+0 9 Q
+(nil) 144 164.33 T
+1 10 Q
+( or left unspeci\336ed, the declared initialization \336le will be loaded at Draco\325) 152.99 164.33 T
+(s) 448.05 164.33 T
+(convenience. In this example, Draco will load the named initialization \336le as) 144 152.33 T
+(soon as it has created the corresponding initialization \336le entity) 144 140.33 T
+(.) 396.24 140.33 T
+-0.33 (Draco will reload an initialization \336le if it discovers that it was modi\336ed since the) 144 116.33 P
+(last time it was loaded and this behavior leads us to our second exception. If the) 144 104.33 T
+72 85 540 101 C
+81 92 531 92 2 L
+0.25 H
+2 Z
+0 X
+0 K
+N
+0 0 612 792 C
+1 7 Q
+0 X
+0 K
+(3) 90 82.6 T
+1 9 Q
+(They are actually Common Lisp macros.) 98.74 79 T
+FMENDPAGE
+%%EndPage: "5" 7
+%%Page: "6" 7
+612 792 0 FMBEGINPAGE
+0 9 Q
+0 X
+0 K
+(File T) 72 759 T
+(ypes and KV) 93.97 759 T
+(-Reporters) 144.44 759 T
+(29 November 1993) 463.57 759 T
+(Draco Design Document) 72 41.3 T
+0 10 Q
+(6) 510.84 41.3 T
+0 9 Q
+( of) 516.39 41.3 T
+0 10 Q
+(17) 528.89 41.3 T
+1 F
+(data directory\325) 144 713.33 T
+(s initialization \336le is modi\336ed or if the user changes data) 202.01 713.33 T
+-0.26 (directories, the user) 144 701.33 P
+-0.26 (\325) 222.4 701.33 P
+-0.26 (s home directory initialization \336le will be reloaded so that its) 225.18 701.33 P
+(de\336nitions will take precedence over the data directory initialization \336le\325) 144 689.33 T
+(s. Note) 434.63 689.33 T
+(that the initialization \336les declared in the home directory initialization \336le will) 144 677.33 T
+2 F
+-0.12 (not) 144 665.33 P
+1 F
+-0.12 ( be reloaded unless they were speci\336ed with a non-) 156.77 665.33 P
+0 9 Q
+-0.12 (nil) 359.69 665.33 P
+-0.12 (:load-immediately) 371.06 665.33 P
+1 10 Q
+-0.12 ( value.) 441.48 665.33 P
+(Our sample user) 144 641.33 T
+(\325) 209.87 641.33 T
+(s home directory initialization \336le is assumed to contain the) 212.65 641.33 T
+(following directives:) 144 629.33 T
+0 9 Q
+(\050de\336ne-initialization-\336le) 162 612 T
+(:\336le) 171 601 T
+(\322Draco:Samples;converters.lisp\323) 252 601 T
+(:documentation) 171 590 T
+(\322converter speci\336cations\323) 252 590 T
+(\051) 162 579 T
+(\050de\336ne-initialization-\336le) 162 568 T
+(:\336le) 171 557 T
+(\322Draco:Samples;data-types.lisp\323) 252 557 T
+(:documentation) 171 546 T
+(\322data type speci\336cations\323) 252 546 T
+(\051) 162 535 T
+(\050de\336ne-initialization-\336le) 162 524 T
+(:\336le) 171 513 T
+(\322Draco:Samples;implementations.lisp\323) 252 513 T
+(:documentation) 171 502 T
+(\322implementation speci\336cations\323) 252 502 T
+(\051) 162 491 T
+(\050de\336ne-initialization-\336le) 162 480 T
+(:\336le) 171 469 T
+(\322Draco:Samples;packages.lisp\323) 252 469 T
+(:documentation) 171 458 T
+(\322package speci\336cations\323) 252 458 T
+(\051) 162 447 T
+(\050de\336ne-initialization-\336le) 162 436 T
+(:\336le) 171 425 T
+(\322Draco:Samples;primitives.lisp\323) 252 425 T
+(:documentation) 171 414 T
+(\322primitive speci\336cations\323) 252 414 T
+(\051) 162 403 T
+(\050de\336ne-initialization-\336le) 162 392 T
+(:\336le) 171 381 T
+(\322Draco:Samples;procedures.lisp\323) 252 381 T
+(:documentation) 171 370 T
+(\322procedural primitive speci\336cations\323) 252 370 T
+(\051) 162 359 T
+(\050de\336ne-initialization-\336le) 162 337 T
+(:\336le) 171 326 T
+(\322Draco:Samples;NOAO-calibrate.lisp\323) 252 326 T
+(:documentation) 171 315 T
+(\322sample implementation code\323) 252 315 T
+(\051) 162 304 T
+(\050de\336ne-initialization-\336le) 162 293 T
+(:\336le) 171 282 T
+(\322Draco:Samples;NOAO-extract.lisp\323) 252 282 T
+(:documentation) 171 271 T
+(\322sample implementation code\323) 252 271 T
+(\051) 162 260 T
+(\050de\336ne-initialization-\336le) 162 249 T
+(:\336le) 171 238 T
+(\322Draco:Samples;ut-obs.lisp\323) 252 238 T
+(:documentation) 171 227 T
+(\322needed by NOAO-calibrate.lisp\323) 252 227 T
+(\051) 162 216 T
+3 10 Q
+(6.1.2) 144 192.33 T
+(File T) 180 192.33 T
+(ypes and KV) 205.37 192.33 T
+(-Reporters) 264.8 192.33 T
+1 F
+(The \336le type is often the \336rst Draco entity encountered. The user \050or analysis) 144 167.33 T
+-0.04 (expert\051 should de\336ne all \336le types of interest. File types are or) 144 155.33 P
+-0.04 (ganized as a forest) 391.56 155.33 P
+(of trees. W) 144 143.33 T
+(e have provided a tree whose root is the built-in \336le type Unix\252 and) 187.33 143.33 T
+(suggest that all \336le types be placed in this tree.) 144 131.33 T
+(Each \336le type is associated with a) 144 107.33 T
+2 F
+(r) 281.4 107.33 T
+(ecognizer) 284.92 107.33 T
+1 F
+( which takes one ar) 323.78 107.33 T
+(gument, a \336le) 400.76 107.33 T
+(name. A recognizer can either be a Common Lisp pathname naming a Unix\252) 144 95.33 T
+(command, e.g. a shell script, or a Lisp symbol naming a function. Recognizer) 144 83.33 T
+FMENDPAGE
+%%EndPage: "6" 8
+%%Page: "7" 8
+612 792 0 FMBEGINPAGE
+0 9 Q
+0 X
+0 K
+(File T) 72 759 T
+(ypes and KV) 93.97 759 T
+(-Reporters) 144.44 759 T
+(29 November 1993) 463.57 759 T
+(Draco Design Document) 72 41.3 T
+0 10 Q
+(7) 510.84 41.3 T
+0 9 Q
+( of) 516.39 41.3 T
+0 10 Q
+(17) 528.89 41.3 T
+1 F
+(commands must print a string describing the \336le on the standard output stream) 144 713.33 T
+(when they succeed, i.e. when the \336le is of the appropriate type, and must print) 144 701.33 T
+(nothing when the \336le is not of the appropriate type. Recognizer functions return) 144 689.33 T
+(a string describing the \336le when they succeed and otherwise return) 144 677.33 T
+0 9 Q
+(nil) 412.96 677.33 T
+1 10 Q
+(.) 421.95 677.33 T
+(The user is encouraged to make every ef) 144 653.33 T
+(fort to provide recognizers that literally) 305.62 653.33 T
+(open and read \336les rather than rely \050solely\051 on \336le-naming conventions. Draco) 144 641.33 T
+-0.29 (uses these \336le type recognizers to generate an) 144 629.33 P
+2 F
+-0.29 (inventory) 326.51 629.33 P
+1 F
+-0.29 ( describing the \336les in the) 364.26 629.33 P
+(user) 144 617.33 T
+(\325) 161.02 617.33 T
+(s data directory) 163.8 617.33 T
+(. An inventory has a header and a body) 224.77 617.33 T
+(. The header lists the) 380.38 617.33 T
+(data directory\325) 144 605.33 T
+(s full pathname, the report\325) 202.01 605.33 T
+(s creation date, Draco\325) 309.99 605.33 T
+(s version) 399.91 605.33 T
+(number) 144 593.33 T
+(, and an optional, user) 174.13 593.33 T
+(-de\336ned documentation string. The body of an) 262.2 593.33 T
+(inventory consists of a series of \336le entries sorted by \336le type.) 144 581.33 T
+(Inventory \336le entries are generated by \336le type) 144 557.33 T
+2 F
+(r) 333.3 557.33 T
+(eporters) 336.81 557.33 T
+1 F
+(. There are two types of) 370.13 557.33 T
+(reporters:) 144 545.33 T
+2 F
+(f-) 184.8 545.33 T
+(sorted) 190.9 545.33 T
+1 F
+( reporters sort the entries they generate by \336le name whereas) 215.89 545.33 T
+2 F
+(c-) 144 533.33 T
+(sorted) 151.77 533.33 T
+1 F
+( reporters sort their entries by entry content. Draco currently only) 176.75 533.33 T
+(supports Common Lisp function reporters, partly because the Unix\252 command) 144 521.33 T
+(line length limit makes it inconvenient to implement) 144 509.33 T
+2 F
+(c-) 356.11 509.33 T
+(sorted) 363.88 509.33 T
+1 F
+( reporter Unix\252) 388.86 509.33 T
+-0.34 (commands. If no reporter is speci\336ed, Draco uses a default reporter which simply) 144 497.33 P
+(uses the \336le type recognizer) 144 485.33 T
+(\325) 255.95 485.33 T
+(s output as the \336le\325) 258.73 485.33 T
+(s report entry) 334.24 485.33 T
+(.) 386.89 485.33 T
+1 8 Q
+(4) 389.39 489.33 T
+1 10 Q
+(Many data \336les are simply lists of KV pairs so we have provided a) 144 461.33 T
+2 F
+(KV) 412.7 461.33 T
+(-r) 424.93 461.33 T
+(eporter) 431.77 461.33 T
+1 F
+(facility) 144 449.33 T
+(. A KV) 171.66 449.33 T
+(-reporter generates report entries containing a subset of the \336le\325) 199.89 449.33 T
+(s) 453.3 449.33 T
+(KV pairs. The user speci\336es a list of desired keywords. Any KV pair whose) 144 437.33 T
+(keyword is an element of this list will be part of the \336le\325) 144 425.33 T
+(s inventory entry) 368.31 425.33 T
+(.) 435.39 425.33 T
+(F-sorted reporters, e.g. the default reporter) 144 413.33 T
+(, will list these pairs in the order they) 313.46 413.33 T
+(occur in the \336le whereas c-sorted reporters will sort the pairs using the order) 144 401.33 T
+(de\336ned by the desired keyword list.) 144 389.33 T
+1 8 Q
+(5) 286.68 393.33 T
+1 10 Q
+(The KV) 144 365.33 T
+(-reporter) 175.55 365.33 T
+(\325) 210.88 365.33 T
+(s lexical analyzer may either be a Common Lisp function or a) 213.66 365.33 T
+(Unix\252 command, and it must take one ar) 144 353.33 T
+(gument, a \336le name. It must return a) 311.29 353.33 T
+(stream of keyword and value tokens. Each token is an ASCII string, possibly) 144 341.33 T
+(containing blanks, terminated by a newline character) 144 329.33 T
+(.) 354.67 329.33 T
+72 128 540 144 C
+81 135 531 135 2 L
+0.25 H
+2 Z
+0 X
+0 K
+N
+0 0 612 792 C
+1 7 Q
+0 X
+0 K
+(4) 90 125.6 T
+1 9 Q
+(Draco also enables expert users to supply their own default reporters. See the parameters) 98.74 122 T
+0 7 Q
+(Draco:*default-reporter*) 419.95 122 T
+1 9 Q
+(and) 100.8 112 T
+0 7 Q
+(Draco:*default-reporter-type*) 116.03 112 T
+1 9 Q
+( in) 205.35 112 T
+0 7 Q
+(Documents/def-reporter) 216.84 112 T
+(.lisp) 290.24 112 T
+1 9 Q
+(.) 302.67 112 T
+1 7 Q
+(5) 90 102.6 T
+1 9 Q
+(The reasons for not having f-sorted keyword-value reporters sort their report entries: \0501\051 this design is easier to) 98.74 99 T
+(implement, \0502\051 sorting takes time, and \0503\051 for any given keyword-value data \336le format, the order of the keyword-) 100.8 89 T
+(value pairs often remains constant across \336les.) 100.8 79 T
+FMENDPAGE
+%%EndPage: "7" 9
+%%Page: "8" 9
+612 792 0 FMBEGINPAGE
+0 9 Q
+0 X
+0 K
+(Packages) 72 759 T
+(29 November 1993) 463.57 759 T
+(Draco Design Document) 72 41.3 T
+0 10 Q
+(8) 510.84 41.3 T
+0 9 Q
+( of) 516.39 41.3 T
+0 10 Q
+(17) 528.89 41.3 T
+1 F
+(The following directives de\336ne a \336le type for OIF calibration \336les and a KV) 144 713.33 T
+(-) 448.14 713.33 T
+(reporter for such \336les:) 144 701.33 T
+0 9 Q
+(\050de\336ne-\336le-type) 162 684 T
+(:name) 171 673 T
+(OIF-calib) 252 673 T
+(:documentation) 171 662 T
+(\322OIF \050calibration\051\323) 252 662 T
+(:super-type) 171 651 T
+(OIF) 252 651 T
+(:recognizer) 171 640 T
+(\050make-pathname) 252 640 T
+(:defaults) 261 629 T
+(*tools-dir*) 306 629 T
+(:name) 261 618 T
+(\322OIF-calib\323) 306 618 T
+(:type) 261 607 T
+(\322sh\323\051) 306 607 T
+(:reporter) 171 596 T
+(\050de\336ne-KV) 252 596 T
+(-reporter) 293.96 596 T
+(:name) 261 585 T
+(OIF-calib-reporter) 306 585 T
+(:lex-fn) 261 574 T
+(\050make-pathname) 306 574 T
+(:defaults) 311 563 T
+(*tools-dir*) 349.97 563 T
+(:name) 311 552 T
+(\322phead\323) 350.96 552 T
+(:type) 311 541 T
+(\322e\323\051) 350.47 541 T
+(:reporter-type) 261 530 T
+(:c-sorted\051) 306 519 T
+(:reporter-type) 171 508 T
+(:c-sorted\051) 252 508 T
+1 10 Q
+(In this example, the KV reporter) 144 484.33 T
+(\325) 274.27 484.33 T
+(s lexical analyzer is a Unix\252 command \050more) 277.05 484.33 T
+(precisely) 144 472.33 T
+(, a Fortran program\051. An equivalent example using a Common Lisp) 179.43 472.33 T
+(lexical analyzer may be found in) 144 460.33 T
+0 9 Q
+(Draco:Samples;\336le-types.lisp) 277.23 460.33 T
+1 10 Q
+(.) 393.09 460.33 T
+(The syntax for specifying the desired keywords is illustrated here:) 144 436.33 T
+0 9 Q
+(\050de\336ne-report-keywords) 162 419 T
+(:reporter) 171 408 T
+(OIF-reporter) 252 408 T
+(:keywords) 171 397 T
+(\050IMAGETYP OBSER) 252 397 T
+(V) 335.24 397 T
+(A) 340.57 397 T
+(T FIL) 345.9 397 T
+(TERS DA) 366.21 397 T
+(TE-OBS) 404.5 397 T
+( UT) 252 386 T
+(RA) 308.95 386 T
+(DEC\051) 358.91 386 T
+(\051) 162 375 T
+(de\336ne-report-keywords) 144 351.33 T
+1 10 Q
+( directives should be placed in the appropriate) 235.9 351.33 T
+(initialization \336les.) 144 339.33 T
+3 F
+(6.1.3) 144 315.33 T
+(Packages) 180 315.33 T
+1 F
+(The user should use) 144 290.33 T
+0 9 Q
+(Draco:de\336ne-package) 226.16 290.33 T
+1 10 Q
+( to describe the analysis systems he) 314.08 290.33 T
+(wishes to use. T) 144 278.33 T
+(o describe IRAF) 207.71 278.33 T
+(, for example, one might enter the following:) 272.97 278.33 T
+0 9 Q
+(\050de\336ne-package) 162 261 T
+(:name) 171 250 T
+(IRAF) 252 250 T
+(:documentation) 171 239 T
+(\322IRAF analysis package\323) 252 239 T
+(:\336le-type) 171 228 T
+(OIF) 252 228 T
+(:begin-cmd) 171 217 T
+(\322/usr/stsci/irafx/unix/hlib/cl.csh\323) 252 217 T
+(:initialize) 171 206 T
+(\050\322cl.logmode = \134\322errors trace\134\323\323) 252 206 T
+( \322cl.log\336le = \134\322~log\134\323\323) 252 195 T
+( \322cl.keeplog = yes\323\051) 252 184 T
+(:end-cmd) 171 173 T
+(\322logout\323\051) 252 173 T
+1 10 Q
+(The \336le type must be de\336ned by) 144 149.33 T
+0 9 Q
+(de\336ne-\336le-type) 275.31 149.33 T
+1 10 Q
+( \050see the preceding section\051.) 334.25 149.33 T
+0 9 Q
+(:begin-cmd) 144 137.33 T
+1 10 Q
+( and) 188.45 137.33 T
+0 9 Q
+(:end-cmd) 207.88 137.33 T
+1 10 Q
+( specify the command strings for invoking and exiting) 245.34 137.33 T
+(the package respectively) 144 125.33 T
+(. IRAF has its own command language interpreter) 241.6 125.33 T
+(,) 441.06 125.33 T
+0 9 Q
+(cl.csh) 144 113.33 T
+1 10 Q
+(, and the command for exiting this interpreter is) 166.97 113.33 T
+0 9 Q
+(logout) 360.18 113.33 T
+1 10 Q
+(.) 384.66 113.33 T
+(The optional) 144 89.33 T
+0 9 Q
+(:initialize) 197.3 89.33 T
+1 10 Q
+( speci\336es a list of commands to execute as soon as the) 231.76 89.33 T
+(package is invoked. Draco) 144 77.33 T
+2 F
+(command templates) 252.52 77.33 T
+1 F
+( are strings that may contain the) 332.19 77.33 T
+FMENDPAGE
+%%EndPage: "8" 10
+%%Page: "9" 10
+612 792 0 FMBEGINPAGE
+0 9 Q
+0 X
+0 K
+(Converters) 72 759 T
+(29 November 1993) 463.57 759 T
+(Draco Design Document) 72 41.3 T
+0 10 Q
+(9) 510.84 41.3 T
+0 9 Q
+( of) 516.39 41.3 T
+0 10 Q
+(17) 528.89 41.3 T
+1 F
+(special token) 144 713.33 T
+0 9 Q
+(~log) 198.96 713.33 T
+1 10 Q
+( Draco creates commands corresponding to these templates) 216.2 713.33 T
+(by translating any instances of this token to the name of the log \336le that will) 144 701.33 T
+(be created when the Draco-generated analysis script is executed.) 144 689.33 T
+3 F
+(6.1.4) 144 665.33 T
+(Converters) 180 665.33 T
+1 F
+-0.27 (It would appear that every scientist has to cope with at least two data \336le formats.) 144 640.33 P
+(Though FITS \050Flexible Image T) 144 628.33 T
+(ransport System\051 is widely used by astronomers) 272.46 628.33 T
+(as a \336le transfer format, many data analysis systems do not operate directly on) 144 616.33 T
+(FITS \336les but on their own native data \336le format. For example, IRAF can read) 144 604.33 T
+(and write FITS \336les, but most of its functions use its native data format OIF) 144 592.33 T
+(.) 446.63 592.33 T
+-0.19 (Conceptually) 144 568.33 P
+-0.19 (, data \336le formats can be viewed as nodes in a directed graph whose) 196.65 568.33 P
+(edges correspond to format conversion programs.) 144 556.33 T
+2 F
+(In the futur) 344.68 556.33 T
+(e) 389.29 556.33 T
+1 F
+(, Draco will) 393.72 556.33 T
+(automatically invoke the appropriate converters thus enabling the user to ignore) 144 544.33 T
+(format dif) 144 532.33 T
+(ferences whenever possible. For example, suppose we have data in) 184.07 532.33 T
+-0.19 (FITS format and wish to modify it with an IRAF function. Draco would generate) 144 520.33 P
+(a script that converts the data into OIF) 144 508.33 T
+(, invokes the IRAF function, and then) 296.71 508.33 T
+(converts the resulting data back to FITS.) 144 496.33 T
+3 F
+(6.1.5) 144 472.33 T
+(Data T) 180 472.33 T
+(ypes) 209.8 472.33 T
+1 F
+(A data type can be viewed as an abstract \336le type. Later releases of Draco may) 144 447.33 T
+(support other data type implementations, e.g. ASCII stream output or status) 144 435.33 T
+(codes. Until then, we de\336ne a data type as follows:) 144 423.33 T
+0 9 Q
+(\050de\336ne-data-type) 162 406 T
+(:name) 171 395 T
+(image) 252 395 T
+(:documentation) 171 384 T
+(\322science image pixel array\323) 252 384 T
+(:\336le-types) 171 373 T
+(\050OIF-object\051\051) 252 373 T
+1 10 Q
+(A data type\325) 144 349.33 T
+(s) 192.85 349.33 T
+0 9 Q
+(:\336le-types) 199.24 349.33 T
+1 10 Q
+( must be de\336ned by) 237.7 349.33 T
+0 9 Q
+(de\336ne-\336le-type) 318.48 349.33 T
+1 10 Q
+( \050see section 6.1.2\051.) 377.42 349.33 T
+3 F
+(6.1.6) 144 325.33 T
+(Primitives) 180 325.33 T
+1 F
+-0.1 (Primitives represent abstract analysis tasks. For example, we might represent the) 144 300.33 P
+(task of removing bias counts as follows:) 144 288.33 T
+0 9 Q
+(\050de\336ne-primitive) 162 271 T
+(:name) 171 260 T
+(remove-bias) 252 260 T
+(:documentation) 171 249 T
+(\322remove bias signal\323) 252 249 T
+(:reconciled-input) 171 238 T
+(\050\050data-set :disjunctive\051\051) 252 238 T
+(:output) 171 227 T
+(data-set) 252 227 T
+(:implementations) 171 216 T
+(\050NOAO-remove-bias\051\051) 252 216 T
+1 10 Q
+(Here we are subtracting the bias signal from the object images and remaining) 144 192.33 T
+(calibration data in an entire data set. The data types referenced by) 144 180.33 T
+0 9 Q
+(:reconciled-) 409.05 180.33 T
+(input) 144 168.33 T
+1 10 Q
+( and) 163.49 168.33 T
+0 9 Q
+(:output) 182.91 168.33 T
+1 10 Q
+( must be de\336ned by) 210.4 168.33 T
+0 9 Q
+(de\336ne-data-type) 291.18 168.33 T
+1 10 Q
+( \050see preceding section\051.) 356.13 168.33 T
+0 9 Q
+-0.08 (:reconciled-input) 144 156.33 P
+1 10 Q
+-0.08 ( speci\336es the data types that the primitive reads. Each input data) 209.93 156.33 P
+-0.25 (type may be annotated by a) 144 144.33 P
+2 F
+-0.25 (r) 254.66 144.33 P
+-0.25 (econcile type) 258.18 144.33 P
+1 F
+-0.25 ( using the syntax illustrated above. The) 310.38 144.33 P
+(reconcile type determines what happens when multiple inputs are present. The) 144 132.33 T
+(default value) 144 120.33 T
+0 9 Q
+(nil) 198.4 120.33 T
+1 10 Q
+( indicates that an error should be signaled whereas) 207.39 120.33 T
+0 9 Q
+(:conjunctive) 411.39 120.33 T
+1 10 Q
+(indicates that the primitive should treat all of the data as a single input and) 144 108.33 T
+0 9 Q
+(:disjunctive) 144 96.33 T
+1 10 Q
+( causes the primitive to process each input separately) 188.45 96.33 T
+(, i.e. iterate over) 399.87 96.33 T
+-0.36 (its inputs. Each) 144 84.33 P
+0 9 Q
+-0.36 (:disjunctive) 206.79 84.33 P
+1 10 Q
+-0.36 ( data type must be associated with the same number of) 251.24 84.33 P
+FMENDPAGE
+%%EndPage: "9" 11
+%%Page: "10" 11
+612 792 0 FMBEGINPAGE
+0 9 Q
+0 X
+0 K
+(Procedures) 72 759 T
+(29 November 1993) 463.57 759 T
+(Draco Design Document) 72 41.3 T
+0 10 Q
+(10) 505.28 41.3 T
+0 9 Q
+( of) 516.39 41.3 T
+0 10 Q
+(17) 528.89 41.3 T
+1 F
+(inputs. These inputs are processed in parallel, i.e. the command is \336rst invoked) 144 713.33 T
+(on the \336rst set of) 144 701.33 T
+0 9 Q
+(:disjunctive) 213.68 701.33 T
+1 10 Q
+( inputs, then on the second set, etc.) 258.13 701.33 T
+0 9 Q
+(:output) 144 677.33 T
+1 10 Q
+( speci\336es the data types that the primitive writes and) 171.48 677.33 T
+0 9 Q
+(:implementations) 383.57 677.33 T
+1 10 Q
+-0.07 (speci\336es the implementations that actually perform the abstract task. These must) 144 665.33 P
+(be de\336ned by) 144 653.33 T
+0 9 Q
+(de\336ne-implementation) 200.35 653.33 T
+1 10 Q
+( \050see the following section\051.) 288.76 653.33 T
+-0.03 (In this case,) 144 629.33 P
+0 9 Q
+-0.03 (remove-bias) 193.86 629.33 P
+1 10 Q
+-0.03 (\325) 243.3 629.33 P
+-0.03 (s input is one or more data sets represented by the) 246.08 629.33 P
+0 9 Q
+-0.03 (data-) 447.52 629.33 P
+-0.38 (set) 144 617.33 P
+1 10 Q
+-0.38 ( data type. Each implementation of) 155.99 617.33 P
+0 9 Q
+-0.38 (remove-bias) 296.13 617.33 P
+1 10 Q
+-0.38 ( must create a data set for each) 345.57 617.33 P
+(input data set or modify its input.) 144 605.33 T
+(If a data type is associated with the default reconcile type \050) 144 581.33 T
+0 9 Q
+(nil) 379.09 581.33 T
+1 10 Q
+(\051, the parentheses) 388.08 581.33 T
+(surrounding it may be omitted. And if there is only one input data type and it is) 144 569.33 T
+(associated with the default reconcile type,) 144 557.33 T
+0 9 Q
+(:reconciled-input) 314.15 557.33 T
+1 10 Q
+( may be the symbol) 380.08 557.33 T
+(naming the input data type. The following primitive illustrates this shorthand) 144 545.33 T
+(syntax:) 144 533.33 T
+0 9 Q
+(\050de\336ne-primitive) 162 516 T
+(:name) 171 505 T
+(\336nd-like-images) 252 505 T
+(:documentation) 171 494 T
+(\322identify images that may be meaningfully combined\323) 252 494 T
+(:reconciled-input) 171 483 T
+(directory) 252 483 T
+(:output) 171 472 T
+(image-set) 252 472 T
+(:implementations) 171 461 T
+(\050\336nd-exposures\051\051) 252 461 T
+1 10 Q
+(This is also an example of a primitive that can produce several instances of its) 144 437.33 T
+(output data type for each instance of its input data type.) 144 425.33 T
+0 9 Q
+(\336nd-like-images) 368.29 425.33 T
+1 10 Q
+( reads a) 431.21 425.33 T
+(data directory and creates an) 144 413.33 T
+0 9 Q
+(image-set) 260.84 413.33 T
+1 10 Q
+( for each set of images in the directory) 300.29 413.33 T
+(that can be meaningfully combined. The newly created image sets can then be) 144 401.33 T
+(processed by some other primitive.) 144 389.33 T
+3 F
+(6.1.7) 144 365.33 T
+(Procedures) 180 365.33 T
+1 F
+(A procedure) 144 340.33 T
+1 8 Q
+(6) 193.67 344.33 T
+1 10 Q
+( is an abstract user program. More precisely) 197.67 340.33 T
+(, a procedure is an) 372.43 340.33 T
+(abstract user) 144 328.33 T
+2 F
+(pipeline) 196.73 328.33 T
+1 F
+( because Draco currently does not support iteration or) 228.93 328.33 T
+(branching \050see section 7\051. A procedure for extracting \050one-dimensional\051 spectra) 144 316.33 T
+(might be de\336ned as follows:) 144 304.33 T
+0 9 Q
+(\050de\336ne-procedure) 162 287 T
+(:name) 171 276 T
+(extract-spectra) 252 276 T
+(:documentation) 171 265 T
+(\322remove bias/dark signals, \337atten, then extract spectra\323) 252 265 T
+(:primitives) 171 254 T
+(\050remove-bias) 252 254 T
+(remove-dark) 309.43 254 T
+(\337atten) 364.86 254 T
+(extract\051\051) 394.34 254 T
+1 10 Q
+(Draco creates a Common Lisp package for each procedure, and de\336nes a) 144 230.33 T
+(function) 144 218.33 T
+0 9 Q
+(start) 179.81 218.33 T
+1 10 Q
+( in this package, in this case) 197.29 218.33 T
+0 9 Q
+(extract-spectra:start) 311.66 218.33 T
+1 10 Q
+(. The user invokes) 391.07 218.33 T
+(a procedure by calling its) 144 206.33 T
+0 9 Q
+(start) 247.53 206.33 T
+1 10 Q
+( function \050see section 6.2\051.) 265.01 206.33 T
+3 F
+(6.1.8) 144 182.33 T
+(Implementations) 180 182.33 T
+1 F
+(An implementation\325) 144 157.33 T
+(s name must be the name of a Common Lisp function that) 224.24 157.33 T
+(is used to implement its associated primitive. Since these functions are often) 144 145.33 T
+72 95 540 111 C
+81 102 531 102 2 L
+0.25 H
+2 Z
+0 X
+0 K
+N
+0 0 612 792 C
+1 7 Q
+0 X
+0 K
+(6) 90 92.6 T
+1 9 Q
+(Procedures are implemented as primitives and are sometimes known as \322procedural primitives\323 as a result. W) 98.74 89 T
+(e may) 492.89 89 T
+(add a) 100.8 79 T
+0 7 Q
+(:primitives) 122.26 79 T
+1 9 Q
+( keyword to) 153.71 79 T
+0 7 Q
+(de\336ne-primitive) 198.89 79 T
+1 9 Q
+( and do away with) 246.26 79 T
+0 7 Q
+(de\336ne-procedure) 314.41 79 T
+1 9 Q
+( in some future version of Draco.) 367.23 79 T
+FMENDPAGE
+%%EndPage: "10" 12
+%%Page: "11" 12
+612 792 0 FMBEGINPAGE
+0 9 Q
+0 X
+0 K
+(Implementations) 72 759 T
+(29 November 1993) 463.57 759 T
+(Draco Design Document) 72 41.3 T
+0 10 Q
+(1) 506.02 41.3 T
+(1) 510.84 41.3 T
+0 9 Q
+( of) 516.39 41.3 T
+0 10 Q
+(17) 528.89 41.3 T
+1 F
+(implemented by invoking analysis system procedures, Draco allows one to) 144 713.33 T
+(associate an implementation with an analysis system, for example:) 144 701.33 T
+0 9 Q
+(\050de\336ne-implementation) 162 684 T
+(:name) 171 673 T
+(NOAO-remove-bias) 252 673 T
+(:documentation) 171 662 T
+(\322remove bias signal from a directory\325) 252 662 T
+(s data\323) 396.67 662 T
+(:package) 171 651 T
+(IRAF) 252 651 T
+(:initialize-once) 171 640 T
+(\050\322noao\323) 252 640 T
+(\322imred\323) 285.96 640 T
+(\322ccdred\323\051) 319.42 640 T
+(:input) 171 629 T
+(directory) 252 629 T
+(:output) 171 618 T
+(directory\051) 252 618 T
+1 10 Q
+(If a :) 144 594.33 T
+0 9 Q
+(package) 162.87 594.33 T
+1 10 Q
+( \050optional\051) 196.84 594.33 T
+(is speci\336ed, it must be a package de\336ned via) 241.26 594.33 T
+0 9 Q
+(de\336ne-) 421.69 594.33 T
+(package) 144 582.33 T
+1 10 Q
+( \050see section 6.1.3\051. One may also specify initialization command) 177.97 582.33 T
+(templates \050ibid.\051.) 144 570.33 T
+0 9 Q
+(:initialize-once) 214.51 570.33 T
+1 10 Q
+(, a list of strings, lists the commands that) 271.45 570.33 T
+(must be invoked before the implementation can be used. These commands) 144 558.33 T
+(will be executed in the order given. In this case,) 144 546.33 T
+0 9 Q
+(NOAO-remove-bias) 337.74 546.33 T
+1 10 Q
+( should) 416.64 546.33 T
+(not be invoked unless the) 144 534.33 T
+0 9 Q
+(noao) 248.1 534.33 T
+1 10 Q
+(,) 268.09 534.33 T
+0 9 Q
+(imred) 273.09 534.33 T
+1 10 Q
+(, and) 295.56 534.33 T
+0 9 Q
+(ccdred) 317.48 534.33 T
+1 10 Q
+( modules have been loaded.) 344.46 534.33 T
+(There is also an optional) 144 510.33 T
+0 9 Q
+(:initialize) 244.76 510.33 T
+1 10 Q
+( speci\336cation that enables the user to list) 279.22 510.33 T
+(commands that must be invoked before each invocation of the implementation.) 144 498.33 T
+(The named Common Lisp function\325) 144 474.33 T
+(s \336rst ar) 287.25 474.33 T
+(gument must be a stream, and its) 319.27 474.33 T
+-0.26 (remaining ar) 144 462.33 P
+-0.26 (guments must be lists of \336le pathnames. These lists must correspond) 194.35 462.33 P
+-0.28 (with the implementation\325) 144 450.33 P
+-0.28 (s :) 243.95 450.33 P
+0 9 Q
+-0.28 (input) 252.83 450.33 P
+1 10 Q
+-0.28 ( \336le-types and be in the same order) 272.32 450.33 P
+-0.28 (. The function) 409.99 450.33 P
+(should print the appropriate shell script commands to its stream ar) 144 438.33 T
+(gument, and) 408.1 438.33 T
+(return a list of pathnames that these commands will generate.) 144 426.33 T
+3 F
+(6.2) 108 396.33 T
+(Invoking Procedures: The) 144 396.33 T
+0 F
+(start) 269.52 396.33 T
+3 F
+( Function) 288.96 396.33 T
+0 9 Q
+(start) 144 372.33 T
+1 10 Q
+( expects a single ar) 161.48 372.33 T
+(gument, a list of input \336le pathnames. When invoked, it) 237.35 372.33 T
+-0.19 (\336rst updates Draco\325) 144 360.33 P
+-0.19 (s internal model of the user) 221.89 360.33 P
+-0.19 (\325) 330.37 360.33 P
+-0.19 (s data directory by examining the) 333.15 360.33 P
+(directory\325) 144 348.33 T
+(s actual contents. The \336le) 182.86 348.33 T
+0 9 Q
+(Draco.inv) 287.23 348.33 T
+1 10 Q
+(, in the data directory) 324.54 348.33 T
+(, is updated) 409.1 348.33 T
+(accordingly) 144 336.33 T
+(.) 190.53 336.33 T
+0 9 Q
+(start) 144 312.33 T
+1 10 Q
+( then determines its ar) 161.48 312.33 T
+(gument\325) 249.57 312.33 T
+(s) 282.33 312.33 T
+2 F
+(signatur) 288.72 312.33 T
+(e) 321.67 312.33 T
+1 F
+(, i.e. the set of \336le-types that are) 326.11 312.33 T
+(represented in the input \336le list. This signature determines how the procedure\325) 144 300.33 T
+(s) 456.01 300.33 T
+(constituent primitives will be translated into implementations. If) 144 288.33 T
+0 9 Q
+(start) 403.58 288.33 T
+1 10 Q
+( \336nds a) 421.06 288.33 T
+(translation, it will then attempt to generate and invoke an executable \050Bourne) 144 276.33 T
+(shell\051 script for the procedure\325) 144 264.33 T
+(s \336rst primitive.) 265.01 264.33 T
+-0.27 (Note that Draco cannot determine ahead of time if a translation will succeed. The) 144 240.33 P
+-0.12 (user) 144 228.33 P
+-0.12 (\325) 161.02 228.33 P
+-0.12 (s data might cause an implementation to generate too little or too much data) 163.8 228.33 P
+(to be reconciled with a succeeding primitive\325) 144 216.33 T
+(s input requirements. Such a) 323.87 216.33 T
+(discrepancy can only be discovered by actually attempting to use the translation.) 144 204.33 T
+(Given a translation, the \336le-types required by the resulting implementations) 144 180.33 T
+-0.07 (induce a second signature which may be a proper superset of the input signature.) 144 168.33 P
+-0.35 (As a result, we must handle the case where an implementation requires a \336le-type) 144 156.33 P
+(that is not part of the input signature. Our solution is to model the execution of) 144 144.33 T
+(the executable script we generate with a simple data structure called the) 144 132.33 T
+2 F
+(ad hoc) 433.21 132.33 T
+(\336le list) 144 120.33 T
+1 F
+(. The \336les in this list were either speci\336ed as input or generated by the) 170.93 120.33 T
+-0.38 (procedure earlier) 144 108.33 P
+-0.38 (. If an implementation requires \336les of a type found in the ad hoc) 211.05 108.33 P
+(\336le list\325) 144 96.33 T
+(s signature, Draco searches the ad hoc \336le list for them. Otherwise, it) 174.27 96.33 T
+(searches the user) 144 84.33 T
+(\325) 212.08 84.33 T
+(s data directory) 214.86 84.33 T
+(.) 275.83 84.33 T
+FMENDPAGE
+%%EndPage: "11" 13
+%%Page: "12" 13
+612 792 0 FMBEGINPAGE
+0 9 Q
+0 X
+0 K
+(Conclusions) 72 759 T
+(29 November 1993) 463.57 759 T
+(Draco Design Document) 72 41.3 T
+0 10 Q
+(12) 505.28 41.3 T
+0 9 Q
+( of) 516.39 41.3 T
+0 10 Q
+(17) 528.89 41.3 T
+1 F
+(After generating and executing a script for the procedure\325) 144 713.33 T
+(s \336rst primitive, Draco) 373.8 713.33 T
+(updates its internal model of the data directory and the directory\325) 144 701.33 T
+(s) 403.26 701.33 T
+0 9 Q
+(Draco.inv) 409.64 701.33 T
+1 10 Q
+( \336le.) 447.6 701.33 T
+(The remaining primitives are processed in the same way) 144 689.33 T
+(.) 368.74 689.33 T
+72 640 540 649 C
+72 640 540 649 R
+7 X
+0 K
+V
+72 649 540 649 2 L
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+3 12 Q
+0 X
+0 K
+(7.0) 72 653 T
+(Conclusions) 108 653 T
+1 10 Q
+(The prototype we have described is a plausible one, but the results we obtained using it and its predecessors were) 72 619.33 T
+(de\336nitely mixed. W) 72 607.33 T
+(e are able to reduce data and are convinced that given enough resources the prototype could be) 150.88 607.33 T
+(developed into a useful system, but we have doubts about the desirability of this approach. In the remainder of this) 72 595.33 T
+(section we describe a few of the problems we encountered. Some of these problems could be attributed to our use of) 72 583.33 T
+(IRAF while others clearly have more to do with data analysis than with Draco, but they are all relevant nonetheless.) 72 571.33 T
+3 F
+(7.1) 108 541.33 T
+(Clash of Intuitions) 144 541.33 T
+1 F
+(The only good interface is an intuitive interface, but these are not easy to \336nd for a number of) 108 517.33 T
+(reasons. Computer users often ar) 108 505.33 T
+(gue about the relative merits of various system interfaces and) 239.11 505.33 T
+-0.36 (when one considers that a lar) 108 493.33 P
+-0.36 (ge system interface is often the product of many minds, it is no wonder) 222.31 493.33 P
+(that the end result is rarely deemed \322intuitive\323 by its users.) 108 481.33 T
+(Software has no intuition of course, but good machine interfaces and good interactive interfaces) 108 457.33 T
+-0.31 (must share at least one attribute and that is consistency) 108 445.33 P
+-0.31 (. IRAF\325) 323.55 445.33 P
+-0.31 (s interactive interface is plagued with) 353.78 445.33 P
+(the usual inconsistencies. A procedure\325) 108 433.33 T
+(s ar) 264.27 433.33 T
+(guments are either required or optional. Its required) 278.25 433.33 T
+(ar) 108 421.33 T
+(guments are usually speci\336ed in an order) 115.59 421.33 T
+(-dependent manner) 279.16 421.33 T
+(, but it may also require certain) 355.63 421.33 T
+(keyword ar) 108 409.33 T
+(guments which may be given in any order \050after the syntactically required ar) 153.05 409.33 T
+(guments\051.) 458.75 409.33 T
+(Some ar) 108 397.33 T
+(guments may override others, and all optional ar) 140.85 397.33 T
+(guments have default values which may) 334.43 397.33 T
+-0.37 (change from version to version. This) 108 385.33 P
+2 F
+-0.37 (may) 255.39 385.33 P
+1 F
+-0.37 ( be intuitive to a human user) 272.04 385.33 P
+-0.37 (, but encoding this intuition in) 383.23 385.33 P
+(a computer program is a painstaking task.) 108 373.33 T
+(The task is not an impossible one of course. For example, if Draco wishes to use its own default) 108 349.33 T
+(ar) 108 337.33 T
+(gument values, it may do so by explicitly specifying all ar) 115.59 337.33 T
+(gument values when invoking an) 347.21 337.33 T
+-0.23 (analysis system procedure. However) 108 325.33 P
+-0.23 (, such verbosity often results in commands longer than IRAF\325) 253.45 325.33 P
+-0.23 (s) 497.85 325.33 P
+(command buf) 108 313.33 T
+(fer and one must then devise ways of compactly expressing lengthy commands.) 163.06 313.33 T
+(Meanwhile, if a machine interface existed, it would enable one to use a single technique, e.g. a list) 108 301.33 T
+(of keyword-value pairs, to specify all procedure ar) 108 289.33 T
+(guments.) 309.87 289.33 T
+3 F
+(7.2) 108 259.33 T
+(Data Management) 144 259.33 T
+1 F
+(A data \336le is more than a jumble of numbers. It must also contain information enabling one to) 108 235.33 T
+(interpret these numbers and it should help us determine what they represent as well. For example,) 108 223.33 T
+-0.33 (given a data \336le, we should be able to determine which calibration steps have been performed, what) 108 211.33 P
+-0.01 (calibration data was used, and what calibration software was used including the software\325) 108 199.33 P
+-0.01 (s version) 465.7 199.33 P
+(number and any important parameter values. Ideally) 108 187.33 T
+(, such a data \336le would contain enough) 316.36 187.33 T
+(information to enable one to undo any reduction step, assuming that the calibration data and) 108 175.33 T
+(software are still available. Unfortunately) 108 163.33 T
+(, this is far from the case today) 273.61 163.33 T
+(. Not only is much of the) 396.2 163.33 T
+(information missing, some of the explanatory information found in today\325) 108 151.33 T
+(s data \336les is downright) 403.38 151.33 T
+(misleading.) 108 139.33 T
+(For example, when the IRAF procedure) 108 115.33 T
+0 9 Q
+(noao.imred.ccdred.\337atcombine) 269.82 115.33 T
+1 10 Q
+( creates an averaged \337at) 392.7 115.33 T
+-0.21 (\336eld, the resulting \336le\325) 108 103.33 P
+-0.21 (s header is essentially copied from the \336rst input \336le. So the \336le would claim) 197.88 103.33 P
+-0.24 (that its pixel values were obtained on a certain day at a certain observatory using a certain exposure) 108 91.33 P
+(time when they were actually) 108 79.33 T
+2 F
+(synthesized) 228.18 79.33 T
+1 F
+( from the input \337at \336elds.) 273.71 79.33 T
+FMENDPAGE
+%%EndPage: "12" 14
+%%Page: "13" 14
+612 792 0 FMBEGINPAGE
+0 9 Q
+0 X
+0 K
+(Conclusions) 72 759 T
+(29 November 1993) 463.57 759 T
+(Draco Design Document) 72 41.3 T
+0 10 Q
+(13) 505.28 41.3 T
+0 9 Q
+( of) 516.39 41.3 T
+0 10 Q
+(17) 528.89 41.3 T
+1 F
+-0.23 (There are clues suggesting that this averaged \337at \336le is in fact an average of other \337at \336les, but they) 108 713.33 P
+(are cryptic at best. The biggest clue is the presence of the) 108 701.33 T
+0 9 Q
+(NCOMBINE) 339.2 701.33 T
+1 10 Q
+( keyword whose value is the) 387.64 701.33 T
+(number of input \336les contributing to the average. This is put in the \336le by) 108 689.33 T
+0 9 Q
+(\337atcombine) 403.94 689.33 T
+1 10 Q
+(, but we are) 449.89 689.33 T
+-0.24 (not given the names of the input \336les, or the identity of the procedure that computed the average, or) 108 677.33 P
+(the values of any procedural parameters that may have af) 108 665.33 T
+(fected the computation \050e.g. average vs.) 336.23 665.33 T
+(median\051. In short, such a data \336le is far from being self-de\336ning.) 108 653.33 T
+(Another potential problem is created by the) 108 629.33 T
+0 9 Q
+(NCOMBINE) 284.26 629.33 T
+1 10 Q
+( keyword itself.) 332.7 629.33 T
+0 9 Q
+(\337atcombine) 397.65 629.33 T
+1 10 Q
+( assumes that) 443.6 629.33 T
+0 9 Q
+(NCOMBINE) 108 617.33 T
+1 10 Q
+( is not meaningful to any other procedure. This might not seem unreasonable since) 156.43 617.33 T
+-0.35 (NOAO is quite capable of managing the OIF keyword namespace, but NOAO is not the only player) 108 605.33 P
+-0.04 (in the data analysis game. W) 108 593.33 P
+-0.04 (e would like to be able to import data \336les generated by other analysis) 221.93 593.33 P
+-0.04 (systems into IRAF) 108 581.33 P
+-0.04 (, e.g. via FITS, and if the exporting analysis system also uses) 182.1 581.33 P
+0 9 Q
+-0.04 (NCOMBINE) 428.17 581.33 P
+1 10 Q
+-0.04 (, there) 476.6 581.33 P
+-0.18 (might be trouble. This f problem is usually solved by enclosing system-speci\336c keywords and their) 108 569.33 P
+-0.28 (values in some sort of wrapper so that other systems can easily ignore them, i.e. essentially creating) 108 557.33 P
+(hierarchical keyword names, but the simplest way of implementing this solution entails moving) 108 545.33 T
+(away from the popular technique of using \336xed-length records to store keyword-value pairs and) 108 533.33 T
+(toward a more modern delimiter) 108 521.33 T
+(-oriented syntax.) 237.15 521.33 T
+3 F
+(7.3) 108 491.33 T
+(T) 144 491.33 T
+(oo Much Interaction) 149.37 491.33 T
+1 F
+(The system described in [Lucks92] would only return the correct answer if the user supplied an) 108 467.33 T
+-0.2 (accurate characterization of the problem, but this shortcoming could be addressed by automatically) 108 455.33 P
+(applying quantitative tests to the problem in order to compute the relevant characteristics. In the) 108 443.33 T
+(prevailing data analysis paradigm, the user periodically generates graphical output and visually) 108 431.33 T
+(veri\336es its correctness. This is a somewhat arbitrary determination as the chances of a dif) 108 419.33 T
+(ferent) 464.49 419.33 T
+(user) 108 407.33 T
+(, or even the same user at a dif) 124.25 407.33 T
+(ferent time, choosing the same procedural parameter values on) 245.91 407.33 T
+(the basis of these visual inspections is quite small. Although one could justify small variations in) 108 395.33 T
+-0.27 (technique by noting that the SNR \050signal-to-noise ratio\051 of the extracted data licenses the scientist\325) 108 383.33 P
+-0.27 (s) 497.88 383.33 P
+(conclusions, it is also worth noting that scientists rarely compute the SNR of their data after every) 108 371.33 T
+(analysis step.) 108 359.33 T
+(Ideally these parameter values would not be visually estimated, but rigorously computed, e.g. by) 108 335.33 T
+(optimizing a function\325) 108 323.33 T
+(s value where the complexity of the function might depend on the SNR) 196.84 323.33 T
+(required. Unfortunately) 108 311.33 T
+(, virtually no functions of this sort are commonly used and without them) 201.72 311.33 T
+(analysis will remain more Art than Science.) 108 299.33 T
+FMENDPAGE
+%%EndPage: "13" 15
+%%Page: "14" 15
+612 792 0 FMBEGINPAGE
+0 9 Q
+0 X
+0 K
+(References) 72 759 T
+(29 November 1993) 463.57 759 T
+(Draco Design Document) 72 41.3 T
+0 10 Q
+(14) 505.28 41.3 T
+0 9 Q
+( of) 516.39 41.3 T
+0 10 Q
+(17) 528.89 41.3 T
+72 699 540 708 C
+72 699 540 708 R
+7 X
+0 K
+V
+72 708 540 708 2 L
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+3 12 Q
+0 X
+0 K
+(8.0) 72 712 T
+(References) 108 712 T
+1 10 Q
+(Gilliland, Ronald L. 1992. \322Details of Noise Sources and Reduction Processes,\323 to appear in) 72 678.33 T
+2 F
+(Basic Astr) 444.52 678.33 T
+(onomical) 485.52 678.33 T
+(CCD Observing and Reduction) 72 666.33 T
+1 F
+(, ed. S. Howell \050San Francisco: Astronomical Society of the Paci\336c\051.) 197.2 666.33 T
+-0.12 (Graham, Randall 1992. \322Collage: Foundational Metapplication\323 in) 72 642.33 P
+2 F
+-0.12 (access) 340.72 642.33 P
+1 F
+-0.12 (, Oct-Dec 1992, available via Gopher from) 366.81 642.33 P
+(pubs@ncsa.uiuc.edu.) 72 630.33 T
+(Johnston, Mark 1987. \322An Expert System Approach to Astronomical Data Analysis\323,) 72 606.33 T
+2 F
+(Pr) 416.77 606.33 T
+(oceedings of the Goddar) 426.39 606.33 T
+(d) 524.57 606.33 T
+(Confer) 72 594.33 T
+(ence on Space Applications of Arti\336cial Intelligence) 99.39 594.33 T
+1 F
+(, NASA.) 307.59 594.33 T
+(Lucks, Michael and Gladwell, Ian 1992. \322Functional Knowledge Representation in AI Applications for Scienti\336c) 72 570.33 T
+(Computing\323 in) 72 558.33 T
+2 F
+(AAAI 1992 Fall Symposium on Intelligent Scienti\336c Computation) 134.2 558.33 T
+1 F
+(, ed. E. Kant and R. Keller) 395.43 558.33 T
+(.) 500.91 558.33 T
+(Mandel, Eric 1993. \322The ASSIST Graphical User Interface\323 in) 72 534.33 T
+2 F
+(AXAF News) 325.96 534.33 T
+1 F
+(, issue 1.) 374.54 534.33 T
+(Miller) 72 510.33 T
+(, Glenn E.; Johnston, Mark D.; and Hanisch, Robert J. 1989. \322Proposal to the National Aeronautics and Space) 96.59 510.33 T
+(Administration \320 Applied Information Systems Research\323 \050NRA 89-OSSA-21\051, Space T) 72 498.33 T
+(elescope Science Institute,) 426.07 498.33 T
+(Baltimore.) 72 486.33 T
+(Reid, Ian 1990. \322Interfaces to Numerical Packages\323 in) 72 462.33 T
+2 F
+(Computer Physics Communications) 291.82 462.33 T
+1 F
+(, vol. 61.) 435.07 462.33 T
+(Steele, Guy L. 1990.) 72 438.33 T
+2 F
+(Common Lisp) 157.22 438.33 T
+1 F
+(, Digital Press.) 213.03 438.33 T
+FMENDPAGE
+%%EndPage: "14" 16
+%%Page: "15" 16
+612 792 0 FMBEGINPAGE
+0 9 Q
+0 X
+0 K
+(Figure 1) 72 759 T
+(29 November 1993) 463.57 759 T
+(Draco Design Document) 72 41.3 T
+0 10 Q
+(15) 505.28 41.3 T
+0 9 Q
+( of) 516.39 41.3 T
+0 10 Q
+(17) 528.89 41.3 T
+3 9 Q
+(FIGURE 1.) 72 713.33 T
+1 10 Q
+(Sample Draco Script \050abridged, long lines truncated\051) 126 713.33 T
+0 9 Q
+(#!/bin/sh) 108 692 T
+(# script title: REMOVE-BIAS) 108 681 T
+(# remove bias signal) 108 670 T
+(# creation date: 07-Nov-1993, 20:16:09) 108 659 T
+(# Draco version: 1) 108 648 T
+(# create and initialize log \336le) 108 626 T
+(LOG_FILE=\322/tmp_mnt/marian/data4/rsg/DracoQIJa13486.log\323) 108 615 T
+(echo \322\323 > $LOG_FILE) 108 604 T
+(# initialize package IRAF) 108 582 T
+(P) 108 571 T
+(ACKAGE_INPUT=\322/tmp_mnt/marian/data4/rsg/DracoRIJa13486\323) 113.33 571 T
+(echo cl.logmode = \134\322errors trace\134\323 >> $P) 108 560 T
+(ACKAGE_INPUT) 266.43 560 T
+(echo cl.log\336le = \134\322$LOG_FILE\134\323 >> $P) 108 549 T
+(ACKAGE_INPUT) 257.45 549 T
+(echo cl.keeplog = yes >> $P) 108 538 T
+(ACKAGE_INPUT) 220.5 538 T
+(# initialize implementation NOAO-REMOVE-BIAS) 108 516 T
+(echo noao >> $P) 108 505 T
+(ACKAGE_INPUT) 175.79 505 T
+(echo imred >> $P) 108 494 T
+(ACKAGE_INPUT) 178.27 494 T
+(echo ccdred >> $P) 108 483 T
+(ACKAGE_INPUT) 182.77 483 T
+(# invoke implementation NOAO-REMOVE-BIAS) 108 461 T
+(# no \336les of type OIF-BIAS for /tmp_mnt/marian/data4/rsg/oif0467.imh.) 108 439 T
+(# no \336les of type OIF-BIAS for /tmp_mnt/marian/data4/rsg/oif0602.imh.) 108 417 T
+(# create averaged OIF-BIAS \336les) 108 395 T
+(echo /tmp_mnt/marian/data4/rsg/oif0516.imh >> /tmp_mnt/marian/data4/rsg/DracoSJJa13486.lst) 108 384 T
+(echo /tmp_mnt/marian/data4/rsg/oif0515.imh >> /tmp_mnt/marian/data4/rsg/DracoSJJa13486.lst) 108 373 T
+(echo /tmp_mnt/marian/data4/rsg/oif0514.imh >> /tmp_mnt/marian/data4/rsg/DracoSJJa13486.lst) 108 362 T
+(echo /tmp_mnt/marian/data4/rsg/oif0513.imh >> /tmp_mnt/marian/data4/rsg/DracoSJJa13486.lst) 108 351 T
+(echo /tmp_mnt/marian/data4/rsg/oif0512.imh >> /tmp_mnt/marian/data4/rsg/DracoSJJa13486.lst) 108 340 T
+(echo /tmp_mnt/marian/data4/rsg/oif051) 108 329 T
+(1.imh >> /tmp_mnt/marian/data4/rsg/DracoSJJa13486.lst) 263.69 329 T
+(echo /tmp_mnt/marian/data4/rsg/oif0510.imh >> /tmp_mnt/marian/data4/rsg/DracoSJJa13486.lst) 108 318 T
+(echo /tmp_mnt/marian/data4/rsg/oif0509.imh >> /tmp_mnt/marian/data4/rsg/DracoSJJa13486.lst) 108 307 T
+(echo zerocombine @/tmp_mnt/marian/data4/rsg/DracoSJJa13486.lst output=\134\323/tmp_mnt/marian/data4/rsg/D) 108 296 T
+(# remove OIF-BIAS signature) 108 274 T
+(echo ccdproc /tmp_mnt/marian/data4/rsg/oif0574.imh zero=\134\323/tmp_mnt/marian/data4/rsg/DracoSJJa13486.i) 108 263 T
+(echo ccdproc /tmp_mnt/marian/data4/rsg/oif0573.imh zero=\134\323/tmp_mnt/marian/data4/rsg/DracoSJJa13486.i) 108 252 T
+(echo ccdproc /tmp_mnt/marian/data4/rsg/oif0572.imh zero=\134\323/tmp_mnt/marian/data4/rsg/DracoSJJa13486.i) 108 241 T
+(#invoke package IRAF) 108 219 T
+(echo logout >> $P) 108 208 T
+(ACKAGE_INPUT) 180.29 208 T
+(/usr/stsci/irafx/unix/hlib/cl.csh < $P) 108 197 T
+(ACKAGE_INPUT > /dev/null) 244.44 197 T
+(# rm $P) 108 186 T
+(ACKAGE_INPUT) 138.8 186 T
+(echo created \336les:) 108 164 T
+(echo \322) 108 153 T
+(\323 /tmp_mnt/marian/data4/rsg/DRacoQIJa13486.sh) 142.97 153 T
+(echo \322) 108 142 T
+(\323 $LOG_FILE) 142.97 142 T
+(echo \322) 108 131 T
+(\323 /tmp_mnt/marian/data4/rsg/DracoSJJa13486.lst) 142.97 131 T
+(echo \322) 108 120 T
+(\323 /tmp_mnt/marian/data4/rsg/DracoSJJa13486.imh) 142.97 120 T
+FMENDPAGE
+%%EndPage: "15" 17
+%%Page: "16" 17
+612 792 0 FMBEGINPAGE
+0 9 Q
+0 X
+0 K
+(Implementation Notes) 72 759 T
+(29 November 1993) 463.57 759 T
+(Draco Design Document) 72 41.3 T
+0 10 Q
+(16) 505.28 41.3 T
+0 9 Q
+( of) 516.39 41.3 T
+0 10 Q
+(17) 528.89 41.3 T
+72 698 540 708 C
+72 708 324 708 2 L
+0.25 H
+0 Z
+0 X
+0 K
+N
+0 0 612 792 C
+3 12 Q
+0 X
+0 K
+-0.08 (Appendix) 72 712 S
+1 14 Q
+(\321) 129.23 712 T
+3 12 Q
+-0.08 ( Implementation Notes) 143.22 712 S
+3 10 Q
+(8.1) 108 667.33 T
+(Metaobject Protocol Usage) 144 667.33 T
+1 F
+(W) 108 643.33 T
+(e use Common Lisp\325) 116.64 643.33 T
+(s Metaobject Protocol \050MOP\051 in order to facilitate entity de\336nition. User) 199.65 643.33 T
+(-) 489.54 643.33 T
+(de\336ned entities are de\336ned in terms of each other) 108 631.33 T
+(. Unfortunately) 304.52 631.33 T
+(, we cannot always insure that an) 364.94 631.33 T
+(entity is de\336ned before it is referenced. \050And even if we could, imposing such a restriction would) 108 619.33 T
+(not win us any friends.\051 Our solution to this problem is to create entities as soon as they are) 108 607.33 T
+(referenced and initialize them when the user de\336nes them. The MOP enables us to locate) 108 595.33 T
+(previously created entities by associating an entity list with each entity type. The end result is) 108 583.33 T
+(that memory is conserved and entity speci\336cation errors are easily found.) 108 571.33 T
+3 F
+(8.2) 108 541.33 T
+(Command T) 144 541.33 T
+(emplate Processing) 201.01 541.33 T
+1 F
+(Intuitively) 108 517.33 T
+(, we have an entity de\336nition phase that is followed by an entity usage phase. This) 149 517.33 T
+-0.1 (second phase is signaled by a call to the entity\325) 108 505.33 P
+-0.1 (s) 294.5 505.33 P
+0 9 Q
+-0.1 (validate) 300.79 505.33 P
+1 10 Q
+-0.1 ( method.) 331.76 505.33 P
+0 9 Q
+-0.1 (validate) 369.04 505.33 P
+1 10 Q
+-0.1 ( ensures that its ar) 400.01 505.33 P
+-0.1 (gument) 471.61 505.33 P
+(is well-formed. This may entail validating other entities, maybe even all other entities.) 108 493.33 T
+(V) 108 469.33 T
+(alidation has the side ef) 114.11 469.33 T
+(fect of initiating command template processing. Recall that command) 208.3 469.33 T
+(templates are strings that may contain Draco tilde directives, e.g.) 108 457.33 T
+0 9 Q
+(~log) 369.76 457.33 T
+1 10 Q
+( or) 386.99 457.33 T
+0 9 Q
+(~in) 400.32 457.33 T
+1 8 Q
+(7) 412.56 461.33 T
+1 10 Q
+(. W) 416.55 457.33 T
+(e will substitute) 430.19 457.33 T
+-0.28 (actual \336le names for these directives, but this substitution process has two phases. In the \336rst phase,) 108 445.33 P
+-0.28 (command templates are expanded into vectors of) 108 433.33 P
+2 F
+-0.28 (command) 304.47 433.33 P
+-0.28 (elements) 345.54 433.33 P
+1 F
+-0.28 (. A command element is either) 380.51 433.33 P
+(a string, a) 108 421.33 T
+2 F
+(data-\336les) 149.64 421.33 T
+1 F
+( structure, or the symbol) 186.84 421.33 T
+0 9 Q
+(:log) 286.77 421.33 T
+1 10 Q
+(. A data-\336les structure represents a) 301.26 421.33 T
+0 9 Q
+(~in) 442.53 421.33 T
+1 10 Q
+( or) 454.77 421.33 T
+0 9 Q
+(~out) 468.1 421.33 T
+1 10 Q
+(directive whereas) 108 409.33 T
+0 9 Q
+(:log) 180.71 409.33 T
+1 10 Q
+( represents a) 195.2 409.33 T
+0 9 Q
+(~log) 247.65 409.33 T
+1 10 Q
+( directive. The remainder of the command template is) 264.89 409.33 T
+(represented by the appropriate substrings. This vector of command elements, generated as a side) 108 397.33 T
+(ef) 108 385.33 T
+(fect of validation, is a more useful data-independent representation of the command template.) 115.59 385.33 T
+(The second phase of this substitution occurs when it is time to generate script commands, the data-) 108 361.33 T
+(\336les structures in the command element vectors are populated with information about the user) 108 349.33 T
+(\325) 483.94 349.33 T
+(s) 486.72 349.33 T
+-0.04 (actual data. Information about the reconcile types associated with the relevant data types is used to) 108 337.33 P
+-0.28 (determine whether the script command can be generated, and if it can, what it should be. If we have) 108 325.33 P
+(the right amount of input, the appropriate string values are substituted for the data-\336les structures) 108 313.33 T
+(and) 108 301.33 T
+0 9 Q
+(:log) 124.93 301.33 T
+1 10 Q
+(, and the resulting vector of strings is concatenated to produce a script command.) 139.42 301.33 T
+72 95 540 111 C
+81 102 531 102 2 L
+0.25 H
+2 Z
+0 X
+0 K
+N
+0 0 612 792 C
+1 7 Q
+0 X
+0 K
+(7) 90 92.6 T
+1 9 Q
+(Code for processing the tilde directives ~) 98.74 89 T
+0 7 Q
+(in) 246.88 89 T
+1 9 Q
+( and ~) 252.31 89 T
+0 7 Q
+(out) 274.65 89 T
+1 9 Q
+( is in place and is fully tested \050for historical reasons\051,) 284.36 89 T
+(but Draco these directives are unused at the moment.) 100.8 79 T
+FMENDPAGE
+%%EndPage: "16" 18
+%%Page: "17" 18
+612 792 0 FMBEGINPAGE
+0 9 Q
+0 X
+0 K
+(Acronyms) 72 759 T
+(29 November 1993) 463.57 759 T
+(Draco Design Document) 72 41.3 T
+0 10 Q
+(17) 505.28 41.3 T
+0 9 Q
+( of) 516.39 41.3 T
+0 10 Q
+(17) 528.89 41.3 T
+72 698 540 708 C
+72 708 324 708 2 L
+0.25 H
+0 Z
+0 X
+0 K
+N
+0 0 612 792 C
+3 12 Q
+0 X
+0 K
+-0.08 (Appendix) 72 712 S
+1 14 Q
+( \321) 125.98 712 T
+3 12 Q
+-0.08 ( Acronyms) 143.47 712 S
+1 10 Q
+(AI) 72 673.33 T
+(Arti\336cial Intelligence) 126 673.33 T
+(CLIM) 72 661.33 T
+(Common Lisp Interface Manager) 126 661.33 T
+(FITS) 72 649.33 T
+(Flexible Image T) 126 649.33 T
+(ransport System) 194.49 649.33 T
+(IRAF) 72 637.33 T
+(Image Reduction and Analysis Facility) 126 637.33 T
+(KV) 72 625.33 T
+(Keyword-V) 126 625.33 T
+(alue) 172.62 625.33 T
+(MOP) 72 613.33 T
+(\050Common Lisp\325) 126 613.33 T
+(s\051 Meta-Object Protocol) 189.59 613.33 T
+(NOAO) 72 601.33 T
+(National Optical Astronomy Observatories) 126 601.33 T
+(OIF) 72 589.33 T
+(Old IRAF Format) 126 589.33 T
+(SNR) 72 577.33 T
+(Signal-to-Noise Ratio) 126 577.33 T
+(STSDAS) 72 565.33 T
+(Space T) 126 565.33 T
+(elescope Science Data Analysis System) 157.77 565.33 T
+FMENDPAGE
+%%EndPage: "17" 19
+%%Trailer
+%%BoundingBox: 0 0 612 792
+%%Pages: 18 1
+%%DocumentFonts: Helvetica
+%%+ Times-Roman
+%%+ Times-Italic
+%%+ Helvetica-Bold

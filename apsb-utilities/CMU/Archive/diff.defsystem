@@ -1,0 +1,82 @@
+413c413
+<   #+(or (and :excl :allegro-v4.0) :mcl)
+---
+>   #+(or (and :excl :allegro-version>= (version>= 4)) :mcl)
+539c539
+< #+(and :excl :allegro-v4.0 :cltl2)
+---
+> #+(and :excl :allegro-version>= (version>= 4) :cltl2)
+545c545
+< #+(and :cltl2 (not (or (and :excl :allegro-v4.0) :mcl)))   
+---
+> #+(and :cltl2 (not (or (and :excl :allegro-version>= (version>= 4)) :mcl)))   
+548a549,552
+> #+(and :allegro-version>= (version>= 4 1) :logical-pathnames-mk)
+> (defpackage "MAKE"
+> 	(:shadowing-import-from "LOGICAL-PATHNAME" "LOGICAL-PATHNAME"))
+> 
+552c556
+< #+(and :excl :allegro-v4.0 :cltl2)
+---
+> #+(and :excl :allegro-version-v4.0 :cltl2)
+553a558,559
+> #+(and :excl :allegro-version>= (version>= 4 1) :cltl2)
+> (cl:provide 'make)
+556c562
+< #+(and :cltl2 (not (or (and :excl :allegro-v4.0) :mcl)))
+---
+> #+(and :cltl2 (not (or (and :excl :allegro-version>= (version>= 4)) :mcl)))
+626a633,634
+> #+(and :allegro-version>= (version>= 4 1))  (setq *dont-redefine-require* t)
+> 
+660c668
+< (defvar *minimal-load* nil
+---
+> (defvar *minimal-load* t
+793a802
+>   (declare (special *version*))
+934a944,946
+>   #+:ANSI-pathnames (when (typep absolute-dir 'logical-pathname)
+> 			  (setq absolute-dir
+> 				(translate-logical-pathname absolute-dir)))
+1462c1474,1475
+< 		     #-CMU (pathname-device (component-device component))
+---
+> 		     #-CMU (when (component-device component)
+> 			     (pathname-device (component-device component)))
+1968a1982,1995
+> 	(when (consp force)	; convert symbolic module names
+> 	  (setq force		;  to component references
+> 		(let ((components (component-components
+> 				    (find-system name :load))))
+> 		     (mapcar
+> 		       #'(lambda (force-comp-name)
+> 			   (let ((component (find force-comp-name components
+> 					      :key #'component-name
+> 					      :test #'string-equal)))
+> 				(unless component
+> 				  (error "Can't find module named ~s."
+> 					 force-comp-name))
+> 				component))
+> 		       force))))
+1975c2002
+< 		(*compile-file-verbose* t) ; nil
+---
+> 		#-:allegro (*compile-file-verbose* t) ; nil
+1988c2015,2022
+< 	    (operate-on-component system operation force))))
+---
+> 	    (if (consp force)		; this is pretty gross . . .
+> 		(dolist (component force)
+> 		  (when (component-depends-on component)
+> 			(operate-on-system name operation
+> 			  :force (mapcar #'component-name
+> 					 (component-depends-on component))))
+> 		  (operate-on-component component operation :all))
+> 		(operate-on-component system operation force)))))
+2060a2095
+> 		#-(and :allegro-version>= (version>= 4 1))
+2190c2225
+< 				      :test #'string-equal :key #'string))
+---
+> 				:test #'string-equal :key #'component-name))

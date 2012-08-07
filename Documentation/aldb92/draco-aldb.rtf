@@ -1,0 +1,256 @@
+{\rtf1\mac\deff2 {\fonttbl{\f0\fswiss Chicago;}{\f2\froman New York;}{\f3\fswiss Geneva;}{\f4\fmodern Monaco;}{\f13\fnil Zapf Dingbats;}{\f16\fnil Palatino;}{\f18\fnil Zapf Chancery;}{\f20\froman Times;}{\f21\fswiss Helvetica;}{\f22\fmodern Courier;}
+{\f23\ftech Symbol;}{\f34\fnil New Century Schlbk;}{\f2029\fnil Nadianne;}{\f2036\fnil Old English Text;}{\f5672\fnil Tekton BoldOblique;}{\f5673\fnil Tekton Bold;}{\f13101\fnil Tekton Oblique;}{\f13102\fnil Tekton;}{\f14714\fnil Caslon Open Face;}
+{\f14832\fnil Futura Extra Bold;}{\f14899\fnil Cooper Black;}{\f32602\fnil AHED Special;}}{\colortbl\red0\green0\blue0;\red0\green0\blue255;\red0\green255\blue255;\red0\green255\blue0;\red255\green0\blue255;\red255\green0\blue0;\red255\green255\blue0;
+\red255\green255\blue255;}{\stylesheet{\s243\qj\sb280\sl280\tqc\tx4320\tqr\tx8640 \f20 \sbasedon0\snext243 footer;}{\s244\qj\sb280\sl280\tqc\tx4320\tqr\tx8640 \f20 \sbasedon0\snext244 header;}{\s245\qj\sb280\sl280 \f20\fs18\up6 \sbasedon0\snext0 
+footnote reference;}{\s246\qj\sb280\sl280 \f20\fs20 \sbasedon0\snext246 footnote text;}{\s253\qj\li360\sb280\sl280 \b\f20 \sbasedon0\snext0 heading 3;}{\s254\qj\sb240\sl280\keepn \i\f21 \sbasedon0\snext0 heading 2;}{\s255\qj\sb240\sl280 \b\f21 
+\sbasedon0\snext0 heading 1;}{\qj\sb280\sl280 \f20 \sbasedon222\snext0 Normal;}{\s2\qj\li720\ri720\sb280\sl-240 \f20\fs20 \sbasedon0\snext2 abstract;}{\s3\qj\fi-360\li360\sl280\tx360 \f20\fs20 \sbasedon0\snext3 refs;}{\s4\qj\fi-180\li540\sl280 \f20 
+\sbasedon0\snext4 bullet,b;}{\s5\qj\sb280\sl280 \f14714 \sbasedon0\snext5 note;}{\s6\qj\sb280\sl280\brdrb\brdrs \f20\fs20 \sbasedon0\snext6 caption;}{\s7\qj\fi-180\li540\sl240 \f22\fs20 \sbasedon4\snext7 example;}}{\info{\author Glenn Miller}}
+\widowctrl\ftnbj\fracwidth \sectd \sbknone\linemod0\linex0\cols1\endnhere {\footer \pard\plain \s243\qj\sb280\sl280\tqc\tx4320\tqr\tx8640 \f20 \tab {\i  - \chpgn  -}\par 
+}\pard\plain \qc\sb280\sl280 \f20 {\b\fs28 The Data Reduction Expert Assistant}{\fs18\up6  {\footnote \pard\plain \s246\qj\sb280\sl280 \f20\fs20 {\fs18\up6  }
+ Invited paper to appear in the Proceedings of Astronomy from Large Databases II, 14-16 September, 1992, Haguenau, France.}}{\b\fs28  \par 
+}{\fs28 Glenn E. Miller}\par 
+Space Telescope Science Institute\par 
+\pard \qc\sl280 3700 San Martin Dr.\par 
+Baltimore, MD 21218   USA\par 
+miller@stsci.edu\par 
+\pard \qc\sb280\sl280 ABSTRACT\par 
+\pard\plain \s2\qj\li720\ri720\sb280\sl-240 \f20\fs20 Increased access to very large astronomical databases, the use of large format
+ detectors and other developments in observational astronomy have the potential to overwhelm the capacity of most astronomers to analyze data unless new approaches to data reduction are found. This paper reports the initial progress in creating an expert s
+ystem to assist in the reduction of scientific data. This system, called Draco, takes on much of the mechanics of data reduction, allowing the astronomer to spend more time understanding the physical nature of the data. Draco works in conjunction wi
+th existing data analysis systems such as STSDAS/IRAF and is designed to be extensible to new data reduction tasks.\par 
+\pard\plain \s255\qj\sb240\sl280 \b\f21 1.\tab Introduction\par 
+\pard\plain \qj\sb280\sl280 \f20 The task of data reduction presents severe obstacles to an astronomer: The volume of data may require much tedious work that is susceptible to errors (e.g.,
+ the flat-fielding and bias correction of a few dozen digital images can take several day's time and it is easy to accidentally apply the wrong calibrations to some of the images). Management of the data reduction 
+process may require tracking tens or hundreds of files through many different steps. Limitations of disk space may constrain the order of the reduction (e.g.,
+ there may be room for only a few images on disk at any one time). The quality of each reduction step should be evaluated (e.g.,
+ stability of internal calibrations, or  number of cosmic ray events). Often the entire reduction process must be repeated several times with improved calibration data or improved reduction algorithms. The chosen d
+ata analysis system must be mastered sufficiently by the scientist to correctly perform the reduction. \par 
+\pard \qj\sb280\sl280 These are significant problems that
+ inhibit progress by forcing the scientist to expend time and effort on the mechanics of reduction rather than understanding the physical nature of the data. The growing availability of large astronomical databases and increased use of large format detecto
+rs threatens to magnify these problems to an overwhelming degree. Other scientific disciplines share this concern, e.g., NASA's Earth Observing System (EOS) will collect many hundreds of megabytes of data each day.\par 
+We are developing Draco{\fs20\up6 19}, which is an expert system tool for the management and reduction of data.{\fs18\up6 \'a0{\footnote \pard\plain \s246\qj\sb280\sl280 \f20\fs20 {\fs18\up6 \'a0} For the purposes of this paper, there is 
+no need to distinguish between the terms data "reduction", "calibration" and "analysis" since Draco can provide assistance for all.}} Draco builds on the foundation of existing data analysis systems such as STSDAS/IRAF
+. Draco gathers information about the available data (typically from header information in the data files), develops a plan for data reduction based on a template supplied by the astronomer and translates the plan into exp
+licit reduction commands.  An important feature of Draco is its generality and extensibility -
+ new types of data analysis tasks or additional data analysis systems can easily be added without modifying existing software. This work is an extension of a successful prototype system for the calibration of CCD images developed by Johnston{\b \|S}\|up5(
+){\fs20\up6 10}.\par 
+
+Draco's role in the data reduction process is modeled after a human assistant (at the level of an advanced undergraduate or beginning graduate student). With a human assistant,  the astronomer describes the reduction process, demonstrates it on some data a
+nd notes various steps to be checked during the reduction (e.g., typical number of cosmic ray hits per pixel per second, average variation in flat fields, etc.). Once trained, the human assistant will reliably perform the reductions on 
+new data sets and call attention to any unusual situations (e.g.,
+ missing calibration files, abnormally large number of bad pixels, etc.). A human assistant is (usually) able to adapt to simple changes in the reduction process with little or no additional training (e.g.,
+ using new calibration data or adjusting parameters within an algorithm). \par 
+Our goals are for Draco to accurately perform the reductions according to the description provided by the user, to alert the user to potential problems in the reduction
+, and to be readily extensible to new types of data reduction and data analysis systems. (The analogy of Draco to a human assistant should not be carried to an extreme. Unlike a human assistant, Draco will not learn from its mistakes nor will it disco
+ver new information. Section 2 mentions some programs that have some of these capabilities.) This automation frees the scientist from much of the drudgery in data reduction and should allow more time for the exploration and modelling of data.\par 
+This paper is a progress report on our initial work on Draco. Section 2 discusses related work, while Section 3 presents the design and implementation of Draco. Section 4 describes the use of the first version of the software
+. A final section summarizes our investigation and outlines our future work.\par 
+\pard\plain \s255\qj\sb240\sl280 \b\f21 2.\tab Previous Work on Expert Scientific Assistants\par 
+\pard\plain \qj\sb280\sl280 \f20 Our current investigation ensues from the work of Johnston{\fs20\up6 10} who developed the Data Analysis Assistant (DAA), a prototype system for data reduction. The problem addressed by t
+his work was Charge Coupled Device (CCD) calibration since it is a common data reduction task and it provided a suitable test case for the concept. CCD calibration consisted of four steps:\par 
+\pard\plain \s4\qj\fi-180\li540\sl280 \f20 \par 
+1. Extraction of a subimage representing valid data\par 
+2. Bias subtraction\par 
+3. Dark current subtraction\par 
+4. Flat fielding\par 
+\pard\plain \qj\sb280\sl280 \f20 
+The first two steps depend only on the characteristics of the detector and instrument mode. The last two steps are more involved since dark and flat calibration images are usually performed periodically through an observing run and therefore must be identi
+fied, matched and averaged to the appropriate science images.\par 
+Information about data and data reduction was organized in three knowledge bases: data, instrument modes and tasks. The data knowledge base described the astronomer's actual data (e.g.,
+ darks, flats, science). The instrument knowledge base held information such as the bias value or location of bad pixels. The task knowledge base recorded information about the data reduction process. Tasks were divided into two types: primitive and compou
+nd. Primitive tasks were those which could be implemented with a single command (or simple series of commands) in a specific data analysis system. Compound tasks represented the higher level operations.\par 
+To use the system, the astronomer first supplied the DAA with a description of all relevant images, i.e., dark, flat-field and science. (This information was available in the image header information, but a means to read headers 
+was not implemented in the DAA.) The DAA generated a plan by using a set of forward-chaining production rules to associate flat fields and dark images with the proper science image, check for missing calibration files and expand compound t
+asks into primitive operations. Once a plan was complete, the user selected one of the two target languages, STSDAS or MIDAS and the general plan was converted to an explicit script of image processing commands in the chosen language
+. The user then executed the script file on an image analysis workstation.\par 
+The DAA was implemented in the Lisp-based Knowledge Engineering Environment (KEE) expert system shell (a product of Intellicorp, Inc.) on a Symbolics Lisp workstation. The DAA used KEE's rule and object systems as well as KEE
+'s graphical user interface. Portions of the DAA were written in Lisp.\par 
+The 
+DAA demonstrated two important concepts. First, it was possible to separate the system's knowledge of data reduction from the control strategy information.  This allowed the system to accommodate new types of data or new data analysis functions without mas
+sive changes to the control software, as might be the case in a system written in a procedural language such as Fortran or C, or operating system command languages such as Unix shell scripts. For example, the format of individual reduction system 
+commands was attached to the primitive task objects. This facilitates using existing information in new reduction procedures and provides a straightforward way to add new reduction systems. 
+Second, it proved the feasibility of constructing a data reduction plan on the basis of a generalized knowl
+edge of data reduction, specific knowledge of commands in a particular data analysis system and knowledge of the actual data.  This yielded a very general framework which could readily accommodate new types of data reduction. \par 
+To conclude this section, I briefly mention some other work on expert scientific assistants. An expert assistant for the preparation of Hubble Space Telescope (HST) observing proposals was developed by Adorf and di Serego Alighieri{\fs20\up6 2}. 
+A system which planned experiments in molecular genetics was originally developed by Stefik{\fs20\up6 17} and recent work is reported in Noordewier and Travis{\fs20\up6 15}. Buchanan, et al.{\fs20\up6 3} developed a system which controlled
+ particle accelerator experimental parameters.\par 
+Abelson, et al.{\fs20\up6 1} review their work on tools which prepare numerical experiments from high-level specifications of physical models. For example, the Bifurcation Interpreter and KAM programs investigate problems in dynamics by identifying
+ interesting features, performing additional calculations of such features and reporting the results to the scientist. Keller and Rimon{\fs20\up6 11} are developing a knowledge-based software environment to support the development of scientific models. 
+Fabiano, Bettini and Chin{\fs20\up6 5} describe a program which assists users in choosing parameters for complex quantum chemistry programs. Lucks and Gladwell{\fs20\up6 12} 
+describe a framework for representing and reasoning with expert knowledge that has been used to a
+dvise in the selection of differential equation software from numerical subroutine libraries and for the identification of parallel science observations for the Hubble Space Telescope.\par 
+Artificial intelligence technology has often been applied to classification problems. Fayyad, et al.{\fs20\up6 6} are applying machine learning techniques to identify objects in the second Palomar Sky Survey. Cheeseman, et al.{\fs20\up6 4}
+ used a program to discover new classes of objects in IRAS spectra. Thonnat and Clement{\fs20\up6 18} developed an expert
+ system to control the processing of galactic images and the extraction of parameters such as size, ellipticity and luminosity profile. The results from this system are used by another expert system which classifies the galaxies. \par 
+These are just a few of the hundreds of scientific applications of expert systems and artificial intelligence (see Murtagh and Heck{\fs20\up6 14 }for more references). For the most recent developments, the reader should consult the proceedings of 
+conferences such as the {\i Conference on Artificial Intelligence Applications} and {\i Innovative Applications of Artificial Intelligence}, {\i National Conference on Artificial Intelligence}.\par 
+\pard\plain \s255\qj\sb240\sl280 \b\f21 3.\tab Design and Implementation\par 
+\pard\plain \s254\qj\sb240\sl280\keepn \i\f21 3.1 Scientific Data Analysis Systems\par 
+\pard\plain \qj\sb280\sl280 \f20 In the last decade, scientific data analysis systems have grown in number and function
+ality. Widely used astronomical data analysis systems include the Interactive Reduction and Analysis Facility (IRAF) developed at NOAO, the Space Telescope Science Data Analysis System (STSDAS) developed at the STScI, the Astronomical Image Processing Syst
+em (AIPS) developed at NRAO and the Munich Interactive Data Analysis System (MIDAS) developed at ESO. The Interactive Data Language (IDL) is used in astronomy and other disciplines such as climate research. (See Hanisch{\fs20\up6 9} for a review).\par 
+The philosophy of these systems is usually similar to the philosophy of most computer operating systems (e.g., Unix, VMS): there is a command language (CL) which serves as the user interface in a \ldblquote command/prompt\rdblquote 
+ mode. The CL executes either single commands interactively, or scripts (procedures) of commands (generally with a choice of interactive or batch execution). CL comm
+ands reduce to the execution of modular operators which work on standardized types of data files. Two major strengths of this philosophy are:\par 
+\pard\plain \s4\qj\fi-180\li540\sl280 \f20 \bullet  Flexibility for the user - individual commands can be chained (or \ldblquote pipelined\rdblquote ) to construct powerful, customized procedures.\par 
+\bullet  Facilitate development - there is a well-defined (though not usually simple) process for adding new modules to a system. Thus many programmers and scientists may independently contribute to the growth of a system.\par 
+\pard\plain \qj\sb280\sl280 \f20 The success of this approach is shown by their growth. Data analysis systems developed at one institution have been adopted as the standard at many universities and research institutes (e.g.,
+ IRAF) and systems developed for a particular wavelength range have been adapted to serve multiple spectral domains (e.g., AIPS). Packages developed independently have been incorporated into larger systems (e.g., the incorporation of DAOPHOT and Feigelson
+\rquote s Survival Analysis into IRAF/STSDAS).\par 
+However, this approach has some serious drawbacks (which are well known to users). Learning a system is not easy and even experts cannot be familiar with all parts of the system. Within a system, programs authored by different people may
+ have different definitions or naming conventions which adds to the confusion of a novice user. To compound the problem, some
+ users have to learn more than one system depending on where or how they obtain their data. This is especially true for multi-spectral observations which are often taken at several different observatories. \par 
+Although many commands are conceptually simple (e.g., subtract two images), some commands are quite sophisticated and require the specification of many parameters (some of which are inter
+dependent) to get the correct results. If a complex procedure does not perform the desired tasks, the user is faced with the daunting possibilities of either modifying a large, complex program or writing a new program. Either choice can tak
+e many weeks or months.\par 
+
+It has also proven very difficult to capture and make available expert knowledge. Users can obtain assistance from manuals (often quite large, hard to use and harder to keep up to date), on-line help (often of little use to the non-expert and surprisingly 
+hard to maintain), or by befriending the local expert on a particular topic.\par 
+Some of these problems will be lessened by efforts within scientific disciplines to adopt one analysis system as a standard (e.g.,
+ IRAF as a standard for astronomical data analysis), yet these effort cannot solve all the difficulties listed above. In particular, standardization will not lessen the {\ul data management} problem nor the time needed to learn the s
+ystem (including new modules as they are added). Researchers working in multi-spectral or interdisciplinary domains are likely to be faced with an amalgam of analysis systems for years to come.\par 
+Several groups are investigating solutions to these problems. A graphical user interface based on X-windows is being added to IRAF and the development of a hypertext help system has been proposed. A number of groups are explor
+ing visualization systems which allow a scientist to interact with data in a more intuitive way in order to facilitate communication of results, browsing and discovery of new features{\fs20\up6 7,16}. However, as
+ visualization systems are (by design) highly interactive, they will not lessen the data management problems addressed by Draco.\par 
+\pard\plain \s254\qj\sb240\sl280\keepn \i\f21 3.2 Draco - Data Reduction Expert Assistant\par 
+\pard\plain \qj\sb280\sl280 \f20 The present work demonstrates one approach to solving some of the above problems in scientific data analysis. Draco is an expert assistant which does the following:\par 
+\pard\plain \s4\qj\fi-180\li540\sl280 \f20 \par 
+\bullet  gathers information about the actual data (from header information in the data files).\par 
+\pard \s4\qj\fi-180\li540\sl280 \bullet  develops a plan for data reduction based on the user\rquote s goals and actual properties of the data\par 
+\pard \s4\qj\fi-180\li540\sl280 \bullet  produces a command language script to perform the reduction in a specific data analysis system\par 
+\bullet  performs checks on the data for consistency and quality\par 
+\pard\plain \qj\sb280\sl280 \f20 By producing a command script in the language of a data analysis system, Draco builds on the foundation of these systems, rather than creating yet another analysis system.\par 
+For Draco we have adopted a different design from the rule-based approach of Johnston's DAA
+. Draco can be likened to an algebra or very simple programming language. The user defines a set of primitive operations and combines them to perform reduction procedures. Draco does not know anything about the semantics of the primitives, but it does know
+ which combinations are syntactically valid. This design was motivated by the realities of cutting-edge scientific work: In our discussions with colleagues it became clear that an important characteristic of scientific data analysis is that experts often 
+disagree on how to best perform reductions. For example, there are several algorithms for removing cosmic ray artifacts from HST Wide Field/Planetary Camera (WF/PC) data{\fs20\up6 8,13} and the proper choice of algorithm 
+depends on the type of science to be extracted from the data. The variety of techniques available to correct for the HST's spherical aberration provides another example. Since the "rules" for data reduction vary from user to user (and 
+even week to week for a single user), it did not appear feasible to us to collect this information as a set of expert system production rules. The alternative provided by Draco allows the user to specify the reduction steps at an abstract level.\par 
+Figure 1 illustrates the organization of information in Draco, using the removal of cosmic ray noise from WF/PC images as an example. {\i Primitives} represent basic data analysis operations and each primitive has one or more {\i implementations}
+ which are commands or programs which accomplish the primitive. A {\i procedure} is a template for data reduction built from primitives. \par 
+The command\par 
+\pard\plain \s7\qj\fi-180\li540\sl240 \f22\fs20 \par 
+\pard \s7\qj\fi-180\li540\sl240 \tab {(make-script remove-CR-noise :input "}mydir{")\par 
+}\pard\plain \qj\sb280\sl280 \f20 causes Draco to generate a {\i script}  for removing cosmic ray artifacts using the procedure {\f22 remove-CR-noise}. Science image files are taken from the directory {\f22 mydir}. The script is then executed
+ and produces a log file which records the reduction steps.\par 
+A procedure for cosmic ray removal is defined by:\par 
+\pard\plain \s7\qj\fi-180\li540\sl240 \f22\fs20 \par 
+(define-procedure\par 
+\tab :name\tab \tab \tab \tab remove-CR-noise\par 
+\pard \s7\qj\fi-180\li540\sl240 \tab :documentation \tab \tab "procedure for removing CR noise"\par 
+\pard \s7\qj\fi-180\li540\sl240 \tab :primitives\tab \tab \tab (find-like-images CR-removal))\par 
+\pard\plain \qj\sb280\sl280 \f20 The operations defined by the primitives are executed in the order specified, that is, Draco currently implements a pipeline for reductions.\par 
+\pard \qj\sb280\sl280 The primitive {\f22 CR-removal} is defined as follows:\par 
+\pard\plain \s7\qj\fi-180\li540\sl240 \f22\fs20 \par 
+(define-primitive\par 
+\tab :name        \tab \tab CR-removal\par 
+\tab :documentation \tab \tab "remove cosmic ray noise"\par 
+\tab :input\tab \tab \tab \tab image\par 
+\tab :output\tab \tab \tab image\par 
+\tab :reconcile\tab \tab \tab :conjunctive\par 
+\tab :concrete\tab \tab \tab (STSDAS-CR-removal))\par 
+\pard\plain \qj\sb280\sl280 \f20 The {\f22 :input} and {\f22 :output} parameters specify the data types that this primitive reads and writes. (Data types are an abstraction which are realized in terms of file types, e.g.,
+ in SDAS, images are stored in Generic Edited Information Set files.) The {\f22 :reconcile} parameter defines the action when multiple inputs are encountered. The value of {\f22 :conjunctive} in the example indicates tha
+t the primitive should treat the data as a single input (i.e., multiple images are processed as a unit to determine the cosmic ray hits). An alternative value for this parameter is {\f22 :distributive}
+ which causes the primitive to process each input separately, i.e., to iterate over its inputs. The {\f22 :concrete} keyword names the implementation which is defined as:\par 
+\pard\plain \s7\qj\fi-180\li540\sl240 \f22\fs20 \par 
+\pard \s7\qj\fi-180\li540\sl240\keepn (define-implementation\par 
+\tab :name\tab \tab \tab \tab STSDAS-CR-removal\par 
+\tab :documentation\tab \tab "STSDAS cosmic ray removal function"\par 
+\tab :package\tab \tab \tab IRAF\par 
+\tab :initialize-once\tab \tab ("stsdas" "wfpc")\par 
+\pard \s7\qj\fi-180\li540\sl240 \tab :syntax\tab "combine ~in ~out option=\\"crreject\\" usedqf=\\"yes\\"")\par 
+\pard\plain \qj\sb280\sl280 \f20 The syntax parameter records the format of specific procedures and commands such as the STSDAS "{\f22 combine}" procedure in our example. The {\f22 ~in} and {\f22 ~out} tokens are placeholders for the input and output 
+file lists, respectively. Many analysis commands have initializations which must be invoked prior to execution. In this example, the "{\f22 stsdas}" and "{\f22 wfpc}" commands must be issued to IRAF to select the proper packages which contain the {\f22 
+combine} procedure. The {\f22 :initialize-once} keyword's actions will be performed before the first instance of this command. The optional parameter {\f22 :initialize} (not used in this example) is used when commands must be invoked with each use.\par 
+\pard\plain \s6\qj\sb280\sl280\brdrb\brdrs \f20\fs20 \par 
+\pard\plain \qj\sb280\sl280\keepn \f20 {{\pict\macpict\picw382\pich201 
+05a4ffffffff00c8017d1101a0008201000affffffff00c8017d09000000000000000031000100c7001d012b09ffffffffffffffff38a10096000c010000000200000000000000a1009a0008fffc00000028000001000a000900d0001601222c0009332e0654656b746f6e03332e0d000c2e0004000001002bd1130f72656d
+6f76652d43522d6e6f697365a0009701000affffffff00c8017d090000000000000000310037007f005300e309ffffffffffffffff38a10096000c010000000200000000000000a1009a0008fffc00000025000001000a003f0088004c00d528004900891066696e642d6c696b652d696d61676573a0009701000affffffff
+00c8017d09000000000000000031003701060053016a09ffffffffffffffff38a10096000c010000000200000000000000a1009a0008fffc0000001a000001000a003f010f004c014729870a43522d72656d6f76616ca0009701000affffffff00c8017d22001c00f4000922002500b97a0009000000000000000031006d00
+7f008900e309ffffffffffffffff38a10096000c010000000200000000000000a1009a0008fffc00000023000001000a00750088008200d128007f00890e66696e642d6578706f7375726573a0009701000affffffff00c8017d09000000000000000031006d01060089017c09ffffffffffffffff38a10096000c01000000
+0200000000000000a1009a0008fffc00000032000001000a0075010f008201772987115354534441532d43522d72656d6f76616ca0009701000affffffff00c8017d0900000000000000003100a3007f00bf00e309ffffffffffffffff38a10096000c010000000200000000000000a1009a0008fffc0000001f000001000a
+00ab008800b800c92800b500890c4c6973702070726f6772616da0009701000affffffff00c8017d0900000000000000003100a3010600c8017309ffffffffffffffff38a10096000c010000000200000000000000a1009a000800020000002e000001000a00ab010f00c5016f2987115354534441532070726f6365647572
+650d2a0d0c776670632e636f6d62696e65a00097a10064000a4d44504c000900010002a0008c01000affffffff00c8017d71001e0067012f00760137007601330067012f00670133006701370076013322005201330015a0008da1006400084d44504c000a0000a10064000a4d44504c000900010002a0008c71001e006700
+b1007600b9007600b5006700b1006700b5006700b9007600b522005200b50015a0008da1006400084d44504c000a0000a10064000a4d44504c000900010002a0008c71001e009d00b100ac00b900ac00b5009d00b1009d00b5009d00b900ac00b522008800b50015a0008da1006400084d44504c000a0000a10064000a4d44
+504c000900010002a0008c71001e009d012f00ac013700ac0133009d012f009d0133009d013700ac013322008801330015a0008da1006400084d44504c000a0000a10096000c010000000200000000000000a1009a0008fffb00000020000001000a000a001b0019005f2c000800140554696d657303001404010d000e2800
+16001c0a50726f6365647572653aa00097a10096000c010000000200000000000000a1009a0008fffb00000021000001000a00380020004700642b052e0b5072696d6974697665733aa00097a10096000c010000000200000000000000a1009a0008fffb00000034000001000a007600000085006b280082000110496d706c
+656d656e746174696f6e733aa00097a10064000a4d44504c000900010002a0008c01000affffffff00c8017d71001e002f00b5003e00bd003e00b9002f00b5002f00b9002f00bd003e00b922002500b9000aa0008da1006400084d44504c000a0000a10064000a4d44504c000900010002a0008c71001e002f0130003e0138
+003e0134002f0130002f0134002f0138003e01342200250134000aa0008da1006400084d44504c000a0000a00083ff}}\par 
+\pard\plain \s6\qj\sb280\sl280\brdrb\brdrs \f20\fs20 Figure 1 - Data structures for the removal of cosmic ray noise from WF/PC images.\par 
+\pard\plain \qj\sb280\sl280 \f20 The definition of Draco's structures such as primitives, implementations and data types creates a base of knowledge which can be applied to new data reduction problems. A new analysis system can be added to Draco by de
+fining the appropriate implementations and file types. It is common for astronomers to write operating system command language scripts (e.g., Unix Shell or VMS DCL) to reduce data. The advantages of the Draco-generated scripts are clear: 
+Draco provides a higher level of abstraction and handles many lower level details for the user. It is usually very difficult to modify custom command language scripts to different reduction tasks whereas Draco facilitates reuse of 
+its component data structures.\par 
+In addition to the ability to create scripts, Draco provides a tool to inventory the files within a directory. Rather than relying solely on file extension conventions, the inventory uses file recognizers 
+which (generally) open and read files to determine their format and contents (e.g., particular FITS keywords). This tool is useful for the management of the large number of files involved in data reduction and in providing quality checks on the data.
+\par 
+Draco is written in mostly in Common Lisp with some of the file recognition functions in C and Bourne shell code. Object-oriented programming is used to represent and operate the data structures (using the Common Lisp Object System). The DAA was 
+prototyped on a special-purpose workstation (Lisp machine) and used a costly expert system shell. Since then, both workstation and software technology has evolved to the point that Draco 
+is implemented on the same class of workstation commonly used for data analysis (e.g., Sun Sparcstation) and only requires an inexpensive Lisp environment. This makes possible the distribution of Draco to the scientific community.\par 
+\pard\plain \s255\qj\sb240\sl280 \b\f21 4.\tab Experience with Draco\par 
+\pard\plain \qj\sb280\sl280 \f20 In discussions with research groups at the STScI (along with our own experience in astronomical research) we found a number of common problems:\par 
+\pard\plain \s4\qj\fi-180\li540\sl280 \f20 \bullet 
+ The data management problem is severe. Many astronomers today have more data than can quickly be reduced and analyzed. Some data may wait months or years before the scientist can hire a postdoc or graduate assistant to reduce and analyze it.\par 
+\pard \s4\qj\fi-180\li540\sl280 \bullet  Despite best efforts to calibrate data only once, there is a continuing need to recalibrate data. This is true even if an observatory provides calibrated data (as does STScI).
+ Often this is because the best calibration data are not available until well after the observations are taken.\par 
+\bullet  The removal of instrumental signatures from data is seldom routine, especially when state-of-the-art detectors are involved or when striving for quantitative results or 
+high accuracy. The scientist therefore needs to be able to experiment with different parameters in the reduction algorithms as well as different algorithms.\par 
+\bullet  There is an inertia to remain within the analysis systems, computer operating systems and programming languages with which the astronomer is comfortable, despi
+te serious shortcomings with these systems. Part of this is due to a justifiable skepticism that a new system will actually be better. Another major factor is that a scientist must usually concentrate on research and 
+may have little time to provide tools which are useful to others.\par 
+\pard\plain \qj\sb280\sl280 \f20 An important part of our project plan is the early involvement of scientists
+ in the use and evaluation of Draco. We sought astronomers who were faced with a large amount of data to reduce and whose projects were such that even early versions 
+of Draco would reward them for their investment of time in the project. Detailed discussions were held with three research groups at the STScI. Our first users are R. Griffiths and K. Ratnatunga of the HST Medium-Deep Survey (MDS) Key Project. HST Key P
+rojects are those which were identified by the astronomical community as having high scientific importance and involving a large amount of HST observing time. Data is shared by many astronomers with different interests. The scientific objectives of the Med
+ium-Deep Survey include serendipitous discoveries, observations of 
+rare objects, morphology and distribution of faint galaxies, active nuclei of distant galaxies, galactic structure,  and distant solar-system objects. The observing program involves obtaining image data with WF/PC 
+and Faint Object Camera in parallel with other HST observing programs. Since removal of cosmic ray artifacts from WF/PC data is an important step in the reduction process, we adopted it as the first sample problem for Draco. A small set of MDS files
+ has been processed with Draco. Further use of Draco by the MDS is on hold at this time as they are revising their basic data reduction procedures in order to quantitatively account for meas
+urement and reduction errors. This revision may cause them to write new software or to modify existing packages. \par 
+\pard \qj\sb280\sl280 Earlier work (c.f. Section 2) has shown that it is possible to build software which provides expert assistance for scientific tasks. In our project we are trying to bring the expert assistant out of the prototype stage and 
+into the hands of researchers. An open question is whether there is a sufficient audience for this type of tool. Some users either do not have much data or have less stringent
+ analysis requirements and can be satisfied with existing analysis tools. Other users prefer to write their own software for analysis in order to be sure the reductions are done correctly
+ (or must do so because no suitable software exists). Draco is aimed primarily at users between these two types.\par 
+\pard\plain \s255\qj\sb240\sl280 \b\f21 5.\tab Summary\par 
+\pard\plain \qj\sb280\sl280 \f20 This paper reports our initial efforts in developing an expert assistant for the reduction of scientific data. The first versio
+n of the software has been used to manage the removal of cosmic ray artifacts from HST Medium-Deep survey WF/PC data using an STSDAS procedure. Our approach holds promise for addressing several critical problems 
+in dealing with large amounts of data. Although astronomical data reduction has been the focus of our initial work, the Draco system is directly applicable to many other fields of science including space physics and earth sciences. \par 
+We plan to implement several more versions of Draco over the coming year, each with increasing capability and addressing more involved reduction tasks. It will then be made available to the community. Possibilities for future work include
+: Adding a graphical user interface for defining and editing Draco entities would make its use more intuitive. The ability for Draco to monitor the execution of procedures and provide status and diagnostic information would be helpful. 
+Adding a means for procedures (scripts) to branch or iterate in a general way might be useful. A script would need to examine to output of a reduction program in order to determine the next implementation to invoke, and possibly, some of the parameters wi
+th which to invoke it. We have deferred implementing such a feature since it is not clear if such a step can currently 
+be automated for most reductions. Consider for example an iterative deconvolution algorithm. The number of iterations is usually determined by the astronomer's visual inspection since there exists no image analysis program which 
+can determine the "best" number of iterations for an image (or at least no program which is generally accepted by astronomers). Even the current version of Draco can provide substantial assistance for such a task. Draco could create
+ a number of deconvolved images (e.g., 25, 30, ... iterations) and run some statistical analysis modules on the images. The astronomer would examine this output to select the desired images.\par 
+\pard\plain \s255\qj\sb240\sl280 \b\f21 Acknowledgements\par 
+\pard\plain \qj\sb280\sl280 \f20 Along with the author, Felix Yen, Mark Johnston and Robert Hanisch are investigators on the Draco project. We thank Ron Gilliland, Richard Griffiths, Keith Horne, Phil Marte
+l and Kavan Ratnatunga for discussions about data reduction and their thoughtful comments on the design and development of Draco. This work is supported by NASA's Astrophysics Information Systems Research Program through the Center of Excellence in Space 
+Data and Information Sciences by a contract with the Space Telescope Science Institute which is operated by AURA for NASA.\par 
+\pard\plain \s255\qj\sb240\sl280 \b\f21 References\par 
+\pard\plain \s3\qj\fi-360\li360\sl280\tx360 \f20\fs20 1.\tab Abelson, H., Esienberg, M., Halfant, M., Katzenelson, J., Sacks, E., Sussman, G., Wisdom, J., Yip, K., 1989, \ldblquote Intelligence in Scientific Computing\rdblquote , {\i 
+Communications of the ACM}, {\b 32, } 546.\par 
+2.\tab Adorf, H.-M., and di Serego Alighieri, S., 1989, \ldblquote An Expert Assistant Supporting Hub\-ble Space Telescope Proposal Preparation,\rdblquote  in {\i Data Analysis in Astronomy III}, ed. V. DiGesu, et al., (New York: Plenum Press), 225.\par 
+3.\tab Buchanan, B., Sullivan, J., Cheng, T. and Clearwater, S., 1988, "Simulation-Assisted Inductive Learning", in {\i Proceedings of the Seventh National Conference on Artificial Intelligence}  (San Mateo, CA: Morgan Kaufmann),  552.\par 
+\pard \s3\qj\fi-360\li360\sl280\tx360 4.\tab Cheeseman, P., Stutz, J., Self, M., Taylor, W., Goebel, J., Volk, K., and Walker, H., 1989, {\i Automatic Classification of Spectra from the Infrared Astronomical Satellite (IRAS)}
+, NASA Reference Publication 1217.\par 
+5.\tab Fabiano, A., Bettini, C. and Chin, S., 1991, "A Model Based Assistant for Quantum Chemistry Programs", {\i Seventh Conference on AI Applications,} (Miami: IEEE), 114.\par 
+6.\tab Fayyad, U., Doyle, R., Weir, N., and Djorgovski, S., 1992, "Applying Machine Learning Classification Techniques to Automate Sky object Cataloguing", {\i International Space Year Conference on Earth and Space Science Information Systems}, in press.
+\par 
+7.\tab Foley, J., 1990, \ldblquote Scientific Data Visualization Software: Trends and Directions.\rdblquote , {\i International Journal of Supercomputer Applications}, {\b 4,} 154.\par 
+\pard \s3\qj\fi-360\li360\sl280\tx360 8.\tab Groth, E., 1992, "An Algorithm for Removing Cosmic Rays from Two or More Cosmic Ray Split Exposures", in preparation.\par 
+\pard \s3\qj\fi-360\li360\sl280\tx360 9.\tab Hanisch, R., 1992, "Image Processing, Data Analysis Software and Computer Systems for CCD Data Reduction and Analysis" in Astronomical{\i  CCD Observing and Reduction}, ed. S. Howell (San Francisco: Astro
+nomical Society of the Pacific), 285.\par 
+\pard \s3\qj\fi-360\li360\sl280\tx360 10.\tab Johnston, M., 1987,  \ldblquote An Expert System Approach to Astronomical Data Analysis,\rdblquote  {\i Proceedings of the 1987 Goddard Conference on Space Applications of Artificial Intelligence}.\par 
+11.\tab Keller, R. and Rimon, M., 1992, "A Knowledge-based Software Development Environment for Scientific Model-building", {\i Proceedings of the Seventh Knowledge-Based Software Engineering Conference}, in press.\par 
+\pard \s3\qj\fi-360\li360\sl280\tx360 12.\tab Lucks, M. and Gladwell, I., 1992, "Functional Knowledge Representation in AI Applications for Scientific Computing", {\i AAAI 1992 Fall Symposium on Intelligent Scientific Computation}, in press.\par 
+13.\tab Murtagh, F. and Adorf, H.-M., 1991, "Detecting Cosmic Ray Hits on HST WF/PC Images using Neural Networks and Other Discriminant Analysis Approaches", in  {\i Data Analysis in Astronomy IV}, ed. V. DiGesu, et al., (New York: Plenum Press), 103.
+\par 
+14.\tab Murtagh, F. and Heck, A., 1989, {\i Knowledge Based Systems in Astronomy} , Lecture Notes in Physics #329, (Berlin: Springer Verlag).\par 
+15.\tab Noordewier, M., and Travis, L., 1990, "Case Study of a Knowledge-Based System Which Plans Molecular Genetics Experiments", {\i 1990 Conference on Artificial Intelligence Applications}, (San Mateo, CA: IEEE), 257.\par 
+16.\tab Senay, H. and Ignatius, E., 1992, "A Knowledge Based System for Scientific Data Visualization" {\i Center for Excellence in Space and Data Information Systems Technical Report 92-79}.\par 
+17.\tab Stefik, M., 1981, \ldblquote Planning with Constraints (MOLGEN)\rdblquote , {\i Artificial Intelligence}, {\b 16, }111.\par 
+\pard \s3\qj\fi-360\li360\sl280\tx360 18.\tab Thonnat, M., and Bijaoui, A., 1989,  \ldblquote Knowledge Based Classification of Galaxies,\rdblquote  {\i Knowledge-Based Systems in Astronomy}, ed. A. Heck and F. Murtagh, (Berlin: Springer-Verlag), 121.
+\par 
+\pard \s3\qj\fi-360\li360\sl280\tx360 19.\tab Yen, F., 1992, "{Draco - A Data Reduction Expert Assistant}", {\i AAAI 1992 Fall Symposium on Intelligent Scientific Computation}, in press.\par 
+}

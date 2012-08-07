@@ -1,0 +1,79 @@
+<TITLE>Draco Team Members</TITLE>
+
+<H1>Draco Team Members</H1>
+<UL>
+<LI> <A HREF="#Glenn">Glenn Miller</A>
+
+<LI> <A HREF="#Felix">Felix Yen</A>
+
+<LI> <A HREF="#Mark">Mark Johnston</A>
+
+<LI> <A HREF="#Bob">Robert Hanisch</A>
+</UL>
+
+<A NAME="Glenn"><B>Glenn Miller</B></A> is an astronomer with an
+interest in applying computer science to scientifc investigations.  He is
+Principal Investigator on the Data Reduction Expert Assistant (Draco)
+project which is supported by NASA's AISR program. He has authored or
+co-authored several articles on the development of HST planning
+software and the application of AI techniques to scientific
+applications and observatory operations.  At the STScI he is Chief of
+the Advance Planning Systems Branch. He was instrumental in the design
+and development of the HST Proposal Entry Processor and Spike
+Scheduling systems.  He has published in several areas of astronomy
+including the initial mass function and stellar birthrate (the
+"Miller-Scalo IMF"), abundances in peculiar red giant stars, and the
+evolution of galaxies and clusters.  He earned a Ph.D. in Astronomy
+from the University of Texas at Austin and was an Assistant Professor
+of Astronomy at the University of Virginia prior to joining the STScI
+staff in 1983. <P>
+
+<A NAME="Felix"><B>Felix Yen</B></A> 
+joined the Space Telescope
+Science Institute staff in October 1991 to work on the Draco
+project. As a computer scientist, he was the principal designer and
+developer of Draco. Upon completion of the initial development of
+Draco in November 1993, he left the STScI for Cadre Technologies. He
+received a Ph.D. in Computer Science (Artificial Intelligence) from
+Brown University in 1991. <P>
+
+<A NAME="Mark"><B>Mark Johnston</B></A>
+is an Senior Scientist at the Space
+Telescope Science Institute (STScI) where he is Deputy Head of the
+Science and Engineering Systems Division.  He was responsible for the
+design and development of both the Proposal Entry Processor (PEP) and
+SPIKE HST scheduling system.  He received his Ph.D. from M.I.T. in
+1978 with a thesis on HEAO-1 X-ray observations of the Large
+Magellanic Cloud.  He received his Ph.D. from M.I.T. in 1978 with a
+thesis on HEAO-1 X-ray observations of the Large Magellanic Cloud. He
+has extensive experience with satellite data and has authored or
+co-authored ~30 papers based on the analysis of HEAO-1 X-ray data. He
+developed the data analysis system for the HEAO-1 X-ray modulation
+collimator experiment. His other research interests include numerical
+hydrodynamics, nucleosynthesis in supernovae, statistics and
+classification techniques, and the application of advanced software
+and computing techniques to astronomical research.  He was an
+Assistant Professor of Astronomy at the University of Virginia before
+moving to STScI in 1982. <P>
+
+<A NAME="Bob"><B>Robert Hanisch</B></A>
+is an Associate Scientist at the Space Telescope Science Institute 
+(STScI) and is Chief of the Science Software Branch of the Science Computing and 
+Research Support Division. He is responsible for both the development of the STSDAS 
+software package for HST data analysis and for the day to day operations of all STScI 
+scientific computing facilities. Dr. Hanisch has overseen the migration of the HST data 
+analysis software from a VMS-dependent system to a totally portable system integrated 
+with IRAF. His scientific background is in radio astronomy. He completed his 
+Ph.D. at the University of Maryland in 1981 on the topic of diffuse radio emission from 
+clusters of galaxies, and continued work on extragalactic radio sources as a post-doctoral 
+research fellow at the Westerbork Synthesis Radio Telescope in the Netherlands. He has 
+been involved with the STSDAS project at the STScI since 1984.  <P>
+
+
+<B>With Support From:</B> 
+A number of people assisted us in this project by sharing their ideas, time
+and data. These include: 
+Ron Gilliland, Keith Horne, Phil Martel, 
+Richard Griffiths, Kavan Ratnatunga, Jack MacConnell,
+Jim Roberts, Dan Golombek, and Stefi Baum.
+

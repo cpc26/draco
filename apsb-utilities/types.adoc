@@ -1,0 +1,30 @@
+Auto-Doc for: /marian/p1/develop/apsb-utilities/types.lisp (12-Aug-1993, 19:26:40)
+
+-*-Mode:LISP; Syntax: Common-Lisp;Package:(apsb-utilities);-*-
+
+	frequently used type(-related) definitions
+
+
+'(BOOLEAN FILE-SPEC FUNCTION-SPEC MONIKER OPTIONAL STREAM-SPEC) [exported symbols (eval-when (COMPILE-TOPLEVEL
+                                                                                              LOAD-TOPLEVEL
+                                                                                              EXECUTE))]
+
+'(ERRNO LOCKF-FILE-ERROR SHELL-STATUS-ERROR TEXT UNIX-ERROR) [exported symbols (eval-when (COMPILE-TOPLEVEL
+                                                                                           LOAD-TOPLEVEL
+                                                                                           EXECUTE))]
+
+BOOLEAN [type]
+
+FILE-SPEC [type]
+
+FUNCTION-SPEC [type]
+
+MONIKER [type]
+
+OPTIONAL [type]
+
+STREAM-SPEC [type]
+
+ conditions
+
+End of Auto-Doc for: /marian/p1/develop/apsb-utilities/types.lisp

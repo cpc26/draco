@@ -1,0 +1,39 @@
+Auto-Doc for: /marian/p1/develop/apsb-utilities/Norvig/auxmacs.lisp (12-Aug-1993, 19:26:53)
+
+ -*- Mode: Lisp; Syntax: Common-Lisp -*-
+
+ Code from Paradigms of AI Programming
+ Copyright (c) 1991 Peter Norvig
+ File auxmacs.lisp: Macros Used in other Auxiliary Functions
+ Load this before anything else, then load auxfns.lisp.
+ auxmacs.adoc,v
+# Revision 1.1.1.1  1993/09/24  16:09:19  asson
+# APSB Utilities Imported Sources
+#
+ Revision 1.1  1992/05/10  19:53:44  mrose
+ Initial revision
+
+ History:
+ Apr 12 1992 mrose, changed package from USER to NORVIG
+
+ONCE-ONLY [macro]
+   (VARIABLES &REST BODY)
+  Returns the code built by BODY.  If any of VARIABLES
+  might have side effects, they are evaluated once and stored
+  in temporary variables that are then passed to BODY.
+
+SIDE-EFFECT-FREE? [function]
+   (EXP)
+  Is exp a constant, variable, or function,
+  or of the form (THE type x) where x is side-effect-free?
+
+FUNCALL-IF [macro]
+   (FN ARG)
+
+READ-TIME-CASE [macro]
+   (FIRST-CASE &REST OTHER-CASES)
+  Do the first case, where normally cases are
+  specified with #+ or possibly #- marks.
+  (DECLARE (IGNORE OTHER-CASES))
+
+End of Auto-Doc for: /marian/p1/develop/apsb-utilities/Norvig/auxmacs.lisp

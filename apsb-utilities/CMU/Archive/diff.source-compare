@@ -1,0 +1,41 @@
+428c428,429
+< (in-package "SOURCE-COMPARE" :nicknames '("SRCCOM" "SC"))
+---
+> (defpackage SOURCE-COMPARE
+>   (:nicknames "SRCCOM" "SC"))
+430,444c431,449
+< (export '(source-compare		; main routine
+< 	  ;; Core function parameters used to keep files in sync.
+< 	  *greedy-metric*		
+< 	  *minimum-match-length*
+< 	  ;; Program default display.
+< 	  *print-context*		
+< 	  *print-fancy-header*
+< 	  *context-lines-before-difference*
+< 	  *context-lines-after-difference*
+< 	  ;; Program default modes.
+< 	  *ignore-comments*
+< 	  *dont-ignore-major-comments*
+< 	  *ignore-case*
+< 	  *ignore-whitespace*
+< 	  *ignore-blank-lines*))
+---
+> (in-package "SOURCE-COMPARE")
+> 
+> (eval-when (:compile-toplevel :load-toplevel :execute)
+>   (export '(source-compare		; main routine
+> 	    ;; Core function parameters used to keep files in sync.
+> 	    *greedy-metric*		
+> 	    *minimum-match-length*
+> 	    ;; Program default display.
+> 	    *print-context*		
+> 	    *print-fancy-header*
+> 	    *context-lines-before-difference*
+> 	    *context-lines-after-difference*
+> 	    ;; Program default modes.
+> 	    *ignore-comments*
+> 	    *dont-ignore-major-comments*
+> 	    *ignore-case*
+> 	    *ignore-whitespace*
+> 	    *ignore-blank-lines*)))
+> 

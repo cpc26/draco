@@ -1,0 +1,10 @@
+#!/bin/csh -f
+
+# this is how to tar the directory
+# gm 12/22/93
+# see unix power tools p. 346
+
+cd /lor/data1
+tar cf draco.tar Draco/*
+compress draco.tar
+mv draco.tar /lor/data1/Draco

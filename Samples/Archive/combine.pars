@@ -1,0 +1,20 @@
+darkcombine.cl:bool	process=yes
+darkcombine.cl:int	nlow=1	
+darkcombine.cl:real	blank=0.
+darkcombine.cl:string	ccdtype="dark"
+darkcombine.cl:string	reject="avsigclip"
+darkcombine.cl:string	scale="exposure"
+
+flatcombine.cl:bool	process=yes
+flatcombine.cl:int	nlow=1	
+flatcombine.cl:real	blank=1.
+flatcombine.cl:string	ccdtype="flat"
+flatcombine.cl:string	reject="avsigclip"
+flatcombine.cl:string	scale="mode"
+
+zerocombine.cl:bool	process=no
+zerocombine.cl:int	nlow=0	
+zerocombine.cl:real	blank=0.
+zerocombine.cl:string	ccdtype="zero"
+zerocombine.cl:string	reject="minmax"
+zerocombine.cl:string	scale="none"

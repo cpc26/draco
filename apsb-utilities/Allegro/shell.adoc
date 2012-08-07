@@ -1,0 +1,107 @@
+Auto-Doc for: /marian/p1/develop/apsb-utilities/Allegro/shell.cl (12-Aug-1993, 19:26:57)
+
+-*-Mode:LISP; Syntax: Common-Lisp;Package:(apsb-utilities);-*-
+
+	shell definitions
+ Modified: dja - 24 May 93
+
+USER [package (eval-when (COMPILE-TOPLEVEL LOAD-TOPLEVEL EXECUTE))]
+
+'(GETENV RUN-SHELL-COMMAND SHELL BLOCKING-WAIT-WITH-PID
+         NON-BLOCKING-WAIT-WITH-PID PROCESS-FINISHED-P) [exported symbols (eval-when (COMPILE-TOPLEVEL
+                                                                                      LOAD-TOPLEVEL
+                                                                                      EXECUTE))]
+ ----------------------------------------------------------------
+               *** Foreign Function Declarations ***
+ ---------------------------------------------------------
+
+GETENV [function]
+   (VAR)
+  C (stdlib) getenv
+  (AVER (STRING VAR))
+
+PROCESS-FINISHED-P [function]
+   (PROCESS-ID)
+  Return t if the process with id PROCESS-ID has finished executing
+and is waiting to signal its parent that its done.  Else, return nil.
+This takes advantage of non-blocking status queries.  This is much
+better than Allegro's sys:os-wait.
+
+RUN-SHELL-COMMAND [function]
+   (&REST ARGS)
+  Allegro-inspired shell command interface
+  (AVER (LIST ARGS))
+
+ Feb 26 1993 mrose
+
+SHELL [function]
+   (COMMAND &KEY (INPUT (PATHNAME "/dev/null")) (OUTPUT *STANDARD-OUTPUT*)
+    (ERROR *ERROR-OUTPUT*) (IF-OUTPUT-EXISTS :ERROR)
+    (IF-ERROR-OUTPUT-EXISTS :ERROR) (IGNORE-STATUS NIL))
+  Run the specified unix shell command.  Wait for completion.
+
+COMMAND is a string.
+
+INPUT may be a stream, pathname, string, or sequence of strings.
+If a stream, that stream is read, copied to a file, and that file
+is used as input for the command.  If a pathname, that file is used
+as input for the command.  If a sequence of strings, the strings are
+written to a temporary file, a newline inserted after each string,
+and the file is used as the input.  A single string is treated as a
+sequence of one string.
+
+OUTPUT may be a pathname, a lisp stream, T, or nil.  If a pathname,
+the output is written to that file.  If a stream, the output from
+the command is written first to a temporary file, then to the
+stream.  T is shorthand for *standard-output*.  If nil, the output
+is written to a temporary file, then returned as a list of strings.
+
+Same for ERROR, except it may have the additional value :OUTPUT,
+which directs ERROR to the same place as OUTPUT.
+
+Signal an error if the command returns non-zero status and
+IGNORE-STATUS is nil.  The text of the error is taken from ERROR.
+
+The keywords :IF-OUTPUT-EXISTS and :IF-ERROR-OUTPUT-EXISTS behave
+like OPEN's :IF-EXISTS keyword.  The default action for each is
+to signal an error.
+
+Return 3 values: the completion status, output-related-info, and
+error-related-info.  If OUTPUT is a pathname or stream,
+output-related-info is nil; if OUTPUT is nil, output-related-info
+is a list of strings that are the actual output.  Error-related-info
+is just like output-related-info.  When error is :output,
+error-related-info is nil.
+
+WRITE-STRINGS-TO-FILE [function]
+   (SEQUENCE &OPTIONAL (FILENAME (TEMPNAM)))
+  Write a sequence to a file, separating each element with a newline,
+return the filename.
+
+FILE-STRINGS [function]
+   (FILENAME)
+  Return a list of the strings, each string is one line from FILENAME.
+
+ Test the following features of SHELL
+ 1. :input from
+       a. /dev/null
+       b. named file
+       c. string
+       d. sequence of strings
+ 2. :output, :error
+       a. nil,  nil
+       b. nil,  /dev/null"
+       c. nil,  :output
+       d. /dev/null,  nil
+       e. /dev/null,  :output
+       f. named file, named file
+       g. stream,  stream
+
+
+PERL-SCRIPT [function]
+   (STATUS)
+  create and return perl script/string
+  (AVER (FIXNUM STATUS))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+End of Auto-Doc for: /marian/p1/develop/apsb-utilities/Allegro/shell.cl

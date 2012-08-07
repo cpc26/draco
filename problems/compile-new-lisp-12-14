@@ -1,0 +1,239 @@
+
+==============================================================
+Starting image `/usr/local/lib/apsb/develop-cl'
+  with arguments `(-- -release develop)'
+  in directory `/lor/data1/Draco/'
+  on machine `lor.stsci.edu'.
+
+Allegro CL 4.2.devel.19 [SPARC; R1] (11/29/93 17:05)
+Copyright (C) 1985-1993, Franz Inc., Berkeley, CA, USA.  All Rights Reserved.
+;   Loading /usr/local/lib/apsb/allegro-init.lisp.
+;   Loading /cerb/p1/login/apsb-login.lisp.
+;; Optimization settings: safety 1, space 1, speed 1, debug 2
+;; For a complete description of all compiler switches given the current
+;; optimization settings evaluate (EXPLAIN-COMPILER-SETTINGS).
+
+;; Starting socket daemon and emacs-lisp interface...
+USER(1): *features*
+(:ANSI-PATHNAMES :CLIM-MOTIF :ANSI-90 :SILICA :CLIM-2.0 :CLIM-2 :CLIM :COMPOSER-V2.0 :COMPOSER :CW-MOTIF
+ :CW-X-V2 :CW-X :CLX-MIT-R5 :CLX-MIT-R4 :XLIB :CLX :MULTIPROCESSING :DYNAFASL :BIG-ENDIAN :GSGC :CLOS
+ :COMPILER :UNIX :SUN4 :SPARC :SUN :SUNOS4.0 :FLAVORS :PROFILER :IEEE :IEEE-FLOATING-POINT :CONFORMING-IEEE
+ :COMMON-LISP :CLTL2 :ALLEGRO :EXCL :FRANZ-INC :ALLEGRO-VERSION>= :ALLEGRO-V4.2)
+USER(2): 
+(setf (logical-pathname-translations "Draco")
+  '( 
+    (";**;*.*"	"/lor/data1/Draco/")
+    ("**;*.*"	"/lor/data1/Draco/")
+    ))
+
+(load "/lor/data1/Draco/apsb-utilities/CMU/defsystem.lisp")
+
+(pushnew #p"Draco:" make:*central-registry*)
+
+(pushnew #p"Draco:apsb-utilities" make:*central-registry*)
+
+(make:load-system '%draco :compile-during-load t)
+
+(in-package draco)
+
+USER(2): ((#l";**;*.*" #p"/lor/data1/Draco/") (#l"**;*.*" #p"/lor/data1/Draco/"))
+USER(3): USER(3): ; Loading /lor/data1/Draco/apsb-utilities/CMU/defsystem.lisp.
+T
+USER(4): USER(4): (#l"Draco:")
+USER(5): USER(5): (#l"Draco:apsb-utilities" #l"Draco:")
+USER(6): USER(6): ; Loading /lor/data1/Draco/%draco.system.
+; Loading /lor/data1/Draco/apsb-utilities/%apsb-utilities.system.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/macros.lisp ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/macros.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/apsb-utilities/macros.fasl.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/types.lisp ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/types.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/apsb-utilities/types.fasl.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/clos.lisp ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/clos.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/apsb-utilities/clos.fasl.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/CMU/source-compare.lisp ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/CMU/source-compare.fasl"
+; Fasl write complete
+Warning: The following undefined functions were referenced in the compilation: (MAKE-FILE-CACHE)
+; Fast loading /lor/data1/Draco/apsb-utilities/CMU/source-compare.fasl.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/diagnostic.lisp ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/diagnostic.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/apsb-utilities/diagnostic.fasl.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/date.lisp ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/date.fasl"
+; Fasl write complete
+Warning: The following undefined functions were referenced in the compilation:
+         (DATE-PARSE-DIRECTIVE AUTO-DOC-FORMAT-FN)
+; Fast loading /lor/data1/Draco/apsb-utilities/date.fasl.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/date-init.lisp ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/date-init.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/apsb-utilities/date-init.fasl.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/file-system.lisp ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/file-system.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/apsb-utilities/file-system.fasl.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/list.lisp ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/list.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/apsb-utilities/list.fasl.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/nregex.lisp ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/nregex.fasl"
+Warning: No IN-PACKAGE form seen in /lor/data1/Draco/apsb-utilities/nregex.lisp (Allegro Presto is
+         ineffective when loading files that have no IN-PACKAGE form).
+; Fasl write complete
+; Fast loading /lor/data1/Draco/apsb-utilities/nregex.fasl.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/Norvig/auxmacs.lisp ---
+; Autoloading for EXCL::COMPLEX-LOOP-EXPANDER:
+; Fast loading from bundle code/loop.fasl.
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/Norvig/auxmacs.fasl"
+; Fasl write complete
+Warning: The following undefined functions were referenced in the compilation: (STARTS-WITH)
+; Fast loading /lor/data1/Draco/apsb-utilities/Norvig/auxmacs.fasl.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/Norvig/auxfns.lisp ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/Norvig/auxfns.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/apsb-utilities/Norvig/auxfns.fasl.
+; Foreign loading /lor/data1/Draco/apsb-utilities/Allegro/unix-ff.o.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/Series/bogus.lisp ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/Series/bogus.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/apsb-utilities/Series/bogus.fasl.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/Allegro/crypt.cl ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/Allegro/crypt.fasl"
+; Fasl write complete
+Warning: The following undefined functions were referenced in the compilation: (CRYPT-3)
+; Fast loading /lor/data1/Draco/apsb-utilities/Allegro/crypt.fasl.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/Allegro/file-system.cl ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/Allegro/file-system.fasl"
+; Fasl write complete
+Warning: The following undefined functions were referenced in the compilation: (_TEMPNAM SHELL UNIX-UMASK)
+; Fast loading /lor/data1/Draco/apsb-utilities/Allegro/file-system.fasl.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/Allegro/reduce.cl ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/Allegro/reduce.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/apsb-utilities/Allegro/reduce.fasl.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/Allegro/shell.cl ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/Allegro/shell.fasl"
+; Fasl write complete
+Warning: The following undefined functions were referenced in the compilation: (NON-BLOCKING-WAIT-WITH-PID)
+; Fast loading /lor/data1/Draco/apsb-utilities/Allegro/shell.fasl.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/Allegro/error.cl ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/Allegro/error.fasl"
+; Fasl write complete
+Warning: The following undefined functions were referenced in the compilation: (GET-ERRNO)
+; Fast loading /lor/data1/Draco/apsb-utilities/Allegro/error.fasl.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/sequence.lisp ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/sequence.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/apsb-utilities/sequence.fasl.
+; --- Compiling file /lor/data1/Draco/apsb-utilities/string.lisp ---
+; Writing fasl file "/lor/data1/Draco/apsb-utilities/string.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/apsb-utilities/string.fasl.
+; --- Compiling file /lor/data1/Draco/diagnostic.lisp ---
+; Writing fasl file "/lor/data1/Draco/diagnostic.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/diagnostic.fasl.
+; --- Compiling file /lor/data1/Draco/installation.lisp ---
+; Writing fasl file "/lor/data1/Draco/installation.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/installation.fasl.
+; --- Compiling file /lor/data1/Draco/system.lisp ---
+; Writing fasl file "/lor/data1/Draco/system.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/system.fasl.
+; --- Compiling file /lor/data1/Draco/Entities/define.lisp ---
+; Writing fasl file "/lor/data1/Draco/Entities/define.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/Entities/define.fasl.
+; --- Compiling file /lor/data1/Draco/Entities/types.lisp ---
+; Writing fasl file "/lor/data1/Draco/Entities/types.fasl"
+; Fasl write complete
+Warning: The following undefined functions were referenced in the compilation:
+         (EPHEMERAL-SLOTS TRANSLATE-CMD-STRINGS)
+; Fast loading /lor/data1/Draco/Entities/types.fasl.
+; --- Compiling file /lor/data1/Draco/Entities/file-type.lisp ---
+; Writing fasl file "/lor/data1/Draco/Entities/file-type.fasl"
+; Fasl write complete
+Warning: The following undefined functions were referenced in the compilation:
+         (FIND-SUPER-TYPES NEAREST-SUPER-TYPE)
+; Fast loading /lor/data1/Draco/Entities/file-type.fasl.
+; --- Compiling file /lor/data1/Draco/Entities/instance.lisp ---
+; Writing fasl file "/lor/data1/Draco/Entities/instance.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/Entities/instance.fasl.
+; --- Compiling file /lor/data1/Draco/Entities/init-file.lisp ---
+; While compiling SET-DATA-DIRECTORY:
+Warning: cond clause (T (INTERN (TRUENAME STREAM))) is unreachable 
+Warning: cond clause (T (INTERN (MAKE-PATHNAME :NAME *INVENTORY-NAME* :TYPE *INVENTORY-TYPE*))) is
+         unreachable 
+; While compiling (:TOP-LEVEL-FORM "init-file.lisp" 9):
+Warning: cond clause (T (INTERN (TRUENAME STREAM))) is unreachable 
+; Writing fasl file "/lor/data1/Draco/Entities/init-file.fasl"
+; Fasl write complete
+Warning: The following undefined functions were referenced in the compilation: (UPDATE-INVENTORY)
+; Fast loading /lor/data1/Draco/Entities/init-file.fasl.
+; --- Compiling file /lor/data1/Draco/Entities/file-datum.lisp ---
+; Writing fasl file "/lor/data1/Draco/Entities/file-datum.fasl"
+; Fasl write complete
+Warning: The following undefined functions were referenced in the compilation:
+         (FIND-FILE-DATUM SET-DESIRED-KEYWORDS)
+; Fast loading /lor/data1/Draco/Entities/file-datum.fasl.
+; --- Compiling file /lor/data1/Draco/Entities/kv-reporter.lisp ---
+; Writing fasl file "/lor/data1/Draco/Entities/kv-reporter.fasl"
+; Fasl write complete
+Warning: The following undefined functions were referenced in the compilation: (MAKE-KV-REPORTER-FN)
+; Fast loading /lor/data1/Draco/Entities/kv-reporter.fasl.
+; --- Compiling file /lor/data1/Draco/Entities/primitive.lisp ---
+; Writing fasl file "/lor/data1/Draco/Entities/primitive.fasl"
+; Fasl write complete
+Warning: The following undefined functions were referenced in the compilation:
+         (MAKE-START-FUNCTION FIND-PRIMITIVE-SIVS ADD-PACKAGE-COMMAND)
+; Fast loading /lor/data1/Draco/Entities/primitive.fasl.
+; --- Compiling file /lor/data1/Draco/Entities/print.lisp ---
+; Writing fasl file "/lor/data1/Draco/Entities/print.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/Entities/print.fasl.
+; --- Compiling file /lor/data1/Draco/Entities/user-data.lisp ---
+; Writing fasl file "/lor/data1/Draco/Entities/user-data.fasl"
+; Fasl write complete
+Warning: The following undefined functions were referenced in the compilation: (TRANSLATE-CMD-STRING)
+; Fast loading /lor/data1/Draco/Entities/user-data.fasl.
+; --- Compiling file /lor/data1/Draco/Entities/validate.lisp ---
+; Writing fasl file "/lor/data1/Draco/Entities/validate.fasl"
+; Fasl write complete
+Warning: The following undefined functions were referenced in the compilation: (VALIDATE)
+; Fast loading /lor/data1/Draco/Entities/validate.fasl.
+; --- Compiling file /lor/data1/Draco/Documents/default-reporter.lisp ---
+; Writing fasl file "/lor/data1/Draco/Documents/default-reporter.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/Documents/default-reporter.fasl.
+; --- Compiling file /lor/data1/Draco/Documents/inventory.lisp ---
+; Writing fasl file "/lor/data1/Draco/Documents/inventory.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/Documents/inventory.fasl.
+; --- Compiling file /lor/data1/Draco/Entities/sanity-test.lisp ---
+; Writing fasl file "/lor/data1/Draco/Entities/sanity-test.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/Entities/sanity-test.fasl.
+; --- Compiling file /lor/data1/Draco/Entities/unix.lisp ---
+; Writing fasl file "/lor/data1/Draco/Entities/unix.fasl"
+; Fasl write complete
+; Fast loading /lor/data1/Draco/Entities/unix.fasl.
+(#<MODULE: +built-in> #<MODULE: +documents> #<MODULE: +entities> #<MODULE: +system>)
+USER(7): USER(7): #<The DRACO package>
+DRACO(8): DRACO(8): (set-data-directory "/lor/data1/scratch")
+
+Error: Class #<STANDARD-CLASS FIRE @ #x71cac2> is not yet finalized.
+  [condition type: PROGRAM-ERROR]
+[1] DRACO(9): 
+(sanity-test:start '(#p"."))
+
+[1] DRACO(9): Error: "changing directory " resulted in error "No such file or directory"
+[2] DRACO(10): 
